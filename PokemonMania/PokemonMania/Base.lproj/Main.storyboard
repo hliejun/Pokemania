@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,14 +16,426 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MenuViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBv-5v-7yK">
+                                <rect key="frame" x="369" y="507" width="30" height="30"/>
+                                <state key="normal" title="Test"/>
+                                <connections>
+                                    <segue destination="oUO-u6-Bfl" kind="presentation" id="M0B-Mm-1Vx"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OBv-5v-7yK" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="0J5-Qn-gJ8"/>
+                            <constraint firstItem="OBv-5v-7yK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="b38-AS-qSU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-394" y="-21"/>
+        </scene>
+        <!--Palette View Controller-->
+        <scene sceneID="DfN-li-7Of">
+            <objects>
+                <viewController id="DES-Kt-It7" customClass="PaletteViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mEB-Wg-GT5">
+                        <rect key="frame" x="0.0" y="0.0" width="752" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2k-Qe-VVg">
+                                <rect key="frame" x="0.0" y="0.0" width="752" height="80"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lta-1A-0Xa">
+                                        <rect key="frame" x="16" y="16" width="608" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="5Hl-Sx-7aw">
+                                            <size key="itemSize" width="50" height="0.0"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PaletteCell" id="0u6-Pn-JVC" customClass="PaletteCell" customModule="PokemonMania" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="0.0"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="0.0"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="DES-Kt-It7" id="VmP-aM-7yK"/>
+                                            <outlet property="delegate" destination="DES-Kt-It7" id="0nI-1h-Nqe"/>
+                                        </connections>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qS-sn-pfy">
+                                        <rect key="frame" x="632" y="16" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="7qS-sn-pfy" secondAttribute="height" multiplier="1:1" id="bDr-JP-Ni4"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="shuffle">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toggleEditing:" destination="DES-Kt-It7" eventType="touchUpInside" id="zXs-7V-jBG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDN-0k-2Sq">
+                                        <rect key="frame" x="688" y="16" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="kDN-0k-2Sq" secondAttribute="height" multiplier="1:1" id="LLg-ER-XSW"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="erase">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toggleEditing:" destination="DES-Kt-It7" eventType="touchUpInside" id="HM6-qu-igl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="kDN-0k-2Sq" firstAttribute="leading" secondItem="7qS-sn-pfy" secondAttribute="trailing" constant="8" id="0l3-o5-sJ2"/>
+                                    <constraint firstAttribute="bottom" secondItem="7qS-sn-pfy" secondAttribute="bottom" constant="16" id="6Nn-Xy-h1T"/>
+                                    <constraint firstItem="Lta-1A-0Xa" firstAttribute="leading" secondItem="A2k-Qe-VVg" secondAttribute="leading" constant="16" id="8i2-La-ibL"/>
+                                    <constraint firstItem="Lta-1A-0Xa" firstAttribute="top" secondItem="A2k-Qe-VVg" secondAttribute="top" constant="16" id="BSp-VL-lZx"/>
+                                    <constraint firstItem="7qS-sn-pfy" firstAttribute="top" secondItem="A2k-Qe-VVg" secondAttribute="top" constant="16" id="OSw-MQ-35X"/>
+                                    <constraint firstAttribute="bottom" secondItem="kDN-0k-2Sq" secondAttribute="bottom" constant="16" id="dqR-ZO-qEC"/>
+                                    <constraint firstItem="7qS-sn-pfy" firstAttribute="leading" secondItem="Lta-1A-0Xa" secondAttribute="trailing" constant="8" id="fjZ-2t-cmP"/>
+                                    <constraint firstAttribute="trailing" secondItem="kDN-0k-2Sq" secondAttribute="trailing" constant="16" id="g2m-o6-arm"/>
+                                    <constraint firstItem="kDN-0k-2Sq" firstAttribute="top" secondItem="A2k-Qe-VVg" secondAttribute="top" constant="16" id="hcl-8P-csT"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lta-1A-0Xa" secondAttribute="bottom" constant="16" id="ukP-3k-SSE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="A2k-Qe-VVg" secondAttribute="bottom" id="IeM-Ul-1Ox"/>
+                            <constraint firstItem="awL-xQ-R8I" firstAttribute="trailing" secondItem="A2k-Qe-VVg" secondAttribute="trailing" id="Qzi-XO-dbM"/>
+                            <constraint firstItem="A2k-Qe-VVg" firstAttribute="leading" secondItem="awL-xQ-R8I" secondAttribute="leading" id="djE-5B-olb"/>
+                            <constraint firstItem="A2k-Qe-VVg" firstAttribute="top" secondItem="mEB-Wg-GT5" secondAttribute="top" id="vm0-Pm-VIi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="awL-xQ-R8I"/>
+                    </view>
+                    <connections>
+                        <outlet property="bubbleOptions" destination="Lta-1A-0Xa" id="ewH-ue-Blz"/>
+                        <outlet property="bubblePalette" destination="A2k-Qe-VVg" id="QKA-Uh-wld"/>
+                        <outlet property="cycleButton" destination="7qS-sn-pfy" id="zMo-xi-l84"/>
+                        <outlet property="editButton" destination="kDN-0k-2Sq" id="NTh-GX-ME0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="izf-AS-3oN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105" y="155"/>
+        </scene>
+        <!--Bubble Grid View Controller-->
+        <scene sceneID="kKB-np-0wj">
+            <objects>
+                <collectionViewController id="5ys-Kz-z0U" customClass="BubbleGridViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" id="jYV-W7-Kjy">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Now-KK-leF">
+                            <size key="itemSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BubbleCell" id="b62-Ls-2xk" customClass="BubbleCell" customModule="PokemonMania" customModuleProvider="target">
+                                <rect key="frame" x="384" y="0.0" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="5ys-Kz-z0U" id="sI4-2e-LsS"/>
+                            <outlet property="delegate" destination="5ys-Kz-z0U" id="0hf-mw-xvM"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <outlet property="isometricGrid" destination="jYV-W7-Kjy" id="PWh-sX-Ge6"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M51-BQ-CnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105" y="-177"/>
+        </scene>
+        <!--Designer View Controller-->
+        <scene sceneID="D1M-sD-7iT">
+            <objects>
+                <viewController id="oUO-u6-Bfl" customClass="DesignerViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BkR-aC-ZHR">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tim-Z9-MVN">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLR-nz-qDX">
+                                <rect key="frame" x="0.0" y="28" width="768" height="844"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="5ys-Kz-z0U" kind="embed" id="nxI-85-bD4"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvr-BK-dau">
+                                <rect key="frame" x="8" y="888" width="752" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="vrU-T3-u2B"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="DES-Kt-It7" kind="embed" id="qJ3-SS-ttf"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzn-Hq-QYZ">
+                                <rect key="frame" x="0.0" y="984" width="768" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="odN-68-k5d"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="jDQ-gs-ffd" kind="embed" id="sri-dh-mwz"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qxB-Om-AQ7" firstAttribute="trailing" secondItem="dvr-BK-dau" secondAttribute="trailing" constant="8" id="6m2-S7-8XB"/>
+                            <constraint firstItem="tim-Z9-MVN" firstAttribute="leading" secondItem="qxB-Om-AQ7" secondAttribute="leading" id="ENx-SF-3vn"/>
+                            <constraint firstItem="LLR-nz-qDX" firstAttribute="trailing" secondItem="qxB-Om-AQ7" secondAttribute="trailing" id="Iom-X2-fWO"/>
+                            <constraint firstItem="LLR-nz-qDX" firstAttribute="top" secondItem="qxB-Om-AQ7" secondAttribute="top" constant="8" id="KLN-Ow-cC3"/>
+                            <constraint firstItem="vzn-Hq-QYZ" firstAttribute="leading" secondItem="qxB-Om-AQ7" secondAttribute="leading" id="NAr-ff-IfX"/>
+                            <constraint firstItem="qxB-Om-AQ7" firstAttribute="trailing" secondItem="vzn-Hq-QYZ" secondAttribute="trailing" id="QFO-wa-rs4"/>
+                            <constraint firstItem="tim-Z9-MVN" firstAttribute="top" secondItem="qxB-Om-AQ7" secondAttribute="top" id="Qgb-hg-Rvh"/>
+                            <constraint firstItem="vzn-Hq-QYZ" firstAttribute="top" secondItem="dvr-BK-dau" secondAttribute="bottom" constant="16" id="T4Z-YN-T6y"/>
+                            <constraint firstItem="dvr-BK-dau" firstAttribute="top" secondItem="LLR-nz-qDX" secondAttribute="bottom" constant="16" id="UxJ-Z4-TBZ"/>
+                            <constraint firstItem="tim-Z9-MVN" firstAttribute="trailing" secondItem="qxB-Om-AQ7" secondAttribute="trailing" id="dhq-c0-Yky"/>
+                            <constraint firstItem="LLR-nz-qDX" firstAttribute="leading" secondItem="qxB-Om-AQ7" secondAttribute="leading" id="olb-sS-mbd"/>
+                            <constraint firstItem="dvr-BK-dau" firstAttribute="leading" secondItem="qxB-Om-AQ7" secondAttribute="leading" constant="8" id="raw-V2-mCO"/>
+                            <constraint firstItem="qxB-Om-AQ7" firstAttribute="bottom" secondItem="vzn-Hq-QYZ" secondAttribute="bottom" id="sqH-9h-2l7"/>
+                            <constraint firstItem="tim-Z9-MVN" firstAttribute="bottom" secondItem="qxB-Om-AQ7" secondAttribute="bottom" id="txx-Gb-Viv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qxB-Om-AQ7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WWS-Sz-NIQ"/>
+                    <connections>
+                        <outlet property="gameArea" destination="tim-Z9-MVN" id="5XM-rl-CiN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6ok-15-FPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392" y="-20"/>
+        </scene>
+        <!--Actions View Controller-->
+        <scene sceneID="xSP-RM-Cot">
+            <objects>
+                <viewController id="jDQ-gs-ffd" customClass="ActionsViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fDL-SI-dci">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="40"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Is-GQ-5xG">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2v-NN-iuQ">
+                                        <rect key="frame" x="75" y="6.5" width="40" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <state key="normal" title="RESET">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetDesign:" destination="jDQ-gs-ffd" eventType="touchUpInside" id="buX-4h-p7s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7Z-oY-yah">
+                                        <rect key="frame" x="16" y="6" width="35" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <state key="normal" title="BACK">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelLoad:" destination="jDQ-gs-ffd" eventType="touchUpInside" id="s7W-sA-gPR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iuo-oW-Sz3">
+                                        <rect key="frame" x="719" y="6.5" width="33" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <state key="normal" title="SAVE">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveDesign:" destination="jDQ-gs-ffd" eventType="touchUpInside" id="Lbx-Du-LOB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dl-vc-XTt">
+                                        <rect key="frame" x="661" y="6.5" width="34" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <state key="normal" title="LOAD">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="5cy-eo-eBZ" kind="presentation" id="waM-TT-5dl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-8D-3aS">
+                                        <rect key="frame" x="363.5" y="6.5" width="41" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <state key="normal" title="START">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="n2v-NN-iuQ" firstAttribute="leading" secondItem="y7Z-oY-yah" secondAttribute="trailing" constant="24" id="17M-pG-WnD"/>
+                                    <constraint firstItem="Iuo-oW-Sz3" firstAttribute="leading" secondItem="3Dl-vc-XTt" secondAttribute="trailing" constant="24" id="4h3-e6-R8O"/>
+                                    <constraint firstAttribute="trailing" secondItem="Iuo-oW-Sz3" secondAttribute="trailing" constant="16" id="54r-y0-WA6"/>
+                                    <constraint firstItem="cYC-8D-3aS" firstAttribute="centerX" secondItem="5Is-GQ-5xG" secondAttribute="centerX" id="7w3-UH-m0F"/>
+                                    <constraint firstItem="cYC-8D-3aS" firstAttribute="centerY" secondItem="5Is-GQ-5xG" secondAttribute="centerY" id="8oX-YL-zKe"/>
+                                    <constraint firstItem="n2v-NN-iuQ" firstAttribute="centerY" secondItem="5Is-GQ-5xG" secondAttribute="centerY" id="FBv-MP-AJR"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="n2v-NN-iuQ" secondAttribute="trailing" constant="20" symbolic="YES" id="Wvg-Bv-J4A"/>
+                                    <constraint firstItem="y7Z-oY-yah" firstAttribute="leading" secondItem="5Is-GQ-5xG" secondAttribute="leading" constant="16" id="dLh-AK-p9u"/>
+                                    <constraint firstItem="y7Z-oY-yah" firstAttribute="centerY" secondItem="5Is-GQ-5xG" secondAttribute="centerY" id="hwC-9D-xuz"/>
+                                    <constraint firstItem="3Dl-vc-XTt" firstAttribute="centerY" secondItem="5Is-GQ-5xG" secondAttribute="centerY" id="iWG-Bz-yD4"/>
+                                    <constraint firstItem="3Dl-vc-XTt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5Is-GQ-5xG" secondAttribute="leading" constant="20" symbolic="YES" id="raA-i2-xxf"/>
+                                    <constraint firstItem="Iuo-oW-Sz3" firstAttribute="centerY" secondItem="5Is-GQ-5xG" secondAttribute="centerY" id="vm2-WI-vYr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5Is-GQ-5xG" firstAttribute="top" secondItem="fDL-SI-dci" secondAttribute="top" id="a0B-dS-dKo"/>
+                            <constraint firstItem="5Is-GQ-5xG" firstAttribute="leading" secondItem="PZG-Yf-7o6" secondAttribute="leading" id="agX-ZG-L2T"/>
+                            <constraint firstAttribute="bottom" secondItem="5Is-GQ-5xG" secondAttribute="bottom" id="vlH-Vp-sTM"/>
+                            <constraint firstItem="PZG-Yf-7o6" firstAttribute="trailing" secondItem="5Is-GQ-5xG" secondAttribute="trailing" id="xed-xr-SNb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PZG-Yf-7o6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rb8-Ba-ZNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105" y="258"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="59A-uZ-oKK">
+            <objects>
+                <navigationController id="5cy-eo-eBZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="jfz-MK-AjZ">
+                        <rect key="frame" x="0.0" y="20" width="768" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dXR-Mx-KTh" kind="relationship" relationship="rootViewController" id="Q1p-PP-Mui"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ETb-M8-4Qd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105" y="346"/>
+        </scene>
+        <!--Created Levels-->
+        <scene sceneID="vb9-Hi-OGT">
+            <objects>
+                <viewController id="dXR-Mx-KTh" customClass="TemplateViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="htV-Ae-oz2">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="40"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o8j-WG-YTx">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="8Vj-yl-wOX">
+                                    <size key="itemSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TemplateCell" id="J2Q-AD-JAU" customClass="TemplateCell" customModule="PokemonMania" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="dXR-Mx-KTh" id="Zlk-Ut-Jnd"/>
+                                    <outlet property="delegate" destination="dXR-Mx-KTh" id="IUe-Ce-w4l"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fSG-hc-fEF" firstAttribute="trailing" secondItem="o8j-WG-YTx" secondAttribute="trailing" id="BI6-Ma-Skk"/>
+                            <constraint firstItem="fSG-hc-fEF" firstAttribute="bottom" secondItem="o8j-WG-YTx" secondAttribute="bottom" id="ZdM-qg-oXV"/>
+                            <constraint firstItem="o8j-WG-YTx" firstAttribute="top" secondItem="htV-Ae-oz2" secondAttribute="top" id="qmz-0L-tcs"/>
+                            <constraint firstItem="o8j-WG-YTx" firstAttribute="leading" secondItem="fSG-hc-fEF" secondAttribute="leading" id="srI-Fp-ihy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fSG-hc-fEF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Created Levels" largeTitleDisplayMode="always" id="keh-Xl-QVS">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hA4-Zv-y5M">
+                            <connections>
+                                <action selector="cancelLoad:" destination="dXR-Mx-KTh" id="zes-0A-3qd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="templateList" destination="o8j-WG-YTx" id="r62-eZ-lqj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zUC-Hs-esh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105" y="445"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="erase" width="168" height="168"/>
+        <image name="shuffle" width="168" height="168"/>
+    </resources>
 </document>

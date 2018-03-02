@@ -18,13 +18,12 @@ class DesignerViewController: UIViewController {
         .energyType(.fire): #imageLiteral(resourceName: "bubble-red"),
         .energyType(.water): #imageLiteral(resourceName: "bubble-blue"),
         .energyType(.grass): #imageLiteral(resourceName: "bubble-green"),
-        .energyType(.electric): #imageLiteral(resourceName: "bubble-orange"),
-        .energyType(.normal): #imageLiteral(resourceName: "bubble-white"),
-        .effectType(.sunny): #imageLiteral(resourceName: "bubble-effect"),
-        .obstacleType(.steel): #imageLiteral(resourceName: "bubble-obstacle"),
-        .creatureType(.pikachu): #imageLiteral(resourceName: "bubble-creature"),
-        .ballType(.poke): #imageLiteral(resourceName: "bubble-ball")
+        .energyType(.electric): #imageLiteral(resourceName: "bubble-orange")
     ]
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         designer = designer == nil ? LevelDesigner() : designer

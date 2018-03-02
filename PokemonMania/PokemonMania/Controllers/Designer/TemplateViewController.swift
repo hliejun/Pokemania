@@ -16,6 +16,10 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     private var templates = [String]()
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }

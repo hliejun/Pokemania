@@ -67,6 +67,10 @@ class ActionsViewController: UIViewController {
         }
     }
 
+    @IBAction func cancelLoad(_ sender: Any) {
+        dismiss(animated: true)
+    }
+
     @objc
     func textDidChange(_ textField: UITextField) {
         saveAlert?.actions[1].isEnabled = isValidLevelTitle(textField.text)
