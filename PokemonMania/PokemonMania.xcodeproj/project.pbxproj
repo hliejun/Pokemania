@@ -282,8 +282,8 @@
 		BF72118A20493A53006015F0 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				BF72118B20493A61006015F0 /* Stage.swift */,
 				BF7211AD20494100006015F0 /* LevelDesigner.swift */,
+				BF72118B20493A61006015F0 /* Stage.swift */,
 				BF7211AB204940D0006015F0 /* Preset.swift */,
 			);
 			path = Game;

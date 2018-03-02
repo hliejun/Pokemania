@@ -103,9 +103,9 @@ class PaletteViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
     private func rotateButton(of sender: UIButton, by angle: Double, for duration: Double = 0.3) {
-        UIView.animate(withDuration: duration, animations: ({
+        UIView.animate(withDuration: duration) {
             sender.transform = sender.transform.rotated(by: CGFloat(angle))
-        }))
+        }
     }
 
     private func setPaletteStyle(for editMode: EditMode) {

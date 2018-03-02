@@ -13,7 +13,7 @@ extension DesignerViewController: PaletteDelegate, DesignDelegate, ActionDelegat
             }
         case .cycle:
             if let type = designer?.getBubbleType(at: position),
-                let labels = paletteControl?.getLabels(), !labels.isEmpty {
+               let labels = paletteControl?.getLabels(), !labels.isEmpty {
                 let nextIndex = ((labels.index(of: type) ?? -1) + 1) % labels.count
                 designer?.insertBubble(at: position, ofType: labels[nextIndex])
             }
