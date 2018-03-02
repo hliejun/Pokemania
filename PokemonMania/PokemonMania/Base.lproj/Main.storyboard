@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,12 +16,13 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MenuViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBv-5v-7yK">
-                                <rect key="frame" x="369" y="507" width="30" height="30"/>
-                                <state key="normal" title="Test"/>
+                                <rect key="frame" x="111.66666666666669" y="354" width="191" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Level Designer"/>
                                 <connections>
                                     <segue destination="oUO-u6-Bfl" kind="presentation" id="M0B-Mm-1Vx"/>
                                 </connections>
@@ -44,14 +45,14 @@
             <objects>
                 <viewController id="DES-Kt-It7" customClass="PaletteViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mEB-Wg-GT5">
-                        <rect key="frame" x="0.0" y="0.0" width="752" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="398" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2k-Qe-VVg">
-                                <rect key="frame" x="0.0" y="0.0" width="752" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="398" height="80"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lta-1A-0Xa">
-                                        <rect key="frame" x="16" y="16" width="608" height="48"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lta-1A-0Xa">
+                                        <rect key="frame" x="16" y="16" width="254" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="5Hl-Sx-7aw">
                                             <size key="itemSize" width="50" height="0.0"/>
@@ -76,7 +77,7 @@
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qS-sn-pfy">
-                                        <rect key="frame" x="632" y="16" width="48" height="48"/>
+                                        <rect key="frame" x="278" y="16" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="7qS-sn-pfy" secondAttribute="height" multiplier="1:1" id="bDr-JP-Ni4"/>
                                         </constraints>
@@ -89,7 +90,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDN-0k-2Sq">
-                                        <rect key="frame" x="688" y="16" width="48" height="48"/>
+                                        <rect key="frame" x="334" y="16" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="kDN-0k-2Sq" secondAttribute="height" multiplier="1:1" id="LLg-ER-XSW"/>
                                         </constraints>
@@ -142,7 +143,7 @@
             <objects>
                 <collectionViewController id="5ys-Kz-z0U" customClass="BubbleGridViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" id="jYV-W7-Kjy">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Now-KK-leF">
@@ -153,7 +154,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BubbleCell" id="b62-Ls-2xk" customClass="BubbleCell" customModule="PokemonMania" customModuleProvider="target">
-                                <rect key="frame" x="384" y="0.0" width="0.0" height="0.0"/>
+                                <rect key="frame" x="207" y="0.0" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -179,22 +180,22 @@
             <objects>
                 <viewController id="oUO-u6-Bfl" customClass="DesignerViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BkR-aC-ZHR">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tim-Z9-MVN">
-                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLR-nz-qDX">
-                                <rect key="frame" x="0.0" y="28" width="768" height="844"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="556"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="5ys-Kz-z0U" kind="embed" id="nxI-85-bD4"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvr-BK-dau">
-                                <rect key="frame" x="8" y="888" width="752" height="80"/>
+                                <rect key="frame" x="8" y="600" width="398" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="vrU-T3-u2B"/>
@@ -204,7 +205,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzn-Hq-QYZ">
-                                <rect key="frame" x="0.0" y="984" width="768" height="40"/>
+                                <rect key="frame" x="0.0" y="696" width="414" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="odN-68-k5d"/>
@@ -247,14 +248,14 @@
             <objects>
                 <viewController id="jDQ-gs-ffd" customClass="ActionsViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDL-SI-dci">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Is-GQ-5xG">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2v-NN-iuQ">
-                                        <rect key="frame" x="75" y="6.5" width="40" height="27"/>
+                                        <rect key="frame" x="75" y="6.6666666666666679" width="40" height="27.000000000000004"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <state key="normal" title="RESET">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -286,7 +287,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iuo-oW-Sz3">
-                                        <rect key="frame" x="719" y="6.5" width="33" height="27"/>
+                                        <rect key="frame" x="365" y="6.6666666666666679" width="33" height="27.000000000000004"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <state key="normal" title="SAVE">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -302,7 +303,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dl-vc-XTt">
-                                        <rect key="frame" x="661" y="6.5" width="34" height="27"/>
+                                        <rect key="frame" x="307" y="6.6666666666666679" width="34" height="27.000000000000004"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <state key="normal" title="LOAD">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -318,7 +319,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-8D-3aS">
-                                        <rect key="frame" x="363.5" y="6.5" width="41" height="27"/>
+                                        <rect key="frame" x="186.66666666666666" y="6.6666666666666679" width="41" height="27.000000000000004"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <state key="normal" title="START">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -367,7 +368,7 @@
             <objects>
                 <navigationController id="5cy-eo-eBZ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="jfz-MK-AjZ">
-                        <rect key="frame" x="0.0" y="20" width="768" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -383,11 +384,11 @@
             <objects>
                 <viewController id="dXR-Mx-KTh" customClass="TemplateViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="htV-Ae-oz2">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o8j-WG-YTx">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="8Vj-yl-wOX">
                                     <size key="itemSize" width="0.0" height="0.0"/>

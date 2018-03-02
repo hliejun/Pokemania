@@ -27,7 +27,7 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
         setupDemoStage()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidLayoutSubviews() {
         gameEngine = gameEngine ?? GameEngine(stage: loadedStage, delegate: self)
         gridControl?.bubbles = gameEngine?.bubbles
         gridControl?.reloadVisibleItems()

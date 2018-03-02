@@ -13,6 +13,7 @@ class DesignerViewController: UIViewController {
     internal var designer: LevelDesigner?
     internal var selectedType: Type?
     internal var editMode: EditMode = .select
+    internal var isBackgroundSet = false
 
     let assets: [Type: UIImage] = [
         .energyType(.fire): #imageLiteral(resourceName: "bubble-red"),
@@ -48,7 +49,13 @@ class DesignerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackground(with: #imageLiteral(resourceName: "background"))
+    }
+
+    override func viewDidLayoutSubviews() {
+        if !isBackgroundSet {
+            setBackground(with: #imageLiteral(resourceName: "background"))
+            isBackgroundSet = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
