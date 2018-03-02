@@ -121,16 +121,16 @@ class LevelDesigner {
                            multiplier: 2.0,
                            energy: .fire)
         ]
-        
+
         let obstacles: [Type.Obstacle: Obstacle] = [
             .steel: Obstacle(type: .steel, weaknesses: Set([.ice, .fire]),
                              tolerance: 3)
         ]
-        
+
         let creatures: [Type.Creature: Creature] = [
             .pikachu: Creature(type: .pikachu, energy: .electric, rarity: 0.2, isShiny: true)
         ]
-        
+
         let preset = Preset(effects: effects, obstacles: obstacles, creatures: creatures)
         Storage.write(preset, to: .presets)
     }

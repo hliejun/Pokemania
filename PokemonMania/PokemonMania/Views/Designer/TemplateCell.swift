@@ -60,5 +60,5 @@ class TemplateCell: UICollectionViewCell {
         addSubview(label)
         return label
     }
-    
+
 }

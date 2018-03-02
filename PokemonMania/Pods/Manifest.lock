@@ -1,25 +1,25 @@
 PODS:
-  - PhysicsEngine (0.0.1)
+  - PhysicsEngine (0.0.2)
   - SwiftLint (0.24.2)
 
 DEPENDENCIES:
-  - PhysicsEngine (from `https://github.com/cs3217/2018-ps4-hliejun.git`, branch `cocoapods`)
+  - PhysicsEngine (from `https://github.com/cs3217/2018-ps4-hliejun.git`, tag `0.0.2`)
   - SwiftLint
 
 EXTERNAL SOURCES:
   PhysicsEngine:
-    :branch: cocoapods
     :git: https://github.com/cs3217/2018-ps4-hliejun.git
+    :tag: 0.0.2
 
 CHECKOUT OPTIONS:
   PhysicsEngine:
-    :commit: 86d7bc82ff0b65cab8e5984fda9e88ffa49e1f09
     :git: https://github.com/cs3217/2018-ps4-hliejun.git
+    :tag: 0.0.2
 
 SPEC CHECKSUMS:
-  PhysicsEngine: fa7f2c0adcd73b4b6f8d12b900d31d3934bb6e87
+  PhysicsEngine: 9a61686ae93164979d3c48ae941639939cfe6b35
   SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
 
-PODFILE CHECKSUM: 307d61cdfb0a57a293190e64fe80a6cdebcf0a88
+PODFILE CHECKSUM: 9b891b710644864d848dd9145fc0eb6f83e02aa4
 
 COCOAPODS: 1.4.0
