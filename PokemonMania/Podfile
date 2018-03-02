@@ -1,0 +1,16 @@
+platform :ios, '9.0'
+use_frameworks!
+
+target 'PokemonMania' do
+
+  pod 'SwiftLint'
+
+  target 'PokemonManiaTests' do
+    inherit! :search_paths
+  end
+
+  target 'PokemonManiaUITests' do
+    inherit! :search_paths
+  end
+
+end
