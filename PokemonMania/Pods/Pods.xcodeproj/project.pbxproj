@@ -7,28 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		009E74BFE70833F6419A7A98D3A2A1DD /* Pods-PokemonMania-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 18C23037CE081232F6D46AFDF9C71428 /* Pods-PokemonMania-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		08054A580A9F39F2400F9F9445BD732D /* Pods-PokemonMania-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 18C23037CE081232F6D46AFDF9C71428 /* Pods-PokemonMania-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14F59841A9E59EFCFD23CD76158781FD /* Pods-PokemonManiaUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B1202B6DF440DD42D84D2A31522C1924 /* Pods-PokemonManiaUITests-dummy.m */; };
 		1DAE3CE2D330F6542C73D47DF3858F20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		354CC53539DCE804975063F5003FE29F /* Pods-PokemonManiaTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFAB853B48A3288FD204CD378495882 /* Pods-PokemonManiaTests-dummy.m */; };
+		3F7475A6464A6D4D880EE1AE135B223F /* PhysicsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3339ADB046032BE51343B3B109D9E /* PhysicsEngine.swift */; };
+		44CCF4D281E5A6FAD35A6369FB5E4105 /* Pods-PokemonMania-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2318C0D3FC9ECBDB5F192E29580853 /* Pods-PokemonMania-dummy.m */; };
 		4D85E94EC41240404407BC85ACC5BB81 /* Pods-PokemonManiaTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 83FE9AC0C3A5EAA02D9C1673F8C07143 /* Pods-PokemonManiaTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9DF9BD4512C900B838EBE138CB6CAA12 /* Pods-PokemonMania-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2318C0D3FC9ECBDB5F192E29580853 /* Pods-PokemonMania-dummy.m */; };
-		B5CD5ACF1FD7E2E1407E94AA4A3A9FFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		4F4BCE5DEABBF5F40392922D51E5EF3A /* PhysicsEngine-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F3CAE39A011CF3160ECE1A6687E376A /* PhysicsEngine-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		686898CA7A14C97F4A7E95715E0A2173 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		771F34DB3DFA64D730D00365787B270E /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CFA3FE246987D60FA64F54E40D318 /* Vector.swift */; };
+		7E199FB63FC71CBA1DF9B305E4D428B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		C7D0FB2061D40081F1164A90B4579B18 /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECD580610823844012C211BE8522FC /* PhysicsConstants.swift */; };
+		D51E462AE175C070C0593E7030D44002 /* PhysicsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F169AF46EAAED1103D809B28E93753 /* PhysicsObject.swift */; };
 		DB11D9148AA135AA4616E28D2DC9C783 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		E4022C97E6D0A8C0DAEE748886C8760B /* Pods-PokemonManiaUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FDBED3B543E4B03DB42C18EA58922A87 /* Pods-PokemonManiaUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6BE5E06252759CD8E64919F7CB1817B /* PhysicsEngine-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D198B3D3808312E4E4F554A0AC5505 /* PhysicsEngine-dummy.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		270CE3A6E1307DE1BF10A883EE4AF687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F2C4084ED8D3343FB3863753301CD67;
+			remoteInfo = PhysicsEngine;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0624EF2D5ABA5943977E92E4CB47A364 /* Pods_PokemonManiaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PokemonManiaUITests.framework; path = "Pods-PokemonManiaUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2318C0D3FC9ECBDB5F192E29580853 /* Pods-PokemonMania-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PokemonMania-dummy.m"; sourceTree = "<group>"; };
+		0DC3339ADB046032BE51343B3B109D9E /* PhysicsEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhysicsEngine.swift; path = GameEngine/GameEngine/PhysicsEngine/PhysicsEngine.swift; sourceTree = "<group>"; };
 		1590B4FAE3B69E85C73BDCACC6E312AD /* Pods-PokemonManiaUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokemonManiaUITests-resources.sh"; sourceTree = "<group>"; };
 		18C23037CE081232F6D46AFDF9C71428 /* Pods-PokemonMania-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PokemonMania-umbrella.h"; sourceTree = "<group>"; };
 		1C91426CB2C807F464B84AC024870924 /* Pods-PokemonManiaUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PokemonManiaUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1F3CAE39A011CF3160ECE1A6687E376A /* PhysicsEngine-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhysicsEngine-umbrella.h"; sourceTree = "<group>"; };
+		1FECD580610823844012C211BE8522FC /* PhysicsConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhysicsConstants.swift; path = GameEngine/GameEngine/PhysicsEngine/PhysicsConstants.swift; sourceTree = "<group>"; };
+		23F169AF46EAAED1103D809B28E93753 /* PhysicsObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhysicsObject.swift; path = GameEngine/GameEngine/PhysicsEngine/PhysicsObject.swift; sourceTree = "<group>"; };
 		29E8CADB90F4066F2C12A12CB75E7A89 /* Pods-PokemonMania.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PokemonMania.debug.xcconfig"; sourceTree = "<group>"; };
 		2D5B8B42EB636B8AEEB9FE3F8B23C382 /* Pods-PokemonManiaTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PokemonManiaTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		363F2D9DF9ECCB4AB4C9FA0D2F0F44A5 /* Pods-PokemonMania-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokemonMania-frameworks.sh"; sourceTree = "<group>"; };
-		4341C6BFEF2D87701E9F1DE3C445D6CC /* Pods_PokemonManiaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PokemonManiaTests.framework; path = "Pods-PokemonManiaTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4831E6814C290E8E57C97F0DAD39BA91 /* Pods-PokemonManiaTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PokemonManiaTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		57119EE7186CB0074111E09E575A4136 /* PhysicsEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PhysicsEngine.framework; path = PhysicsEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EFAB853B48A3288FD204CD378495882 /* Pods-PokemonManiaTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PokemonManiaTests-dummy.m"; sourceTree = "<group>"; };
+		657BF1086DDC724D5757A3644F8C1412 /* Pods_PokemonMania.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PokemonMania.framework; path = "Pods-PokemonMania.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7A17FEF0B7924B3C09255DB6F8616C61 /* Pods-PokemonManiaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PokemonManiaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		81D314A3CD1BBC2ECF526A4C9DC662BF /* Pods-PokemonManiaUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PokemonManiaUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -38,25 +61,38 @@
 		865A421FA187E9B47AEE5A08FD7D3106 /* Pods-PokemonManiaTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PokemonManiaTests.modulemap"; sourceTree = "<group>"; };
 		89B7554FCD952600AEC8094C60A09959 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D610F6B9EA716BE84A7FCCD94CEF132 /* Pods-PokemonManiaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PokemonManiaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8F0CFA3FE246987D60FA64F54E40D318 /* Vector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Vector.swift; path = GameEngine/GameEngine/PhysicsEngine/Vector.swift; sourceTree = "<group>"; };
+		90842513022C5B16082C54DD63EE57A2 /* Pods_PokemonManiaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PokemonManiaTests.framework; path = "Pods-PokemonManiaTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D198B3D3808312E4E4F554A0AC5505 /* PhysicsEngine-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PhysicsEngine-dummy.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		96BEC5BBA61CE0662A32F8DBACF52E85 /* Pods_PokemonMania.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PokemonMania.framework; path = "Pods-PokemonMania.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A568C0AD25C8FBF2DFC7DD954106BB08 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A58C6BBACA960C1201985CECC8EA6025 /* Pods-PokemonMania-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PokemonMania-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A65F1C653B4A35D2D17DB20A9168E2E5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B01F64E7BD1B8BC8EE37C3BE786E6091 /* Pods-PokemonMania-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PokemonMania-acknowledgements.plist"; sourceTree = "<group>"; };
+		B0CF4D59294C6BE67F976EC8F82AAF5F /* PhysicsEngine-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhysicsEngine-prefix.pch"; sourceTree = "<group>"; };
 		B1202B6DF440DD42D84D2A31522C1924 /* Pods-PokemonManiaUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PokemonManiaUITests-dummy.m"; sourceTree = "<group>"; };
 		B8BD885101CD0F902053058C0BB1668D /* Pods-PokemonManiaTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokemonManiaTests-resources.sh"; sourceTree = "<group>"; };
+		BC5E068E65D9366208D81540F9F0AF3F /* PhysicsEngine.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PhysicsEngine.modulemap; sourceTree = "<group>"; };
 		BC8676340D78F8C8CA4CE37BC18E2DD5 /* Pods-PokemonMania-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokemonMania-resources.sh"; sourceTree = "<group>"; };
 		BCC2274CA57CB633FC24DA884D3624EC /* Pods-PokemonManiaUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokemonManiaUITests-frameworks.sh"; sourceTree = "<group>"; };
 		C18912FA9C38345DDAB0610B2EA0FCC8 /* Pods-PokemonManiaTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokemonManiaTests-frameworks.sh"; sourceTree = "<group>"; };
-		C783EC2F15EBD5749ADE43388F3255B1 /* Pods_PokemonManiaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PokemonManiaUITests.framework; path = "Pods-PokemonManiaUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84D090DE20E716C25B172FF03E5671A /* Pods-PokemonMania.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PokemonMania.release.xcconfig"; sourceTree = "<group>"; };
+		C8B025BBAF688E01B25D56DBF4A7D938 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE2768699F021EA24071BE928A69B193 /* Pods-PokemonManiaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PokemonManiaTests.release.xcconfig"; sourceTree = "<group>"; };
+		CE8B82B06E9C32AFA5B03D0AEED6A596 /* PhysicsEngine.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PhysicsEngine.xcconfig; sourceTree = "<group>"; };
 		E66DF0D1702E02B3DE9C4C274C830F18 /* Pods-PokemonMania.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PokemonMania.modulemap"; sourceTree = "<group>"; };
 		FDBED3B543E4B03DB42C18EA58922A87 /* Pods-PokemonManiaUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PokemonManiaUITests-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1C02C531A556ABB2639231C51AB74B7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E199FB63FC71CBA1DF9B305E4D428B5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22F074E81246BA7C00B81DD27C02C858 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,11 +109,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		63D20A5892AC441E954AD00284B6C6CD /* Frameworks */ = {
+		FD0297FCEF98D51B2A7473231C6E7484 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5CD5ACF1FD7E2E1407E94AA4A3A9FFA /* Foundation.framework in Frameworks */,
+				686898CA7A14C97F4A7E95715E0A2173 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,14 +138,6 @@
 			path = "Target Support Files/Pods-PokemonMania";
 			sourceTree = "<group>";
 		};
-		32A23E08346748F1793F899C5FF672C1 /* SwiftLint */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SwiftLint;
-			path = SwiftLint;
-			sourceTree = "<group>";
-		};
 		3815191890A59A6ED361760A3498103D /* Pods-PokemonManiaTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +154,15 @@
 			);
 			name = "Pods-PokemonManiaTests";
 			path = "Target Support Files/Pods-PokemonManiaTests";
+			sourceTree = "<group>";
+		};
+		42BFD02E8EC5D8E8CEA826552A5268A2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E8DD453EB209177E88DF06C992FE488 /* PhysicsEngine */,
+				5E47AF5BE3054AA460DDA905F981A44A /* SwiftLint */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		4709ADA07182BA9FE4ACC5850388E024 /* Pods-PokemonManiaUITests */ = {
@@ -146,12 +183,48 @@
 			path = "Target Support Files/Pods-PokemonManiaUITests";
 			sourceTree = "<group>";
 		};
-		57C98CE330A34DF18273FDEA30F62ED9 /* Products */ = {
+		5E47AF5BE3054AA460DDA905F981A44A /* SwiftLint */ = {
 			isa = PBXGroup;
 			children = (
-				96BEC5BBA61CE0662A32F8DBACF52E85 /* Pods_PokemonMania.framework */,
-				4341C6BFEF2D87701E9F1DE3C445D6CC /* Pods_PokemonManiaTests.framework */,
-				C783EC2F15EBD5749ADE43388F3255B1 /* Pods_PokemonManiaUITests.framework */,
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
+		62543F2C581DE3E1B52624F7272B2931 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C8B025BBAF688E01B25D56DBF4A7D938 /* Info.plist */,
+				BC5E068E65D9366208D81540F9F0AF3F /* PhysicsEngine.modulemap */,
+				CE8B82B06E9C32AFA5B03D0AEED6A596 /* PhysicsEngine.xcconfig */,
+				90D198B3D3808312E4E4F554A0AC5505 /* PhysicsEngine-dummy.m */,
+				B0CF4D59294C6BE67F976EC8F82AAF5F /* PhysicsEngine-prefix.pch */,
+				1F3CAE39A011CF3160ECE1A6687E376A /* PhysicsEngine-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PhysicsEngine";
+			sourceTree = "<group>";
+		};
+		6E8DD453EB209177E88DF06C992FE488 /* PhysicsEngine */ = {
+			isa = PBXGroup;
+			children = (
+				1FECD580610823844012C211BE8522FC /* PhysicsConstants.swift */,
+				0DC3339ADB046032BE51343B3B109D9E /* PhysicsEngine.swift */,
+				23F169AF46EAAED1103D809B28E93753 /* PhysicsObject.swift */,
+				8F0CFA3FE246987D60FA64F54E40D318 /* Vector.swift */,
+				62543F2C581DE3E1B52624F7272B2931 /* Support Files */,
+			);
+			name = PhysicsEngine;
+			path = PhysicsEngine;
+			sourceTree = "<group>";
+		};
+		78F69AAEDBAFD33F5DB007C3472650AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				57119EE7186CB0074111E09E575A4136 /* PhysicsEngine.framework */,
+				657BF1086DDC724D5757A3644F8C1412 /* Pods_PokemonMania.framework */,
+				90842513022C5B16082C54DD63EE57A2 /* Pods_PokemonManiaTests.framework */,
+				0624EF2D5ABA5943977E92E4CB47A364 /* Pods_PokemonManiaUITests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,18 +234,10 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				9758CC519AE2C57A9659FFC01AAD26F9 /* Pods */,
-				57C98CE330A34DF18273FDEA30F62ED9 /* Products */,
+				42BFD02E8EC5D8E8CEA826552A5268A2 /* Pods */,
+				78F69AAEDBAFD33F5DB007C3472650AB /* Products */,
 				AD6B9857B467D429380104A9CA746BF6 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		9758CC519AE2C57A9659FFC01AAD26F9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				32A23E08346748F1793F899C5FF672C1 /* SwiftLint */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		AD6B9857B467D429380104A9CA746BF6 /* Targets Support Files */ = {
@@ -212,6 +277,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2B4041A82AF8D6769145502DA96AC415 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4BCE5DEABBF5F40392922D51E5EF3A /* PhysicsEngine-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		424E1B80B657DE6646E7E1C9848CA899 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -220,34 +293,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62883D4639DEA794779CCA5CB77FA30A /* Headers */ = {
+		73385DD768C0CF6CEA938B99DD9BC482 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				009E74BFE70833F6419A7A98D3A2A1DD /* Pods-PokemonMania-umbrella.h in Headers */,
+				08054A580A9F39F2400F9F9445BD732D /* Pods-PokemonMania-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		23EED745E4427284A64B9EEC7957900B /* Pods-PokemonMania */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5FB2E087DCE573F16C9F1ACE63A564CE /* Build configuration list for PBXNativeTarget "Pods-PokemonMania" */;
-			buildPhases = (
-				AFE2C3673BD296B8AE58B233816281E4 /* Sources */,
-				63D20A5892AC441E954AD00284B6C6CD /* Frameworks */,
-				62883D4639DEA794779CCA5CB77FA30A /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-PokemonMania";
-			productName = "Pods-PokemonMania";
-			productReference = 96BEC5BBA61CE0662A32F8DBACF52E85 /* Pods_PokemonMania.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		657805BD949C229FD3AC3CB6016FE26C /* Pods-PokemonManiaUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E39A07E476E0AA80B2755EC96016151D /* Build configuration list for PBXNativeTarget "Pods-PokemonManiaUITests" */;
@@ -262,7 +318,7 @@
 			);
 			name = "Pods-PokemonManiaUITests";
 			productName = "Pods-PokemonManiaUITests";
-			productReference = C783EC2F15EBD5749ADE43388F3255B1 /* Pods_PokemonManiaUITests.framework */;
+			productReference = 0624EF2D5ABA5943977E92E4CB47A364 /* Pods_PokemonManiaUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		66E322B9F5FB12EAFCA6800E910F8013 /* Pods-PokemonManiaTests */ = {
@@ -279,7 +335,42 @@
 			);
 			name = "Pods-PokemonManiaTests";
 			productName = "Pods-PokemonManiaTests";
-			productReference = 4341C6BFEF2D87701E9F1DE3C445D6CC /* Pods_PokemonManiaTests.framework */;
+			productReference = 90842513022C5B16082C54DD63EE57A2 /* Pods_PokemonManiaTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		722AB51F6C5ED479CB1A7C5FA5DB6C0B /* Pods-PokemonMania */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D29758350134F151A4ED50A736A4F458 /* Build configuration list for PBXNativeTarget "Pods-PokemonMania" */;
+			buildPhases = (
+				BC98F315EA9E26A7B4D378E97B0BFF5C /* Sources */,
+				1C02C531A556ABB2639231C51AB74B7D /* Frameworks */,
+				73385DD768C0CF6CEA938B99DD9BC482 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				494DB8BA493939EF9FD145125819FD56 /* PBXTargetDependency */,
+			);
+			name = "Pods-PokemonMania";
+			productName = "Pods-PokemonMania";
+			productReference = 657BF1086DDC724D5757A3644F8C1412 /* Pods_PokemonMania.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7F2C4084ED8D3343FB3863753301CD67 /* PhysicsEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6D0D64662B758968C53A15C67DDAA0C /* Build configuration list for PBXNativeTarget "PhysicsEngine" */;
+			buildPhases = (
+				282A71A2AD14B58696A811FA0CA06373 /* Sources */,
+				FD0297FCEF98D51B2A7473231C6E7484 /* Frameworks */,
+				2B4041A82AF8D6769145502DA96AC415 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhysicsEngine;
+			productName = PhysicsEngine;
+			productReference = 57119EE7186CB0074111E09E575A4136 /* PhysicsEngine.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -299,11 +390,12 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 57C98CE330A34DF18273FDEA30F62ED9 /* Products */;
+			productRefGroup = 78F69AAEDBAFD33F5DB007C3472650AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				23EED745E4427284A64B9EEC7957900B /* Pods-PokemonMania */,
+				7F2C4084ED8D3343FB3863753301CD67 /* PhysicsEngine */,
+				722AB51F6C5ED479CB1A7C5FA5DB6C0B /* Pods-PokemonMania */,
 				66E322B9F5FB12EAFCA6800E910F8013 /* Pods-PokemonManiaTests */,
 				657805BD949C229FD3AC3CB6016FE26C /* Pods-PokemonManiaUITests */,
 			);
@@ -319,6 +411,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		282A71A2AD14B58696A811FA0CA06373 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7D0FB2061D40081F1164A90B4579B18 /* PhysicsConstants.swift in Sources */,
+				E6BE5E06252759CD8E64919F7CB1817B /* PhysicsEngine-dummy.m in Sources */,
+				3F7475A6464A6D4D880EE1AE135B223F /* PhysicsEngine.swift in Sources */,
+				D51E462AE175C070C0593E7030D44002 /* PhysicsObject.swift in Sources */,
+				771F34DB3DFA64D730D00365787B270E /* Vector.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB7BF3CA6B1A009B58303163DEBBD6EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -327,15 +431,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AFE2C3673BD296B8AE58B233816281E4 /* Sources */ = {
+		BC98F315EA9E26A7B4D378E97B0BFF5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DF9BD4512C900B838EBE138CB6CAA12 /* Pods-PokemonMania-dummy.m in Sources */,
+				44CCF4D281E5A6FAD35A6369FB5E4105 /* Pods-PokemonMania-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		494DB8BA493939EF9FD145125819FD56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PhysicsEngine;
+			target = 7F2C4084ED8D3343FB3863753301CD67 /* PhysicsEngine */;
+			targetProxy = 270CE3A6E1307DE1BF10A883EE4AF687 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0241172D298EA976A54BAB08D3DBD6B1 /* Debug */ = {
@@ -370,7 +483,7 @@
 			};
 			name = Debug;
 		};
-		0AE3B0E43B5C598E7F48215A7B64F7CF /* Release */ = {
+		217C251DB8563E74E819A81B36AEEBD0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C84D090DE20E716C25B172FF03E5671A /* Pods-PokemonMania.release.xcconfig */;
 			buildSettings = {
@@ -396,6 +509,7 @@
 				PRODUCT_NAME = Pods_PokemonMania;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -468,6 +582,69 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		504A20205048FB4FDFBF51B43D11DC9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE8B82B06E9C32AFA5B03D0AEED6A596 /* PhysicsEngine.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PhysicsEngine/PhysicsEngine-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PhysicsEngine/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PhysicsEngine/PhysicsEngine.modulemap";
+				PRODUCT_NAME = PhysicsEngine;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		556B5F65E76F748E1680445BB2A3E7C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE8B82B06E9C32AFA5B03D0AEED6A596 /* PhysicsEngine.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PhysicsEngine/PhysicsEngine-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PhysicsEngine/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PhysicsEngine/PhysicsEngine.modulemap";
+				PRODUCT_NAME = PhysicsEngine;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		6F9224530522DD3C735EC96CF142642E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -584,38 +761,6 @@
 			};
 			name = Debug;
 		};
-		C8E2C878356555A439F5D54BEF0933F9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29E8CADB90F4066F2C12A12CB75E7A89 /* Pods-PokemonMania.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-PokemonMania/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PokemonMania/Pods-PokemonMania.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_PokemonMania;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		E299F21322278F8C25A6FA9FBA160664 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 862CCB1D7953257EF72000DC7FC5B68E /* Pods-PokemonManiaTests.debug.xcconfig */;
@@ -648,6 +793,40 @@
 			};
 			name = Debug;
 		};
+		E7B3CF3A38114E51795FEB34375CE7E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29E8CADB90F4066F2C12A12CB75E7A89 /* Pods-PokemonMania.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-PokemonMania/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PokemonMania/Pods-PokemonMania.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PokemonMania;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -660,20 +839,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5FB2E087DCE573F16C9F1ACE63A564CE /* Build configuration list for PBXNativeTarget "Pods-PokemonMania" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C8E2C878356555A439F5D54BEF0933F9 /* Debug */,
-				0AE3B0E43B5C598E7F48215A7B64F7CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		617737FCA3DCF7B84DD7571C51A7AED4 /* Build configuration list for PBXNativeTarget "Pods-PokemonManiaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E299F21322278F8C25A6FA9FBA160664 /* Debug */,
 				3F0B48A3B1B3AB38357581DA1327FC3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6D0D64662B758968C53A15C67DDAA0C /* Build configuration list for PBXNativeTarget "PhysicsEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				556B5F65E76F748E1680445BB2A3E7C4 /* Debug */,
+				504A20205048FB4FDFBF51B43D11DC9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D29758350134F151A4ED50A736A4F458 /* Build configuration list for PBXNativeTarget "Pods-PokemonMania" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7B3CF3A38114E51795FEB34375CE7E6 /* Debug */,
+				217C251DB8563E74E819A81B36AEEBD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

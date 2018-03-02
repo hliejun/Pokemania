@@ -11,8 +11,41 @@
 		6EF1AC1C9A616D1D53811A2E /* Pods_PokemonManiaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4380A99529D65143531B0CD2 /* Pods_PokemonManiaTests.framework */; };
 		8D7A43B282BAD1F0F51463AE /* Pods_PokemonMania.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6EEAB87BC7F42216796E45 /* Pods_PokemonMania.framework */; };
 		BF72116920491640006015F0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BF72116820491640006015F0 /* README.md */; };
+		BF7211732049371A006015F0 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211722049371A006015F0 /* Effect.swift */; };
+		BF7211752049374E006015F0 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211742049374E006015F0 /* Obstacle.swift */; };
+		BF7211772049377A006015F0 /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211762049377A006015F0 /* Creature.swift */; };
+		BF72117A204937EC006015F0 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF721179204937EC006015F0 /* Bubble.swift */; };
+		BF72117C2049382F006015F0 /* EffectBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72117B2049382F006015F0 /* EffectBubble.swift */; };
+		BF72117E2049385F006015F0 /* ObstacleBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72117D2049385F006015F0 /* ObstacleBubble.swift */; };
+		BF7211802049388B006015F0 /* CreatureBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72117F2049388B006015F0 /* CreatureBubble.swift */; };
+		BF721182204938B2006015F0 /* CaptureBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF721181204938B2006015F0 /* CaptureBubble.swift */; };
+		BF7211852049392D006015F0 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211842049392D006015F0 /* Type.swift */; };
+		BF72118720493971006015F0 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72118620493971006015F0 /* Field.swift */; };
+		BF721189204939BE006015F0 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF721188204939BE006015F0 /* Position.swift */; };
+		BF72118C20493A61006015F0 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72118B20493A61006015F0 /* Stage.swift */; };
+		BF72118E20493B6B006015F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72118D20493B6B006015F0 /* Constants.swift */; };
+		BF72119020493CFE006015F0 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72118F20493CFE006015F0 /* GameEngine.swift */; };
+		BF72119220493D61006015F0 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72119120493D61006015F0 /* Launcher.swift */; };
+		BF72119420493D97006015F0 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72119320493D97006015F0 /* Renderer.swift */; };
+		BF72119620493DEB006015F0 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72119520493DEB006015F0 /* Projectile.swift */; };
+		BF72119C20493E72006015F0 /* ProjectileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72119B20493E72006015F0 /* ProjectileView.swift */; };
+		BF72119E20493EA4006015F0 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72119D20493EA4006015F0 /* LauncherView.swift */; };
+		BF7211A020493ED7006015F0 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF72119F20493ED7006015F0 /* BubbleCell.swift */; };
+		BF7211A220493F1A006015F0 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211A120493F1A006015F0 /* Queue.swift */; };
+		BF7211A420493F96006015F0 /* PaletteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211A320493F96006015F0 /* PaletteCell.swift */; };
+		BF7211A620493FC3006015F0 /* TemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211A520493FC3006015F0 /* TemplateCell.swift */; };
+		BF7211A820494030006015F0 /* UIView+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211A720494030006015F0 /* UIView+Screenshot.swift */; };
+		BF7211AA20494062006015F0 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211A920494062006015F0 /* Storage.swift */; };
+		BF7211AC204940D0006015F0 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211AB204940D0006015F0 /* Preset.swift */; };
+		BF7211AE20494100006015F0 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211AD20494100006015F0 /* LevelDesigner.swift */; };
+		BF7211B12049421D006015F0 /* DesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211B02049421D006015F0 /* DesignerViewController.swift */; };
+		BF7211B32049425F006015F0 /* DesignerViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211B22049425F006015F0 /* DesignerViewController+Delegates.swift */; };
+		BF7211B520494294006015F0 /* BubbleGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211B420494294006015F0 /* BubbleGridViewController.swift */; };
+		BF7211B7204942CE006015F0 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211B6204942CE006015F0 /* PaletteViewController.swift */; };
+		BF7211B920494305006015F0 /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211B820494305006015F0 /* ActionsViewController.swift */; };
+		BF7211BB20494340006015F0 /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211BA20494340006015F0 /* TemplateViewController.swift */; };
 		BF939874204905CA001232F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939873204905CA001232F6 /* AppDelegate.swift */; };
-		BF939876204905CA001232F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939875204905CA001232F6 /* ViewController.swift */; };
+		BF939876204905CA001232F6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939875204905CA001232F6 /* MenuViewController.swift */; };
 		BF939879204905CA001232F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF939877204905CA001232F6 /* Main.storyboard */; };
 		BF93987B204905CA001232F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF93987A204905CA001232F6 /* Assets.xcassets */; };
 		BF93987E204905CA001232F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF93987C204905CA001232F6 /* LaunchScreen.storyboard */; };
@@ -43,9 +76,42 @@
 		4380A99529D65143531B0CD2 /* Pods_PokemonManiaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokemonManiaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6EEAB87BC7F42216796E45 /* Pods_PokemonMania.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokemonMania.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF72116820491640006015F0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		BF7211722049371A006015F0 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
+		BF7211742049374E006015F0 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		BF7211762049377A006015F0 /* Creature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
+		BF721179204937EC006015F0 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
+		BF72117B2049382F006015F0 /* EffectBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectBubble.swift; sourceTree = "<group>"; };
+		BF72117D2049385F006015F0 /* ObstacleBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleBubble.swift; sourceTree = "<group>"; };
+		BF72117F2049388B006015F0 /* CreatureBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureBubble.swift; sourceTree = "<group>"; };
+		BF721181204938B2006015F0 /* CaptureBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureBubble.swift; sourceTree = "<group>"; };
+		BF7211842049392D006015F0 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
+		BF72118620493971006015F0 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		BF721188204939BE006015F0 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		BF72118B20493A61006015F0 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
+		BF72118D20493B6B006015F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BF72118F20493CFE006015F0 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		BF72119120493D61006015F0 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
+		BF72119320493D97006015F0 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		BF72119520493DEB006015F0 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
+		BF72119B20493E72006015F0 /* ProjectileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileView.swift; sourceTree = "<group>"; };
+		BF72119D20493EA4006015F0 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
+		BF72119F20493ED7006015F0 /* BubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
+		BF7211A120493F1A006015F0 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		BF7211A320493F96006015F0 /* PaletteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteCell.swift; sourceTree = "<group>"; };
+		BF7211A520493FC3006015F0 /* TemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCell.swift; sourceTree = "<group>"; };
+		BF7211A720494030006015F0 /* UIView+Screenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Screenshot.swift"; sourceTree = "<group>"; };
+		BF7211A920494062006015F0 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		BF7211AB204940D0006015F0 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
+		BF7211AD20494100006015F0 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
+		BF7211B02049421D006015F0 /* DesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewController.swift; sourceTree = "<group>"; };
+		BF7211B22049425F006015F0 /* DesignerViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignerViewController+Delegates.swift"; sourceTree = "<group>"; };
+		BF7211B420494294006015F0 /* BubbleGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleGridViewController.swift; sourceTree = "<group>"; };
+		BF7211B6204942CE006015F0 /* PaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
+		BF7211B820494305006015F0 /* ActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
+		BF7211BA20494340006015F0 /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		BF939870204905CA001232F6 /* PokemonMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF939873204905CA001232F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF939875204905CA001232F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF939875204905CA001232F6 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BF939878204905CA001232F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF93987A204905CA001232F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF93987D204905CA001232F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,6 +170,164 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BF72116A204933C4006015F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF7211AF204941B4006015F0 /* View */,
+				BF72118A20493A53006015F0 /* Game */,
+				BF72117120493704006015F0 /* Elements */,
+				BF721178204937D3006015F0 /* Bubbles */,
+				BF72118320493908006015F0 /* Auxillary */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BF72116B204933E1006015F0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF72119720493E24006015F0 /* Menu */,
+				BF72119820493E2D006015F0 /* Designer */,
+				BF72119920493E39006015F0 /* Gallery */,
+				BF72119A20493E5C006015F0 /* Game */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF72116C204933E6006015F0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF72116D20493467006015F0 /* Menu */,
+				BF72116E20493473006015F0 /* Designer */,
+				BF72116F20493480006015F0 /* Gallery */,
+				BF72117020493496006015F0 /* Game */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BF72116D20493467006015F0 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				BF939875204905CA001232F6 /* MenuViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		BF72116E20493473006015F0 /* Designer */ = {
+			isa = PBXGroup;
+			children = (
+				BF7211B02049421D006015F0 /* DesignerViewController.swift */,
+				BF7211B22049425F006015F0 /* DesignerViewController+Delegates.swift */,
+				BF7211B420494294006015F0 /* BubbleGridViewController.swift */,
+				BF7211B6204942CE006015F0 /* PaletteViewController.swift */,
+				BF7211B820494305006015F0 /* ActionsViewController.swift */,
+				BF7211BA20494340006015F0 /* TemplateViewController.swift */,
+			);
+			path = Designer;
+			sourceTree = "<group>";
+		};
+		BF72116F20493480006015F0 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		BF72117020493496006015F0 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		BF72117120493704006015F0 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				BF7211722049371A006015F0 /* Effect.swift */,
+				BF7211742049374E006015F0 /* Obstacle.swift */,
+				BF7211762049377A006015F0 /* Creature.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		BF721178204937D3006015F0 /* Bubbles */ = {
+			isa = PBXGroup;
+			children = (
+				BF721179204937EC006015F0 /* Bubble.swift */,
+				BF72117B2049382F006015F0 /* EffectBubble.swift */,
+				BF72117D2049385F006015F0 /* ObstacleBubble.swift */,
+				BF72117F2049388B006015F0 /* CreatureBubble.swift */,
+				BF721181204938B2006015F0 /* CaptureBubble.swift */,
+			);
+			path = Bubbles;
+			sourceTree = "<group>";
+		};
+		BF72118320493908006015F0 /* Auxillary */ = {
+			isa = PBXGroup;
+			children = (
+				BF7211842049392D006015F0 /* Type.swift */,
+				BF72118620493971006015F0 /* Field.swift */,
+				BF721188204939BE006015F0 /* Position.swift */,
+				BF7211A120493F1A006015F0 /* Queue.swift */,
+				BF7211A920494062006015F0 /* Storage.swift */,
+			);
+			path = Auxillary;
+			sourceTree = "<group>";
+		};
+		BF72118A20493A53006015F0 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				BF72118B20493A61006015F0 /* Stage.swift */,
+				BF7211AD20494100006015F0 /* LevelDesigner.swift */,
+				BF7211AB204940D0006015F0 /* Preset.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		BF72119720493E24006015F0 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		BF72119820493E2D006015F0 /* Designer */ = {
+			isa = PBXGroup;
+			children = (
+				BF7211A320493F96006015F0 /* PaletteCell.swift */,
+				BF7211A520493FC3006015F0 /* TemplateCell.swift */,
+				BF72119F20493ED7006015F0 /* BubbleCell.swift */,
+				BF7211A720494030006015F0 /* UIView+Screenshot.swift */,
+			);
+			path = Designer;
+			sourceTree = "<group>";
+		};
+		BF72119920493E39006015F0 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		BF72119A20493E5C006015F0 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				BF72119B20493E72006015F0 /* ProjectileView.swift */,
+				BF72119D20493EA4006015F0 /* LauncherView.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		BF7211AF204941B4006015F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF72118F20493CFE006015F0 /* GameEngine.swift */,
+				BF72119320493D97006015F0 /* Renderer.swift */,
+				BF72119120493D61006015F0 /* Launcher.swift */,
+				BF72119520493DEB006015F0 /* Projectile.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BF89ADF620490B0100D9A309 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,9 +365,12 @@
 		BF939872204905CA001232F6 /* PokemonMania */ = {
 			isa = PBXGroup;
 			children = (
-				BF939875204905CA001232F6 /* ViewController.swift */,
 				BF939877204905CA001232F6 /* Main.storyboard */,
+				BF72118D20493B6B006015F0 /* Constants.swift */,
 				BF93987F204905CA001232F6 /* Info.plist */,
+				BF72116A204933C4006015F0 /* Models */,
+				BF72116B204933E1006015F0 /* Views */,
+				BF72116C204933E6006015F0 /* Controllers */,
 			);
 			path = PokemonMania;
 			sourceTree = "<group>";
@@ -401,9 +628,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PokemonMania/Pods-PokemonMania-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PhysicsEngine/PhysicsEngine.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhysicsEngine.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -481,8 +711,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF939876204905CA001232F6 /* ViewController.swift in Sources */,
+				BF721182204938B2006015F0 /* CaptureBubble.swift in Sources */,
+				BF72119220493D61006015F0 /* Launcher.swift in Sources */,
+				BF72117E2049385F006015F0 /* ObstacleBubble.swift in Sources */,
+				BF72118720493971006015F0 /* Field.swift in Sources */,
+				BF7211AE20494100006015F0 /* LevelDesigner.swift in Sources */,
+				BF7211732049371A006015F0 /* Effect.swift in Sources */,
+				BF7211BB20494340006015F0 /* TemplateViewController.swift in Sources */,
+				BF72117C2049382F006015F0 /* EffectBubble.swift in Sources */,
+				BF7211AC204940D0006015F0 /* Preset.swift in Sources */,
+				BF7211A820494030006015F0 /* UIView+Screenshot.swift in Sources */,
+				BF72118E20493B6B006015F0 /* Constants.swift in Sources */,
+				BF7211B7204942CE006015F0 /* PaletteViewController.swift in Sources */,
+				BF7211B520494294006015F0 /* BubbleGridViewController.swift in Sources */,
+				BF7211B920494305006015F0 /* ActionsViewController.swift in Sources */,
+				BF7211A620493FC3006015F0 /* TemplateCell.swift in Sources */,
+				BF72117A204937EC006015F0 /* Bubble.swift in Sources */,
+				BF7211852049392D006015F0 /* Type.swift in Sources */,
+				BF72119620493DEB006015F0 /* Projectile.swift in Sources */,
+				BF7211B32049425F006015F0 /* DesignerViewController+Delegates.swift in Sources */,
+				BF721189204939BE006015F0 /* Position.swift in Sources */,
+				BF7211A420493F96006015F0 /* PaletteCell.swift in Sources */,
+				BF7211AA20494062006015F0 /* Storage.swift in Sources */,
+				BF72119E20493EA4006015F0 /* LauncherView.swift in Sources */,
+				BF7211802049388B006015F0 /* CreatureBubble.swift in Sources */,
+				BF7211B12049421D006015F0 /* DesignerViewController.swift in Sources */,
+				BF939876204905CA001232F6 /* MenuViewController.swift in Sources */,
+				BF72119020493CFE006015F0 /* GameEngine.swift in Sources */,
+				BF7211A020493ED7006015F0 /* BubbleCell.swift in Sources */,
+				BF72118C20493A61006015F0 /* Stage.swift in Sources */,
+				BF72119C20493E72006015F0 /* ProjectileView.swift in Sources */,
+				BF7211752049374E006015F0 /* Obstacle.swift in Sources */,
+				BF7211772049377A006015F0 /* Creature.swift in Sources */,
+				BF72119420493D97006015F0 /* Renderer.swift in Sources */,
 				BF939874204905CA001232F6 /* AppDelegate.swift in Sources */,
+				BF7211A220493F1A006015F0 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

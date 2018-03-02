@@ -4,6 +4,7 @@ use_frameworks!
 target 'PokemonMania' do
 
   pod 'SwiftLint'
+  pod 'PhysicsEngine', :git => 'https://github.com/cs3217/2018-ps4-hliejun.git', :branch => 'cocoapods'
 
   target 'PokemonManiaTests' do
     inherit! :search_paths
