@@ -3,8 +3,9 @@
 
 import UIKit
 
+let thresholdLaunchRate = 0.15
 let maxColumns = 12
-let fixedStrength: Double = 0.015
+let fixedStrength: Double = 0.02
 let leftAngleLimit: Double = 280
 let rightAngleLimit: Double = 80
 let safeMargin: CGFloat = 5

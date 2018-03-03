@@ -11,7 +11,6 @@ protocol GameEngineDelegate: class {
     func getProjectileSize() -> CGFloat
     func getMainView() -> UIView
     func getGridView() -> UICollectionView
-    func updateGrid(at positions: Set<Position>)
 }
 
 class GameEngine {
@@ -21,6 +20,7 @@ class GameEngine {
     private var stage: Stage
     private var launcher: Launcher
     private var projectiles: Set<Projectile> = Set()
+    private var launchTimer: Timer?
 
     private lazy var displayLink: CADisplayLink = {
         let displayLink = CADisplayLink(target: self, selector: #selector(stepGameState))
@@ -56,29 +56,23 @@ class GameEngine {
         renderer = Renderer(delegate: viewDelegate)
         setupLauncherGestures(on: viewDelegate.getMainView())
         displayLink.isPaused = false
-    }
-
-    func launchBubble() {
-        if let projectile = launcher.launch(from: origin, diameter: projectileSize, using: physics) {
-            projectiles.insert(projectile)
-        }
+        bubbles.forEach { position, bubble in renderer.addView(of: bubble, at: position) }
     }
 
     private func addBubble(type: Type, at nearestSlot: Position) {
         stage.insertBubble(type: type, at: nearestSlot)
-        viewDelegate?.updateGrid(at: [nearestSlot])
         if let bubble = bubbles[nearestSlot] {
+            renderer.addView(of: bubble, at: nearestSlot)
             findAndScoreMatches(of: bubble, minimumCount: 3)
         }
     }
 
     private func removeBubble(_ bubble: Bubble, matched: Bool = true) {
-        stage.removeBubble(bubble)
-        renderer.animateView(of: bubble, shouldFlash: !matched) { _ in
-            self.viewDelegate?.updateGrid(at: [bubble.getPosition()])
-        }
-        if matched {
-            findAndRemoveDisconnectedBubbles()
+        self.stage.removeBubble(bubble)
+        renderer.animateView(of: bubble, isCleaning: !matched) { _ in
+            if self.bubbles[bubble.getPosition()] == nil {
+                self.renderer.removeView(of: bubble)
+            }
         }
     }
 
@@ -199,26 +193,38 @@ class GameEngine {
     func stepGameState() {
         renderer.redraw(launcher)
         projectiles.forEach { projectile in updateState(of: projectile) }
+        findAndRemoveDisconnectedBubbles()
     }
 
     @objc
     func didTapDelegate(_ recognizer: UITapGestureRecognizer) {
         setLauncher(pointAt: recognizer.location(in: recognizer.view))
-        launchBubble()
+        launchTimer?.invalidate()
+        launchTimer = Timer.scheduledTimer(timeInterval: thresholdLaunchRate,
+                                           target: self,
+                                           selector: #selector(self.launchBubble),
+                                           userInfo: nil,
+                                           repeats: false)
     }
 
     @objc
     func didPanDelegate(_ recognizer: UIPanGestureRecognizer) {
+        setLauncher(pointAt: recognizer.location(in: recognizer.view))
         switch recognizer.state {
         case .began:
             launcher.isAssistEnabled = true
-        case .changed:
-            setLauncher(pointAt: recognizer.location(in: recognizer.view))
         case .ended:
             launchBubble()
             launcher.isAssistEnabled = false
         default:
             return
+        }
+    }
+
+    @objc
+    func launchBubble() {
+        if let projectile = launcher.launch(from: origin, diameter: projectileSize, using: physics) {
+            projectiles.insert(projectile)
         }
     }
 

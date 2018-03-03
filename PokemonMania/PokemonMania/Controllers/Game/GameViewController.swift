@@ -29,17 +29,12 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
         setupDemoStage()
     }
 
-    override func viewDidLayoutSubviews() {
-        guard gameEngine == nil else {
-            return
-        }
-        gameEngine = GameEngine(stage: loadedStage, delegate: self)
-        gridControl?.bubbles = gameEngine?.bubbles
-        gridControl?.reloadVisibleItems()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    func setup() {
+        gameEngine = gameEngine ?? GameEngine(stage: loadedStage, delegate: self)
     }
 
     func getGameArea() -> CGRect {
@@ -67,16 +62,6 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
             fatalError("Fatal: No grid provided for game engine.")
         }
         return grid
-    }
-
-    func updateGrid(at positions: Set<Position>) {
-        let indices = positions.reduce(into: []) { list, position in
-            list.append(IndexPath(item: position.column, section: position.row))
-        }
-        UIView.performWithoutAnimation {
-            gridControl?.bubbles = gameEngine?.bubbles
-            gridControl?.collectionView?.reloadItems(at: indices)
-        }
     }
 
     private func setupDemoStage() {

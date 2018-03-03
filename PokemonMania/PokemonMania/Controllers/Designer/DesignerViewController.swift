@@ -52,6 +52,7 @@ class DesignerViewController: UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         if !isBackgroundSet {
             setBackground(with: #imageLiteral(resourceName: "background"))
             isBackgroundSet = true

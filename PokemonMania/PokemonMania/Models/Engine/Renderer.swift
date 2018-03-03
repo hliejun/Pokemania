@@ -5,8 +5,9 @@ import UIKit
 
 class Renderer {
     private weak var delegate: GameEngineDelegate?
-    private let projectileSize: CGSize
+    private let blobSize: CGSize
     private var projectileViews: [Projectile: ProjectileView]
+    private var bubbleViews: [Bubble: BubbleCell]
     private var launcherView: LauncherView
     private var bufferView: UIImageView
 
@@ -15,8 +16,9 @@ class Renderer {
         launcherView = LauncherView()
         bufferView = UIImageView()
         projectileViews = [:]
+        bubbleViews = [:]
         let diameter: CGFloat = delegate?.getProjectileSize() ?? 0
-        projectileSize = CGSize(width: diameter, height: diameter)
+        blobSize = CGSize(width: diameter, height: diameter)
     }
 
     func getView(of launcher: Launcher) -> LauncherView {
@@ -27,9 +29,31 @@ class Renderer {
         return projectileViews[projectile]
     }
 
+    func addView(of bubble: Bubble, at position: Position) {
+        let view = BubbleCell()
+        let index = IndexPath(item: position.column, section: position.row)
+        guard let gridPosition = delegate?.getGridView().cellForItem(at: index)?.center else {
+            return
+        }
+        let center = delegate?.getGridView().convert(gridPosition, to: delegate?.getMainView())
+        view.setStyle(sprite: getAsset(for: bubble))
+        view.frame = CGRect(origin: CGPoint.zero, size: blobSize)
+        view.center = center ?? CGPoint.zero
+        if bubbleViews[bubble] != nil {
+            removeView(of: bubble)
+        }
+        bubbleViews[bubble] = view
+        updateSubview(view)
+    }
+
     func removeView(of projectile: Projectile) {
         projectileViews[projectile]?.removeFromSuperview()
         projectileViews[projectile] = nil
+    }
+
+    func removeView(of bubble: Bubble) {
+        bubbleViews[bubble]?.removeFromSuperview()
+        bubbleViews[bubble] = nil
     }
 
     func redraw(_ launcher: Launcher) {
@@ -54,33 +78,41 @@ class Renderer {
     }
 
     func redraw(_ projectile: Projectile) {
-        var view = ProjectileView()
-        var size = projectileSize
-        if let existingView = projectileViews[projectile] {
-            view = existingView
-            size = existingView.frame.size
-        } else {
-            view.setStyle(sprite: getAssetForProjectile(projectile))
+        let existingView = projectileViews[projectile]
+        let view = existingView ?? ProjectileView()
+        let size = existingView?.frame.size ?? blobSize
+        if existingView == nil {
+            view.setStyle(sprite: getAsset(for: projectile))
             projectileViews[projectile] = view
         }
         view.frame = CGRect(origin: projectile.location, size: size)
         updateSubview(view)
     }
 
-    func animateView(of bubble: Bubble, shouldFlash: Bool = false, completion: ((Bool) -> Void)? = nil) {
-        let position = bubble.getPosition()
-        guard let grid = delegate?.getGridView(),
-            let view = grid.cellForItem(at: IndexPath(item: position.column, section: position.row)) as? BubbleCell,
-            let contentView = view.backgroundView else {
-                return
+    func animateView(of bubble: Bubble, isCleaning: Bool = false,
+                     completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        guard let view = bubbleViews[bubble] else {
+            return
         }
-        let options: UIViewAnimationOptions = shouldFlash ? [.curveEaseInOut, .autoreverse] : .curveEaseOut
-        let animations: () -> Void = { contentView.alpha = 0.0 }
-        UIView.animate(withDuration: 0.3, delay: 0, options: options, animations: animations, completion: completion)
+        let animator = UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.6) {
+            view.alpha = 0.0
+            view.center = isCleaning ? view.center.applying(CGAffineTransform(translationX: 0, y: 100)) : view.center
+        }
+        if let handler = completion {
+            animator.addCompletion(handler)
+        }
+        animator.startAnimation()
     }
 
-    private func getAssetForProjectile(_ projectile: Projectile) -> UIImageView? {
+    private func getAsset(for projectile: Projectile) -> UIImageView? {
         guard let image = assets[projectile.type] else {
+            return nil
+        }
+        return UIImageView(image: image)
+    }
+
+    private func getAsset(for bubble: Bubble) -> UIImageView? {
+        guard let image = assets[bubble.getType()] else {
             return nil
         }
         return UIImageView(image: image)

@@ -37,7 +37,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Design Your Own"/>
                                 <connections>
-                                    <segue destination="oUO-u6-Bfl" kind="presentation" id="M0B-Mm-1Vx"/>
+                                    <segue destination="oUO-u6-Bfl" kind="show" id="M0B-Mm-1Vx"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -17,6 +17,13 @@ class Stage: Codable {
         effect = .none
     }
 
+    init(from stage: Stage) {
+        bubbles = stage.getBubbles()
+        background = stage.background
+        music = stage.music
+        effect = stage.effect
+    }
+
     func getBubbles() -> [Position: Bubble] {
         return bubbles
     }

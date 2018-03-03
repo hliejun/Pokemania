@@ -106,7 +106,7 @@ class LevelDesigner {
         guard let loadedLevel = savedLevels[title] else {
             fatalError("Fatal: Saved level cannot be loaded.")
         }
-        level = loadedLevel
+        level = Stage(from: loadedLevel)
     }
 
     func deleteLevel(ofTitle title: String) {

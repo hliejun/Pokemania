@@ -5,18 +5,22 @@ import UIKit
 import Foundation
 
 protocol GameGridDelegate: class {
+    func setup()
 }
 
 class GameGridController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet private var grid: UICollectionView!
     weak var delegate: GameGridDelegate?
-    var bubbles: [Position: Bubble]?
     var cellSize: CGFloat = 0
     var maxRows: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGrid()
+    }
+
+    override func viewDidLayoutSubviews() {
+        delegate?.setup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,12 +42,7 @@ class GameGridController: UICollectionViewController, UICollectionViewDelegateFl
         guard let bubbleCell = cell as? BubbleCell else {
             fatalError("Fatal: BubbleCell cannot be used.")
         }
-        var sprite: UIImageView? = nil
-        if let bubble = bubbles?[Position(row: indexPath.section, column: indexPath.item)],
-            let image = assets[bubble.getType()] {
-            sprite = UIImageView(image: image)
-        }
-        bubbleCell.setStyle(sprite: sprite)
+        bubbleCell.setStyle(sprite: nil)
         return bubbleCell
     }
 
