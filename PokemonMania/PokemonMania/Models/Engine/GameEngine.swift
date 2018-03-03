@@ -95,8 +95,8 @@ class GameEngine {
     private func updateState(of projectile: Projectile) {
         let points = physics.getPoints(from: projectile.collider).map { point in return getPointInGrid(at: point) }
         if physics.willCollide(projectile, with: getObstacles(near: points)) {
-            if let index = getNearestSlot(to: projectile, using: points) {
-                addBubble(type: projectile.type, at: Position(row: index.section, column: index.item))
+            if let slot = getNearestSlot(to: projectile, using: points) {
+                addBubble(type: projectile.type, at: slot)
             }
             renderer.removeView(of: projectile)
             projectiles.remove(projectile)
@@ -172,8 +172,8 @@ class GameEngine {
         }
     }
 
-    private func getNearestSlot(to projectile: Projectile, using coordinates: [CGPoint]) -> IndexPath? {
-        var index: IndexPath? = nil
+    private func getNearestSlot(to projectile: Projectile, using coordinates: [CGPoint]) -> Position? {
+        var emptySlot: Position? = nil
         var smallestDistance = CGFloat.greatestFiniteMagnitude
         let center = getPointInGrid(at: physics.getCenter(from: projectile.collider))
         coordinates.forEach { location in
@@ -181,14 +181,14 @@ class GameEngine {
                   let point = grid?.cellForItem(at: indexPath)?.center else {
                 return
             }
-            let position = Position(row: indexPath.section, column: indexPath.item)
+            let slot = Position(row: indexPath.section, column: indexPath.item)
             let distance = physics.getDistance(between: center, and: point)
-            if bubbles[position] == nil && distance < smallestDistance {
+            if bubbles[slot] == nil && distance < smallestDistance {
                 smallestDistance = distance
-                index = indexPath
+                emptySlot = slot
             }
         }
-        return index
+        return emptySlot
     }
 
     private func getPointInGrid(at coordinate: CGPoint) -> CGPoint {

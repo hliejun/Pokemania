@@ -7,8 +7,7 @@ extension PhysicsEngine {
 
     func getPoints(from collider: CGRect) -> [CGPoint] {
         var contactPoints: [CGPoint] = []
-        let orthogonalCollider = collider.applying(CGAffineTransform(rotationAngle: .pi / 4))
-        contactPoints += getEdges(from: collider) + getEdges(from: orthogonalCollider)
+        contactPoints += getEdges(from: collider) + getOrthogonalPoints(from: collider)
         contactPoints.append(getCenter(from: collider))
         return contactPoints
     }
@@ -19,6 +18,16 @@ extension PhysicsEngine {
             CGPoint(x: collider.minX, y: collider.maxY),
             CGPoint(x: collider.maxX, y: collider.minY),
             CGPoint(x: collider.maxX, y: collider.maxY)
+        ]
+    }
+
+    func getOrthogonalPoints(from square: CGRect) -> [CGPoint] {
+        let hypotenuse = sqrt(2) * square.width / 2
+        return [
+            CGPoint(x: square.midX, y: square.midY - hypotenuse),
+            CGPoint(x: square.midX, y: square.midY + hypotenuse),
+            CGPoint(x: square.midX - hypotenuse, y: square.midY),
+            CGPoint(x: square.midX + hypotenuse, y: square.midY)
         ]
     }
 

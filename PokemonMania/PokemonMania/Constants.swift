@@ -4,7 +4,7 @@
 import UIKit
 
 let maxColumns = 12
-let fixedStrength: Double = 20
+let fixedStrength: Double = 40
 let leftAngleLimit: Double = 280
 let rightAngleLimit: Double = 80
 let safeMargin: CGFloat = 5
