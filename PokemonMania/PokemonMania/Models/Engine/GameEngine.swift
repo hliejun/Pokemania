@@ -93,10 +93,9 @@ class GameEngine {
     }
 
     private func updateState(of projectile: Projectile) {
-        let obstacles = getColliders(at: Set(bubbles.keys))
-        if physics.willCollide(projectile, with: obstacles) {
-            let center = CGPoint(x: projectile.collider.midX, y: projectile.collider.midY)
-            if let index = grid?.indexPathForItem(at: center) {
+        let points = physics.getPoints(from: projectile.collider).map { point in return getPointInGrid(at: point) }
+        if physics.willCollide(projectile, with: getObstacles(near: points)) {
+            if let index = getNearestSlot(to: projectile, using: points) {
                 addBubble(type: projectile.type, at: Position(row: index.section, column: index.item))
             }
             renderer.removeView(of: projectile)
@@ -161,12 +160,39 @@ class GameEngine {
         delegatedView?.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanDelegate)))
     }
 
-    private func getColliders(at positions: Set<Position>) -> [CGRect] {
-        return positions.reduce(into: [CGRect]()) { list, position in
-            if let cell = grid?.cellForItem(at: IndexPath(item: position.column, section: position.row)) {
-                list.append(cell.frame)
+    private func getObstacles(near points: [CGPoint]) -> [CGRect] {
+        return points.reduce(into: [CGRect]()) { list, point in
+            guard let source = grid, let indexPath = source.indexPathForItem(at: point) else {
+                return
+            }
+            let position = Position(row: indexPath.section, column: indexPath.item)
+            if let collider = source.cellForItem(at: indexPath)?.frame, bubbles[position] != nil {
+                list.append(source.convert(collider, to: viewDelegate?.getMainView()))
             }
         }
+    }
+
+    private func getNearestSlot(to projectile: Projectile, using coordinates: [CGPoint]) -> IndexPath? {
+        var index: IndexPath? = nil
+        var smallestDistance = CGFloat.greatestFiniteMagnitude
+        let center = getPointInGrid(at: physics.getCenter(from: projectile.collider))
+        coordinates.forEach { location in
+            guard let indexPath = grid?.indexPathForItem(at: location),
+                  let point = grid?.cellForItem(at: indexPath)?.center else {
+                return
+            }
+            let position = Position(row: indexPath.section, column: indexPath.item)
+            let distance = physics.getDistance(between: center, and: point)
+            if bubbles[position] == nil && distance < smallestDistance {
+                smallestDistance = distance
+                index = indexPath
+            }
+        }
+        return index
+    }
+
+    private func getPointInGrid(at coordinate: CGPoint) -> CGPoint {
+        return viewDelegate?.getMainView().convert(coordinate, to: grid) ?? CGPoint.zero
     }
 
     @objc

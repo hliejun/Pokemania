@@ -5,6 +5,8 @@ import UIKit
 import Foundation
 
 class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate {
+    @IBOutlet private var dashboard: UIView!
+    @IBOutlet private var gameArea: UIView!
     @IBOutlet private var dock: UIView!
     private var gridControl: GameGridController?
     private var gameEngine: GameEngine?
@@ -28,7 +30,10 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
     }
 
     override func viewDidLayoutSubviews() {
-        gameEngine = gameEngine ?? GameEngine(stage: loadedStage, delegate: self)
+        guard gameEngine == nil else {
+            return
+        }
+        gameEngine = GameEngine(stage: loadedStage, delegate: self)
         gridControl?.bubbles = gameEngine?.bubbles
         gridControl?.reloadVisibleItems()
     }
@@ -38,7 +43,7 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
     }
 
     func getGameArea() -> CGRect {
-        return view.frame
+        return gameArea.frame
     }
 
     func getDockArea() -> CGRect {

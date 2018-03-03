@@ -88,7 +88,7 @@ class LevelDesigner {
     }
 
     func isValidDesign() -> Bool {
-        // TODO: Implement validation (check no disconnected graph)
+        // Implement validation (check no disconnected graph)
         return true
     }
 

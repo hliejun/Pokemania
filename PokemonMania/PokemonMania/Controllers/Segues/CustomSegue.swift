@@ -3,12 +3,12 @@
 
 import UIKit
 
-class SegueFromRight: UIStoryboardSegue {
+class CustomSegue: UIStoryboardSegue {
 
     override func perform() {
         let source = self.source
         let destination = self.destination
-        guard let thisView = source.view, let nextView = destination.view else {
+        guard let thisView = source.parent?.view ?? source.view, let nextView = destination.view else {
             return
         }
         thisView.superview?.insertSubview(nextView, aboveSubview: thisView)

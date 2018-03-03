@@ -53,7 +53,8 @@
 		BF93987E204905CA001232F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF93987C204905CA001232F6 /* LaunchScreen.storyboard */; };
 		BF939889204905CA001232F6 /* PokemonManiaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939888204905CA001232F6 /* PokemonManiaTests.swift */; };
 		BF939894204905CA001232F6 /* PokemonManiaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939893204905CA001232F6 /* PokemonManiaUITests.swift */; };
-		BF9EADF82049876F0097836C /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EADF72049876F0097836C /* SegueFromRight.swift */; };
+		BF9EADF82049876F0097836C /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EADF72049876F0097836C /* CustomSegue.swift */; };
+		BF9EADFB204A5E5C0097836C /* PhysicsEngine+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EADFA204A5E5C0097836C /* PhysicsEngine+Extra.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,7 +128,8 @@
 		BF93988F204905CA001232F6 /* PokemonManiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonManiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF939893204905CA001232F6 /* PokemonManiaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonManiaUITests.swift; sourceTree = "<group>"; };
 		BF939895204905CA001232F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF9EADF72049876F0097836C /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
+		BF9EADF72049876F0097836C /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		BF9EADFA204A5E5C0097836C /* PhysicsEngine+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhysicsEngine+Extra.swift"; sourceTree = "<group>"; };
 		C397931A398C1458FEFBBEE3 /* Pods-PokemonManiaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemonManiaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokemonManiaUITests/Pods-PokemonManiaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D1C6D985B0D6E9D9F0CFED99 /* Pods-PokemonMania.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemonMania.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokemonMania/Pods-PokemonMania.release.xcconfig"; sourceTree = "<group>"; };
 		D2C09FEA1770DC25610F7751 /* Pods-PokemonManiaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemonManiaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokemonManiaTests/Pods-PokemonManiaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,7 +181,7 @@
 		BF72116A204933C4006015F0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BF7211AF204941B4006015F0 /* View */,
+				BF9EADF9204A5E080097836C /* Engine */,
 				BF72118A20493A53006015F0 /* Game */,
 				BF72117120493704006015F0 /* Elements */,
 				BF721178204937D3006015F0 /* Bubbles */,
@@ -326,17 +328,6 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
-		BF7211AF204941B4006015F0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				BF72118F20493CFE006015F0 /* GameEngine.swift */,
-				BF72119320493D97006015F0 /* Renderer.swift */,
-				BF72119120493D61006015F0 /* Launcher.swift */,
-				BF72119520493DEB006015F0 /* Projectile.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		BF89ADF620490B0100D9A309 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,9 +396,21 @@
 		BF9EADF6204987420097836C /* Segues */ = {
 			isa = PBXGroup;
 			children = (
-				BF9EADF72049876F0097836C /* SegueFromRight.swift */,
+				BF9EADF72049876F0097836C /* CustomSegue.swift */,
 			);
 			path = Segues;
+			sourceTree = "<group>";
+		};
+		BF9EADF9204A5E080097836C /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				BF72118F20493CFE006015F0 /* GameEngine.swift */,
+				BF72119320493D97006015F0 /* Renderer.swift */,
+				BF72119120493D61006015F0 /* Launcher.swift */,
+				BF72119520493DEB006015F0 /* Projectile.swift */,
+				BF9EADFA204A5E5C0097836C /* PhysicsEngine+Extra.swift */,
+			);
+			path = Engine;
 			sourceTree = "<group>";
 		};
 		DC1FDCB62D3809555337AAD7 /* Frameworks */ = {
@@ -728,6 +731,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF9EADFB204A5E5C0097836C /* PhysicsEngine+Extra.swift in Sources */,
 				BF721182204938B2006015F0 /* CaptureBubble.swift in Sources */,
 				BF7211C120495931006015F0 /* GameGridController.swift in Sources */,
 				BF72119220493D61006015F0 /* Launcher.swift in Sources */,
@@ -758,7 +762,7 @@
 				BF939876204905CA001232F6 /* MenuViewController.swift in Sources */,
 				BF72119020493CFE006015F0 /* GameEngine.swift in Sources */,
 				BF7211A020493ED7006015F0 /* BubbleCell.swift in Sources */,
-				BF9EADF82049876F0097836C /* SegueFromRight.swift in Sources */,
+				BF9EADF82049876F0097836C /* CustomSegue.swift in Sources */,
 				BF72118C20493A61006015F0 /* Stage.swift in Sources */,
 				BF72119C20493E72006015F0 /* ProjectileView.swift in Sources */,
 				BF7211752049374E006015F0 /* Obstacle.swift in Sources */,

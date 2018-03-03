@@ -36,6 +36,7 @@ class Renderer {
         if launcherView.image != nil {
             if let nextType = launcher.nextInBuffer {
                 bufferView.image = assets[nextType]
+                launcherView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
             }
             launcherView.transform = CGAffineTransform(rotationAngle: CGFloat(launcher.direction * .pi / 180.0))
         } else if let dockArea = delegate?.getDockArea(), let size = delegate?.getLauncherSize() {
@@ -86,8 +87,11 @@ class Renderer {
     }
 
     private func updateSubview(_ subview: UIView) {
+        guard let source = delegate else {
+            return
+        }
         subview.removeFromSuperview()
-        delegate?.getMainView().addSubview(subview)
+        source.getMainView().addSubview(subview)
     }
 
 }
