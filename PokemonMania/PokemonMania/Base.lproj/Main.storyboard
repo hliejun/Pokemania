@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="0WR-ei-gs3" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="B39-NW-AT0"/>
                             <constraint firstItem="ml6-IL-tCv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="F73-hy-N58"/>
@@ -67,7 +67,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOo-29-tJB">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
-                                <color key="backgroundColor" red="1" green="0.90208612970000002" blue="0.6430664062" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHS-7y-E0C">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="80"/>
@@ -117,6 +117,7 @@
                         <viewLayoutGuide key="safeArea" id="IrV-Pb-Gkr"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="FOo-29-tJB" id="reS-wm-pC8"/>
                         <outlet property="dashboard" destination="EHS-7y-E0C" id="jpI-TZ-lj1"/>
                         <outlet property="dock" destination="gXA-5y-87m" id="Mur-kE-KIT"/>
                         <outlet property="gameArea" destination="mxn-1Y-zDk" id="dbp-q2-wjV"/>
@@ -126,16 +127,53 @@
             </objects>
             <point key="canvasLocation" x="1880" y="258"/>
         </scene>
-        <!--View Controller-->
+        <!--Dashboard View Controller-->
         <scene sceneID="Dch-eJ-YDU">
             <objects>
-                <viewController id="HKI-r0-cRX" sceneMemberID="viewController">
+                <viewController id="HKI-r0-cRX" customClass="DashboardViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kGU-gH-rIA">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAD-PG-gu7">
+                                <rect key="frame" x="24" y="23" width="34" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Quit"/>
+                                <connections>
+                                    <action selector="didQuit:" destination="HKI-r0-cRX" eventType="touchUpInside" id="qQT-c6-JK5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdJ-mX-fdW">
+                                <rect key="frame" x="950" y="23" width="50" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="didPause:" destination="HKI-r0-cRX" eventType="touchUpInside" id="2wb-wb-3oH"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5E-SK-FeV">
+                                <rect key="frame" x="465.5" y="25.5" width="94" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yAD-PG-gu7" secondAttribute="trailing" constant="20" symbolic="YES" id="2SV-WF-SKF"/>
+                            <constraint firstItem="NdJ-mX-fdW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kGU-gH-rIA" secondAttribute="leading" constant="20" symbolic="YES" id="4k3-P9-VVT"/>
+                            <constraint firstAttribute="trailing" secondItem="NdJ-mX-fdW" secondAttribute="trailing" constant="24" id="RfD-qq-Wvg"/>
+                            <constraint firstItem="NdJ-mX-fdW" firstAttribute="centerY" secondItem="kGU-gH-rIA" secondAttribute="centerY" id="XIE-6a-HOn"/>
+                            <constraint firstItem="yAD-PG-gu7" firstAttribute="centerY" secondItem="kGU-gH-rIA" secondAttribute="centerY" id="Zz8-W4-cqN"/>
+                            <constraint firstItem="Y5E-SK-FeV" firstAttribute="centerY" secondItem="kGU-gH-rIA" secondAttribute="centerY" id="eTZ-fD-peK"/>
+                            <constraint firstItem="Y5E-SK-FeV" firstAttribute="centerX" secondItem="kGU-gH-rIA" secondAttribute="centerX" id="iCw-Kc-3nh"/>
+                            <constraint firstItem="yAD-PG-gu7" firstAttribute="leading" secondItem="kGU-gH-rIA" secondAttribute="leading" constant="24" id="kIk-Hh-VWf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MFp-6p-z8L"/>
                     </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="Y5E-SK-FeV" id="eNo-a8-HyW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Vu-sP-T6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -483,7 +521,7 @@
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="HGx-DR-l0Q" kind="custom" customClass="CustomSegue" customModule="PokemonMania" customModuleProvider="target" id="wrl-13-jsK"/>
+                                            <action selector="startGame:" destination="jDQ-gs-ffd" eventType="touchUpInside" id="1am-A3-LVp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -513,6 +551,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PZG-Yf-7o6"/>
                     </view>
+                    <connections>
+                        <segue destination="HGx-DR-l0Q" kind="custom" identifier="StartGame" customClass="CustomSegue" customModule="PokemonMania" customModuleProvider="target" id="HVC-MF-Fum"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rb8-Ba-ZNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -595,6 +636,6 @@
         <image name="shuffle" width="168" height="168"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wrl-13-jsK"/>
+        <segue reference="UtV-UF-Bf8"/>
     </inferredMetricsTieBreakers>
 </document>

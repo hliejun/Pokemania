@@ -4,7 +4,7 @@
 import UIKit
 
 enum AlertType {
-    case delete, load, reset, save
+    case delete, load, reset, save, start
 }
 
 protocol ActionDelegate: class {
@@ -17,7 +17,9 @@ protocol ActionDelegate: class {
 class ActionsViewController: UIViewController {
     weak var delegate: ActionDelegate?
 
+    private var gameControl: GameViewController?
     private var templateControl: TemplateViewController?
+    private var startAlert: UIAlertController?
     private var saveAlert: UIAlertController?
     private var resetAlert: UIAlertController?
     private var deleteAlert: UIAlertController?
@@ -31,6 +33,10 @@ class ActionsViewController: UIViewController {
             templateControl?.delegate = self
             templateControl?.setTemplates(templates)
         }
+        if let controller = segue.destination as? GameViewController {
+            gameControl = controller
+            gameControl?.delegate = delegate as? GameDelegate
+        }
     }
 
     override func viewDidLoad() {
@@ -39,6 +45,16 @@ class ActionsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    @IBAction func startGame(_ sender: Any) {
+        startAlert = createAlert(ofType: .start)
+        startAlert?.addAction(UIAlertAction(title: "Start", style: .destructive) { _ in
+            self.performSegue(withIdentifier: "StartGame", sender: sender)
+        })
+        if let alert = startAlert {
+            present(alert, animated: true)
+        }
     }
 
     @IBAction func saveDesign(_ sender: Any) {
@@ -97,6 +113,9 @@ class ActionsViewController: UIViewController {
         case .save:
             alert.title = "Save Level"
             alert.message = "You are about to save a level design. Please give this masterpiece a title."
+        case .start:
+            alert.title = "Start Game"
+            alert.message = "You are about to start a game! Any unsaved changes will be lost. Continue?"
         }
         return alert
     }

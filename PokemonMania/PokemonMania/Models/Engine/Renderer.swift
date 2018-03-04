@@ -64,11 +64,12 @@ class Renderer {
             }
             launcherView.transform = CGAffineTransform(rotationAngle: CGFloat(launcher.direction * .pi / 180.0))
         } else if let dockArea = delegate?.getDockArea(), let size = delegate?.getLauncherSize() {
+            let launcherRatio = launcherAsset.size.width / launcherAsset.size.height
             launcherView.image = launcherAsset
-            launcherView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size, height: size))
+            launcherView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size * launcherRatio, height: size))
             launcherView.center = CGPoint(x: dockArea.midX, y: dockArea.midY)
             bufferView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size / 3, height: size / 3))
-            bufferView.center = launcherView.center
+            bufferView.center = launcherView.center.applying(CGAffineTransform(translationX: 0, y: size / 6))
             bufferView.layer.borderWidth = 2
             bufferView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             bufferView.layer.cornerRadius = bufferView.frame.width / 2

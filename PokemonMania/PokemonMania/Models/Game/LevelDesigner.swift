@@ -42,6 +42,10 @@ class LevelDesigner {
         return level
     }
 
+    func getCopyOfStage() -> Stage {
+        return Stage(from: level)
+    }
+
     func getBubbleType(at position: Position) -> Type? {
         return level.getBubbles()[position]?.getType()
     }

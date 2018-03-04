@@ -4,13 +4,20 @@
 import UIKit
 import Foundation
 
+protocol GameDelegate: class {
+    func getGameStage() -> Stage
+}
+
 class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate {
+    @IBOutlet private var backgroundView: UIView!
     @IBOutlet private var dashboard: UIView!
     @IBOutlet private var gameArea: UIView!
     @IBOutlet private var dock: UIView!
+    weak var delegate: GameDelegate?
     private var gridControl: GameGridController?
     private var gameEngine: GameEngine?
     private var loadedStage = Stage()
+    private var isBackgroundSet: Bool = false
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -29,12 +36,21 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
         setupDemoStage()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if !isBackgroundSet {
+            setBackground(with: #imageLiteral(resourceName: "background"))
+            isBackgroundSet = true
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
     func setup() {
-        gameEngine = gameEngine ?? GameEngine(stage: loadedStage, delegate: self)
+        let stage = delegate?.getGameStage() ?? loadedStage
+        gameEngine = gameEngine ?? GameEngine(stage: stage, delegate: self)
     }
 
     func getGameArea() -> CGRect {
@@ -66,6 +82,12 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
 
     private func setupDemoStage() {
         sampleBubbles.forEach { bubble in loadedStage.insertBubble(bubble) }
+    }
+
+    private func setBackground(with backgroundImage: UIImage) {
+        let background = UIImageView(image: backgroundImage)
+        background.frame = CGRect(origin: CGPoint.zero, size: backgroundView.bounds.size)
+        backgroundView.addSubview(background)
     }
 
 }

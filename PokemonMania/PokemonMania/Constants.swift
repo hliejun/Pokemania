@@ -24,7 +24,7 @@ let assets: [Type: UIImage] = [
     .energyType(.electric): #imageLiteral(resourceName: "bubble-orange")
 ]
 
-let launcherAsset = #imageLiteral(resourceName: "cannon-base")
+let launcherAsset = #imageLiteral(resourceName: "cannon")
 
 let effects: [Type.Effect: Effect] = [
     .sunny: Effect(type: .sunny,

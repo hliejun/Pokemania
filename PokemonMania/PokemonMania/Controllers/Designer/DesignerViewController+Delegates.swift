@@ -3,7 +3,7 @@
 
 import UIKit
 
-extension DesignerViewController: PaletteDelegate, DesignDelegate, ActionDelegate {
+extension DesignerViewController: PaletteDelegate, DesignDelegate, ActionDelegate, GameDelegate {
 
     func didSelect(position: Position) {
         switch editMode {
@@ -58,6 +58,10 @@ extension DesignerViewController: PaletteDelegate, DesignDelegate, ActionDelegat
     func didDelete(with templateName: String, index: IndexPath) {
         designer?.deleteLevel(ofTitle: templateName)
         refreshSavedLevels(at: index)
+    }
+
+    func getGameStage() -> Stage {
+        return designer?.getCopyOfStage() ?? Stage()
     }
 
     private func refreshGrid(at position: Position? = nil) {
