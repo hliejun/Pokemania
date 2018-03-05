@@ -24,7 +24,9 @@ let assets: [Type: UIImage] = [
     .energyType(.electric): #imageLiteral(resourceName: "bubble-orange")
 ]
 
-let launcherAsset = #imageLiteral(resourceName: "cannon")
+let launcherImage = #imageLiteral(resourceName: "cannon-0")
+let launcherStandImage = #imageLiteral(resourceName: "cannon-base")
+let launcherAnimationSet = [#imageLiteral(resourceName: "cannon-1"), #imageLiteral(resourceName: "cannon-2"), #imageLiteral(resourceName: "cannon-3"), #imageLiteral(resourceName: "cannon-4"), #imageLiteral(resourceName: "cannon-5"), #imageLiteral(resourceName: "cannon-6"), #imageLiteral(resourceName: "cannon-7"), #imageLiteral(resourceName: "cannon-8"), #imageLiteral(resourceName: "cannon-9"), #imageLiteral(resourceName: "cannon-10"), #imageLiteral(resourceName: "cannon-11"), #imageLiteral(resourceName: "cannon-0")]
 
 let effects: [Type.Effect: Effect] = [
     .sunny: Effect(type: .sunny,

@@ -11,6 +11,7 @@
 		6EF1AC1C9A616D1D53811A2E /* Pods_PokemonManiaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4380A99529D65143531B0CD2 /* Pods_PokemonManiaTests.framework */; };
 		8D7A43B282BAD1F0F51463AE /* Pods_PokemonMania.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6EEAB87BC7F42216796E45 /* Pods_PokemonMania.framework */; };
 		BF6B59CD204D014F00BED7D2 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B59CC204D014F00BED7D2 /* GalleryViewController.swift */; };
+		BF6B59D1204D63BF00BED7D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6B59D0204D63BF00BED7D2 /* Assets.xcassets */; };
 		BF72116920491640006015F0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BF72116820491640006015F0 /* README.md */; };
 		BF7211732049371A006015F0 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211722049371A006015F0 /* Effect.swift */; };
 		BF7211752049374E006015F0 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211742049374E006015F0 /* Obstacle.swift */; };
@@ -51,7 +52,6 @@
 		BF939874204905CA001232F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939873204905CA001232F6 /* AppDelegate.swift */; };
 		BF939876204905CA001232F6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939875204905CA001232F6 /* MenuViewController.swift */; };
 		BF939879204905CA001232F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF939877204905CA001232F6 /* Main.storyboard */; };
-		BF93987B204905CA001232F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF93987A204905CA001232F6 /* Assets.xcassets */; };
 		BF93987E204905CA001232F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF93987C204905CA001232F6 /* LaunchScreen.storyboard */; };
 		BF939889204905CA001232F6 /* PokemonManiaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939888204905CA001232F6 /* PokemonManiaTests.swift */; };
 		BF939894204905CA001232F6 /* PokemonManiaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939893204905CA001232F6 /* PokemonManiaUITests.swift */; };
@@ -82,6 +82,7 @@
 		4380A99529D65143531B0CD2 /* Pods_PokemonManiaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokemonManiaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6EEAB87BC7F42216796E45 /* Pods_PokemonMania.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokemonMania.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6B59CC204D014F00BED7D2 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		BF6B59D0204D63BF00BED7D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF72116820491640006015F0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		BF7211722049371A006015F0 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		BF7211742049374E006015F0 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
@@ -123,7 +124,6 @@
 		BF939873204905CA001232F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF939875204905CA001232F6 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BF939878204905CA001232F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BF93987A204905CA001232F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF93987D204905CA001232F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF93987F204905CA001232F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF939884204905CA001232F6 /* PokemonManiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonManiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,9 +337,9 @@
 		BF89ADF620490B0100D9A309 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BF6B59D0204D63BF00BED7D2 /* Assets.xcassets */,
 				BF939873204905CA001232F6 /* AppDelegate.swift */,
 				BF93987C204905CA001232F6 /* LaunchScreen.storyboard */,
-				BF93987A204905CA001232F6 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -547,8 +547,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF93987E204905CA001232F6 /* LaunchScreen.storyboard in Resources */,
-				BF93987B204905CA001232F6 /* Assets.xcassets in Resources */,
 				BF72116920491640006015F0 /* README.md in Resources */,
+				BF6B59D1204D63BF00BED7D2 /* Assets.xcassets in Resources */,
 				BF939879204905CA001232F6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

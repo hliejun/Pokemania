@@ -9,12 +9,15 @@ class Renderer {
     private var projectileViews: [Projectile: ProjectileView]
     private var bubbleViews: [Bubble: BubbleCell]
     private var launcherView: LauncherView
+    private var launcherStandView: UIImageView
     private var bufferView: UIImageView
+    private var hasSetupLauncherSet = false
 
     init(delegate: GameEngineDelegate?) {
         self.delegate = delegate
         launcherView = LauncherView()
         bufferView = UIImageView()
+        launcherStandView = UIImageView()
         projectileViews = [:]
         bubbleViews = [:]
         let diameter: CGFloat = delegate?.getProjectileSize() ?? 0
@@ -57,25 +60,21 @@ class Renderer {
     }
 
     func redraw(_ launcher: Launcher) {
-        if launcherView.image != nil {
+        if hasSetupLauncherSet {
             if let nextType = launcher.nextInBuffer {
                 bufferView.image = assets[nextType]
-                launcherView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
             }
             launcherView.transform = CGAffineTransform(rotationAngle: CGFloat(launcher.direction * .pi / 180.0))
         } else if let dockArea = delegate?.getDockArea(), let size = delegate?.getLauncherSize() {
-            let launcherRatio = launcherAsset.size.width / launcherAsset.size.height
-            launcherView.image = launcherAsset
-            launcherView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size * launcherRatio, height: size))
-            launcherView.center = CGPoint(x: dockArea.midX, y: dockArea.midY)
-            bufferView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size / 3, height: size / 3))
-            bufferView.center = launcherView.center.applying(CGAffineTransform(translationX: 0, y: size / 6))
-            bufferView.layer.borderWidth = 2
-            bufferView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            bufferView.layer.cornerRadius = bufferView.frame.width / 2
+            setupLauncher(ofSize: size, at: dockArea)
+            setupLauncherBase(at: dockArea)
+            setupBuffer(ofSize: size)
+            hasSetupLauncherSet = true
         }
-        updateSubview(launcherView)
         updateSubview(bufferView)
+        updateSubview(launcherView)
+        updateSubview(launcherStandView)
+        launcherStandView.superview?.bringSubview(toFront: launcherStandView)
     }
 
     func redraw(_ projectile: Projectile) {
@@ -88,6 +87,7 @@ class Renderer {
         }
         view.frame = CGRect(origin: projectile.location, size: size)
         updateSubview(view)
+        launcherView.superview?.bringSubview(toFront: launcherView)
     }
 
     func animateView(of bubble: Bubble, isCleaning: Bool = false,
@@ -103,6 +103,39 @@ class Renderer {
             animator.addCompletion(handler)
         }
         animator.startAnimation()
+    }
+
+    func animateView(of launcher: Launcher) {
+        launcherView.stopAnimating()
+        launcherView.startAnimating()
+    }
+
+    private func setupLauncher(ofSize size: CGFloat, at dockArea: CGRect) {
+        let launcherRatio = launcherImage.size.width / launcherImage.size.height
+        launcherView.image = launcherImage
+        launcherView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size * launcherRatio, height: size))
+        launcherView.center = CGPoint(x: dockArea.midX, y: dockArea.midY)
+        launcherView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        launcherView.animationImages = launcherAnimationSet
+        launcherView.animationDuration = 0.3
+        launcherView.animationRepeatCount = 1
+    }
+
+    private func setupLauncherBase(at dockArea: CGRect) {
+        let baseRatio = launcherStandImage.size.height / launcherImage.size.width
+        let width = launcherView.frame.width
+        launcherStandView.image = launcherStandImage
+        launcherStandView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: width, height: width * baseRatio))
+        launcherStandView.center = CGPoint(x: dockArea.midX, y: dockArea.midY)
+        launcherStandView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        launcherStandView.layer.zPosition = 100
+    }
+
+    private func setupBuffer(ofSize size: CGFloat) {
+        bufferView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size / 4, height: size / 4))
+        bufferView.center = launcherView.center
+        bufferView.layer.cornerRadius = bufferView.frame.width / 2
+        bufferView.layer.zPosition = 100
     }
 
     private func getAsset(for projectile: Projectile) -> UIImageView? {

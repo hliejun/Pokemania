@@ -225,6 +225,7 @@ class GameEngine {
     func launchBubble() {
         if let projectile = launcher.launch(from: origin, diameter: projectileSize, using: physics) {
             projectiles.insert(projectile)
+            renderer.animateView(of: launcher)
         }
     }
 

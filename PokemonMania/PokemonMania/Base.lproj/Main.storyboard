@@ -162,10 +162,10 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXA-5y-87m">
-                                <rect key="frame" x="0.0" y="1286" width="1024" height="80"/>
+                                <rect key="frame" x="0.0" y="1166" width="1024" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="3mk-OL-ilt"/>
+                                    <constraint firstAttribute="width" secondItem="gXA-5y-87m" secondAttribute="height" multiplier="128:25" id="WaS-Pg-gsc"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="AgV-NM-LiS" kind="embed" id="4Ro-aH-JQe"/>
@@ -295,7 +295,7 @@
             <objects>
                 <viewController id="AgV-NM-LiS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lj2-AT-sNf">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="KmR-qd-Gdc"/>
