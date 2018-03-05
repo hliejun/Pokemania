@@ -75,4 +75,8 @@ class Stage: Codable {
         self.date = date
     }
 
+    func getTitle() -> String {
+        return title
+    }
+
 }

@@ -16,7 +16,7 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
     weak var delegate: GameDelegate?
     private var gridControl: GameGridController?
     private var gameEngine: GameEngine?
-    private var loadedStage = Stage()
+    private var loadedStage: Stage?
     private var isBackgroundSet: Bool = false
 
     override var prefersStatusBarHidden: Bool {
@@ -49,7 +49,7 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
     }
 
     func setup() {
-        let stage = delegate?.getGameStage() ?? loadedStage
+        let stage = delegate?.getGameStage() ?? loadedStage ?? Stage()
         gameEngine = gameEngine ?? GameEngine(stage: stage, delegate: self)
     }
 
@@ -81,7 +81,11 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
     }
 
     private func setupDemoStage() {
-        sampleBubbles.forEach { bubble in loadedStage.insertBubble(bubble) }
+        guard loadedStage == nil else {
+            return
+        }
+        loadedStage = Stage()
+        sampleBubbles.forEach { bubble in loadedStage?.insertBubble(bubble) }
     }
 
     private func setBackground(with backgroundImage: UIImage) {

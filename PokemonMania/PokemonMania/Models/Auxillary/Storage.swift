@@ -4,7 +4,7 @@
 import Foundation
 
 enum FileName: String {
-    case levels, presets, none
+    case levels, customLevels, presets, none
 }
 
 class Storage {

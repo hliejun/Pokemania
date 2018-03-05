@@ -6,6 +6,7 @@ import Foundation
 class LevelDesigner {
     private var level: Stage
     private var savedLevels: [String: Stage]
+    private var savedPresetLevels: [String: Stage]
     private var savedPresets: Preset
 
     var effects: [Type.Effect: Effect] {
@@ -35,6 +36,7 @@ class LevelDesigner {
         }
         savedPresets = presets
         savedLevels = LevelDesigner.loadLevels()
+        savedPresetLevels = LevelDesigner.loadPresetLevels()
         level = Stage()
     }
 
@@ -96,14 +98,19 @@ class LevelDesigner {
         return true
     }
 
-    func saveLevel(ofTitle title: String) {
+    func saveLevel(ofTitle title: String, isPreset: Bool = false) {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/YY HH:mm"
         let date = formatter.string(from: Date(timeIntervalSinceNow: 0))
         level.saveAs(title: title, date: date)
-        savedLevels[title] = level
-        Storage.write(savedLevels, to: .levels)
-        savedLevels = LevelDesigner.loadLevels()
+        if isPreset {
+            savedPresetLevels[title] = level
+            Storage.write(savedPresetLevels, to: .levels)
+        } else {
+            savedLevels[title] = level
+            Storage.write(savedLevels, to: .customLevels)
+            savedLevels = LevelDesigner.loadLevels()
+        }
     }
 
     func loadLevel(ofTitle title: String) {
@@ -115,7 +122,7 @@ class LevelDesigner {
 
     func deleteLevel(ofTitle title: String) {
         savedLevels[title] = nil
-        Storage.write(savedLevels, to: .levels)
+        Storage.write(savedLevels, to: .customLevels)
         savedLevels = LevelDesigner.loadLevels()
     }
 
@@ -145,6 +152,10 @@ class LevelDesigner {
     }
 
     static func loadLevels() -> [String: Stage] {
+        return Storage.read(.customLevels, as: [String: Stage].self) ?? [:]
+    }
+
+    static func loadPresetLevels() -> [String: Stage] {
         return Storage.read(.levels, as: [String: Stage].self) ?? [:]
     }
 

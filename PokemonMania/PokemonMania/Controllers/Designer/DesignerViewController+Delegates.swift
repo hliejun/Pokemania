@@ -46,11 +46,11 @@ extension DesignerViewController: PaletteDelegate, DesignDelegate, ActionDelegat
         refreshGrid()
     }
 
-    func didSave(with templateName: String) {
+    func didSave(with templateName: String, isPreset: Bool = false) {
         let image = gridControl?.getPreviewImage() ?? #imageLiteral(resourceName: "background")
         if let imageData = UIImagePNGRepresentation(image) {
             NSMutableData(data: imageData).write(toFile: Storage.getImagePath(for: templateName), atomically: true)
-            designer?.saveLevel(ofTitle: templateName)
+            designer?.saveLevel(ofTitle: templateName, isPreset: isPreset)
         }
         refreshSavedLevels()
     }

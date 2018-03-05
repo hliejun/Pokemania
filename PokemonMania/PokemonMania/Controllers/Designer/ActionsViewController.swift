@@ -11,7 +11,7 @@ protocol ActionDelegate: class {
     func didReset()
     func didLoad(with templateName: String)
     func didDelete(with templateName: String, index: IndexPath)
-    func didSave(with templateName: String)
+    func didSave(with templateName: String, isPreset: Bool)
 }
 
 class ActionsViewController: UIViewController {
@@ -50,7 +50,7 @@ class ActionsViewController: UIViewController {
     @IBAction func startGame(_ sender: Any) {
         startAlert = createAlert(ofType: .start)
         startAlert?.addAction(UIAlertAction(title: "Start", style: .destructive) { _ in
-            self.performSegue(withIdentifier: "StartGame", sender: sender)
+            self.performSegue(withIdentifier: "StartGameFromDesigner", sender: sender)
         })
         if let alert = startAlert {
             present(alert, animated: true)
@@ -58,21 +58,20 @@ class ActionsViewController: UIViewController {
     }
 
     @IBAction func saveDesign(_ sender: Any) {
-        saveAlert = createAlert(ofType: .save)
-        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-            if let title = self.saveAlert?.textFields?.first?.text {
-                self.delegate?.didSave(with: title)
+        let optionsAlert = UIAlertController(title: "Save Modes", message: "Pick Option", preferredStyle: .actionSheet)
+        optionsAlert.addAction(UIAlertAction(title: "Preset", style: .default) { _ in
+            self.saveAlert = self.getSaveAlert(isPreset: true)
+            if let alert = self.saveAlert {
+                self.present(alert, animated: true)
             }
-        }
-        saveAlert?.addTextField { textField in
-            textField.placeholder = "Enter level title..."
-            textField.addTarget(self, action: #selector(self.textDidChange), for: .editingChanged)
-        }
-        saveAlert?.addAction(saveAction)
-        saveAlert?.actions[1].isEnabled = false
-        if let alert = saveAlert {
-            present(alert, animated: true)
-        }
+        })
+        optionsAlert.addAction(UIAlertAction(title: "Custom", style: .default) { _ in
+            self.saveAlert = self.getSaveAlert(isPreset: false)
+            if let alert = self.saveAlert {
+                self.present(alert, animated: true)
+            }
+        })
+        self.present(optionsAlert, animated: true)
     }
 
     @IBAction func resetDesign(_ sender: Any) {
@@ -117,6 +116,22 @@ class ActionsViewController: UIViewController {
             alert.title = "Start Game"
             alert.message = "You are about to start a game! Any unsaved changes will be lost. Continue?"
         }
+        return alert
+    }
+
+    private func getSaveAlert(isPreset: Bool) -> UIAlertController? {
+        let alert = createAlert(ofType: .save)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+            if let title = alert.textFields?.first?.text {
+                self.delegate?.didSave(with: title, isPreset: isPreset)
+            }
+        }
+        alert.addTextField { textField in
+            textField.placeholder = "Enter level title..."
+            textField.addTarget(self, action: #selector(self.textDidChange), for: .editingChanged)
+        }
+        alert.addAction(saveAction)
+        alert.actions[1].isEnabled = false
         return alert
     }
 

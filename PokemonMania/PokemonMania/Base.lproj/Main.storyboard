@@ -31,6 +31,9 @@
                                 <rect key="frame" x="447" y="669" width="130" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Pick Level"/>
+                                <connections>
+                                    <segue destination="FlC-IW-hT9" kind="show" id="l2n-5x-Fby"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBv-5v-7yK">
                                 <rect key="frame" x="401" y="867" width="222" height="48"/>
@@ -56,6 +59,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-394" y="-21"/>
+        </scene>
+        <!--Game Levels-->
+        <scene sceneID="Zrd-uq-mva">
+            <objects>
+                <viewController id="V91-Lx-IND" customClass="GalleryViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xwe-px-Vvy">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="obA-oI-15s">
+                                <rect key="frame" x="0.0" y="116" width="1024" height="1250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="SHy-c2-OZs">
+                                    <size key="itemSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LevelCell" id="5Qa-hc-M3C" customClass="TemplateCell" customModule="PokemonMania" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="V91-Lx-IND" id="NE7-I7-gGY"/>
+                                    <outlet property="delegate" destination="V91-Lx-IND" id="K5X-7p-6rP"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="glh-Wq-B80" firstAttribute="trailing" secondItem="obA-oI-15s" secondAttribute="trailing" id="FKP-PR-7uj"/>
+                            <constraint firstItem="obA-oI-15s" firstAttribute="top" secondItem="glh-Wq-B80" secondAttribute="top" id="Vrx-mW-F7O"/>
+                            <constraint firstItem="obA-oI-15s" firstAttribute="leading" secondItem="glh-Wq-B80" secondAttribute="leading" id="ZSH-2l-FuL"/>
+                            <constraint firstItem="glh-Wq-B80" firstAttribute="bottom" secondItem="obA-oI-15s" secondAttribute="bottom" id="yPb-0F-U35"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="glh-Wq-B80"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Game Levels" largeTitleDisplayMode="always" id="GLW-3M-tZw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Ejj-rS-M1D">
+                            <connections>
+                                <action selector="cancelLoad:" destination="V91-Lx-IND" id="oRu-Pj-IMh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="levelList" destination="obA-oI-15s" id="eCZ-7B-vSz"/>
+                        <segue destination="HGx-DR-l0Q" kind="custom" identifier="StartGameFromGallery" customClass="CustomSegue" customModule="PokemonMania" customModuleProvider="target" id="fRV-cP-ic0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKp-Ba-hXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392" y="691"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="N85-3s-IU6">
+            <objects>
+                <navigationController id="FlC-IW-hT9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qD3-VO-eQH">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="V91-Lx-IND" kind="relationship" relationship="rootViewController" id="lCL-ac-tfS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="loh-m2-wZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-394" y="679"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="33P-pt-RPB">
@@ -552,7 +627,7 @@
                         <viewLayoutGuide key="safeArea" id="PZG-Yf-7o6"/>
                     </view>
                     <connections>
-                        <segue destination="HGx-DR-l0Q" kind="custom" identifier="StartGame" customClass="CustomSegue" customModule="PokemonMania" customModuleProvider="target" id="HVC-MF-Fum"/>
+                        <segue destination="HGx-DR-l0Q" kind="custom" identifier="StartGameFromDesigner" customClass="CustomSegue" customModule="PokemonMania" customModuleProvider="target" id="HVC-MF-Fum"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rb8-Ba-ZNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -575,7 +650,7 @@
             </objects>
             <point key="canvasLocation" x="1105" y="346"/>
         </scene>
-        <!--Created Levels-->
+        <!--Custom Levels-->
         <scene sceneID="vb9-Hi-OGT">
             <objects>
                 <viewController id="dXR-Mx-KTh" customClass="TemplateViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
@@ -615,8 +690,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fSG-hc-fEF"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Created Levels" largeTitleDisplayMode="always" id="keh-Xl-QVS">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hA4-Zv-y5M">
+                    <navigationItem key="navigationItem" title="Custom Levels" largeTitleDisplayMode="always" id="keh-Xl-QVS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="hA4-Zv-y5M">
                             <connections>
                                 <action selector="cancelLoad:" destination="dXR-Mx-KTh" id="zes-0A-3qd"/>
                             </connections>
@@ -636,6 +711,6 @@
         <image name="shuffle" width="168" height="168"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UtV-UF-Bf8"/>
+        <segue reference="HVC-MF-Fum"/>
     </inferredMetricsTieBreakers>
 </document>
