@@ -6,9 +6,10 @@ import UIKit
 class DesignerViewController: UIViewController {
     @IBOutlet private var gameArea: UIView!
 
-    weak internal var gridControl: BubbleGridViewController?
-    weak internal var paletteControl: PaletteViewController?
-    weak internal var actionsControl: ActionsViewController?
+    internal var gridControl: BubbleGridViewController?
+    internal var paletteControl: PaletteViewController?
+    internal var actionsControl: ActionsViewController?
+    internal var gameControl: GameViewController?
 
     internal var designer: LevelDesigner?
     internal var selectedType: Type?
@@ -44,6 +45,10 @@ class DesignerViewController: UIViewController {
             actionsControl = controller
             actionsControl?.delegate = self
             actionsControl?.setSavedLevels(with: designer?.levels ?? [])
+        }
+        if let controller = segue.destination as? GameViewController {
+            gameControl = controller
+            gameControl?.delegate = self
         }
     }
 

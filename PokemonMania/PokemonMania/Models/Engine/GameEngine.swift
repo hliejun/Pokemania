@@ -10,8 +10,8 @@ protocol GameEngineDelegate: class {
     func getLauncherSize() -> CGFloat
     func getProjectileSize() -> CGFloat
     func getMainView() -> UIView
+    func getControlView() -> UIView
     func getGridView() -> UICollectionView
-    func getDashboardView() -> UIView
 }
 
 class GameEngine {
@@ -42,12 +42,16 @@ class GameEngine {
         return viewDelegate?.getProjectileSize() ?? 0
     }
 
+    var parent: UIView? {
+        return viewDelegate?.getMainView()
+    }
+
     var grid: UICollectionView? {
         return viewDelegate?.getGridView()
     }
 
     init?(stage: Stage, delegate: GameEngineDelegate?) {
-        guard let viewDelegate = delegate, let launcher = Launcher(using: options) else {
+        guard let viewDelegate = delegate, let launcher = Launcher(using: launcherOptions) else {
             return nil
         }
         self.viewDelegate = viewDelegate
@@ -55,18 +59,18 @@ class GameEngine {
         self.launcher = launcher
         physics = PhysicsEngine(bounds: viewDelegate.getGameArea())
         renderer = Renderer(delegate: viewDelegate)
-        setupLauncherGestures(on: viewDelegate.getMainView())
+        setupLauncherGestures(on: parent)
+        setupLoadedBubbles()
         displayLink.isPaused = false
-        bubbles.forEach { position, bubble in renderer.addView(of: bubble, at: position) }
     }
 
-    func unlink() {
-        displayLink.remove(from: .current, forMode: .defaultRunLoopMode)
-    }
-
-    func setState(_ isPaused: Bool) {
+    func pauseGame(_ isPaused: Bool) {
         displayLink.isPaused = isPaused
         renderer.togglePauseScreen(isPaused)
+    }
+
+    func endGame() {
+        displayLink.remove(from: .current, forMode: .defaultRunLoopMode)
     }
 
     private func addBubble(type: Type, at nearestSlot: Position) {
@@ -78,7 +82,7 @@ class GameEngine {
     }
 
     private func removeBubble(_ bubble: Bubble, matched: Bool = true) {
-        self.stage.removeBubble(bubble)
+        stage.removeBubble(bubble)
         renderer.animateView(of: bubble, isCleaning: !matched) { _ in
             if self.bubbles[bubble.getPosition()] == nil {
                 self.renderer.removeView(of: bubble)
@@ -86,14 +90,13 @@ class GameEngine {
         }
     }
 
-    private func updateScore(with bubbles: Set<Bubble>) {
-        stage.updateScore(increment: 10)
-    }
-
-    private func setLauncher(pointAt location: CGPoint, strength: Double = fixedStrength) {
+    private func setLauncher(pointAt location: CGPoint) {
         let angle = physics.getAngle(of: location, from: origin)
         launcher.direction = angle
-        launcher.strength = strength
+    }
+
+    private func updateScore(with bubbles: Set<Bubble>) {
+        stage.updateScore(increment: GameSettings.baseScore.rawValue)
     }
 
     private func updateState(of projectile: Projectile) {
@@ -126,33 +129,30 @@ class GameEngine {
             .forEach { bubble in removeBubble(bubble, matched: false) }
     }
 
-    private func getBubblesConnected(to initialBubbles: Set<Bubble>, with energy: Type.Energy? = nil) -> Set<Bubble> {
+    private func getBubblesConnected(to rootBubbles: Set<Bubble>, with energy: Type.Energy? = nil) -> Set<Bubble> {
         var neighbours = Queue<Bubble>()
-        var connectedBubbles = Set<Bubble>()
-        initialBubbles.forEach { bubble in neighbours.enqueue(bubble) }
-        while let currentBubble = neighbours.dequeue() {
-            if let energyType = energy {
-                if !connectedBubbles.contains(currentBubble) && currentBubble.getEnergy() == energyType {
-                    connectedBubbles.insert(currentBubble)
-                    getNeighbours(of: currentBubble).forEach { neighbour in neighbours.enqueue(neighbour) }
-                }
-            } else if !connectedBubbles.contains(currentBubble) {
-                connectedBubbles.insert(currentBubble)
-                getNeighbours(of: currentBubble).forEach { neighbour in neighbours.enqueue(neighbour) }
+        var group = Set<Bubble>()
+        rootBubbles.forEach { rootBubble in neighbours.enqueue(rootBubble) }
+        while let bubble = neighbours.dequeue() {
+            let isMatch = energy == nil || (energy != nil && bubble.getEnergy() == energy)
+            if isMatch, !group.contains(bubble) {
+                group.insert(bubble)
+                getNeighbours(of: bubble).forEach { neighbour in neighbours.enqueue(neighbour) }
             }
         }
-        return connectedBubbles
+        return group
     }
 
     private func getNeighbours(of target: Bubble) -> Set<Bubble> {
         let location = target.getPosition()
+        let isEvenRow = location.row % 2 == 0
         let neighbours = bubbles.filter { position, _ in
             let rowGap = location.row - position.row
             let columnGap = location.column - position.column
-            if rowGap.magnitude == 1 {
-                return location.row % 2 == 0 ? columnGap == 0 || columnGap == 1 : columnGap == 0 || columnGap == -1
-            } else if rowGap.magnitude == 0 {
+            if rowGap == 0 {
                 return columnGap.magnitude == 1
+            } else if rowGap.magnitude == 1 {
+                return columnGap == 0 || columnGap == (isEvenRow ? 1 : -1)
             }
             return false
         }
@@ -164,6 +164,10 @@ class GameEngine {
         delegatedView?.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanDelegate)))
     }
 
+    private func setupLoadedBubbles() {
+        bubbles.forEach { position, bubble in renderer.addView(of: bubble, at: position) }
+    }
+
     private func getObstacles(near points: [CGPoint]) -> [CGRect] {
         return points.reduce(into: [CGRect]()) { list, point in
             guard let source = grid, let indexPath = source.indexPathForItem(at: point) else {
@@ -171,7 +175,7 @@ class GameEngine {
             }
             let position = Position(row: indexPath.section, column: indexPath.item)
             if let collider = source.cellForItem(at: indexPath)?.frame, bubbles[position] != nil {
-                list.append(source.convert(collider, to: viewDelegate?.getMainView()))
+                list.append(source.convert(collider, to: parent))
             }
         }
     }
@@ -181,13 +185,12 @@ class GameEngine {
         var smallestDistance = CGFloat.greatestFiniteMagnitude
         let center = getPointInGrid(at: physics.getCenter(from: projectile.collider))
         coordinates.forEach { location in
-            guard let indexPath = grid?.indexPathForItem(at: location),
-                  let point = grid?.cellForItem(at: indexPath)?.center else {
+            guard let index = grid?.indexPathForItem(at: location), let cell = grid?.cellForItem(at: index) else {
                 return
             }
-            let slot = Position(row: indexPath.section, column: indexPath.item)
-            let distance = physics.getDistance(between: center, and: point)
-            if bubbles[slot] == nil && distance < smallestDistance {
+            let slot = Position(row: index.section, column: index.item)
+            let distance = physics.getDistance(between: center, and: cell.center)
+            if bubbles[slot] == nil, distance < smallestDistance {
                 smallestDistance = distance
                 emptySlot = slot
             }
@@ -196,7 +199,16 @@ class GameEngine {
     }
 
     private func getPointInGrid(at coordinate: CGPoint) -> CGPoint {
-        return viewDelegate?.getMainView().convert(coordinate, to: grid) ?? CGPoint.zero
+        return parent?.convert(coordinate, to: grid) ?? CGPoint.zero
+    }
+
+    @objc
+    func launchBubble() {
+        if let projectile = launcher.launch(from: origin, diameter: projectileSize, using: physics),
+            !displayLink.isPaused {
+            projectiles.insert(projectile)
+            renderer.animateView(of: launcher)
+        }
     }
 
     @objc
@@ -210,7 +222,7 @@ class GameEngine {
     func didTapDelegate(_ recognizer: UITapGestureRecognizer) {
         setLauncher(pointAt: recognizer.location(in: recognizer.view))
         launchTimer?.invalidate()
-        launchTimer = Timer.scheduledTimer(timeInterval: thresholdLaunchRate,
+        launchTimer = Timer.scheduledTimer(timeInterval: LaunchSettings.rate.rawValue,
                                            target: self,
                                            selector: #selector(self.launchBubble),
                                            userInfo: nil,
@@ -228,15 +240,6 @@ class GameEngine {
             launcher.isAssistEnabled = false
         default:
             return
-        }
-    }
-
-    @objc
-    func launchBubble() {
-        if let projectile = launcher.launch(from: origin, diameter: projectileSize, using: physics),
-           !displayLink.isPaused {
-            projectiles.insert(projectile)
-            renderer.animateView(of: launcher)
         }
     }
 

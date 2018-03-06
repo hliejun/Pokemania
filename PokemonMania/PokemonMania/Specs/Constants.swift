@@ -3,30 +3,38 @@
 
 import UIKit
 
-let thresholdLaunchRate = 0.15
-let maxColumns = 12
-let fixedStrength: Double = 0.02
-let leftAngleLimit: Double = 280
-let rightAngleLimit: Double = 80
-let safeMargin: CGFloat = 5
+enum GameSettings: Int {
+    case baseScore = 10
+}
 
-let energyOfType: [Type: Type.Energy] = [
-    .energyType(.fire): .fire,
-    .energyType(.water): .water,
-    .energyType(.grass): .grass,
-    .energyType(.electric): .electric
-]
+enum DisplaySettings: Int {
+    case maxColumns = 12
+}
 
-let assets: [Type: UIImage] = [
+enum LaunchSettings: Double {
+    case rate = 0.15
+    case strength = 0.02
+    case angleLimit = 10
+}
+
+enum QuadrantLimit: Double {
+    case first = 90
+    case second = 180
+    case third = 270
+    case fourth = 0
+}
+
+let launcherOptions = Set<Type>([.energyType(.fire), .energyType(.water), .energyType(.grass), .energyType(.electric)])
+
+let launcherStandImage = #imageLiteral(resourceName: "cannon-base")
+let launcherImage = #imageLiteral(resourceName: "cannon-0")
+let launcherImages = [#imageLiteral(resourceName: "cannon-1"), #imageLiteral(resourceName: "cannon-2"), #imageLiteral(resourceName: "cannon-3"), #imageLiteral(resourceName: "cannon-4"), #imageLiteral(resourceName: "cannon-5"), #imageLiteral(resourceName: "cannon-6"), #imageLiteral(resourceName: "cannon-7"), #imageLiteral(resourceName: "cannon-8"), #imageLiteral(resourceName: "cannon-9"), #imageLiteral(resourceName: "cannon-10"), #imageLiteral(resourceName: "cannon-11"), #imageLiteral(resourceName: "cannon-0")]
+let bubbleImages: [Type: UIImage] = [
     .energyType(.fire): #imageLiteral(resourceName: "bubble-red"),
     .energyType(.water): #imageLiteral(resourceName: "bubble-blue"),
     .energyType(.grass): #imageLiteral(resourceName: "bubble-green"),
     .energyType(.electric): #imageLiteral(resourceName: "bubble-orange")
 ]
-
-let launcherImage = #imageLiteral(resourceName: "cannon-0")
-let launcherStandImage = #imageLiteral(resourceName: "cannon-base")
-let launcherAnimationSet = [#imageLiteral(resourceName: "cannon-1"), #imageLiteral(resourceName: "cannon-2"), #imageLiteral(resourceName: "cannon-3"), #imageLiteral(resourceName: "cannon-4"), #imageLiteral(resourceName: "cannon-5"), #imageLiteral(resourceName: "cannon-6"), #imageLiteral(resourceName: "cannon-7"), #imageLiteral(resourceName: "cannon-8"), #imageLiteral(resourceName: "cannon-9"), #imageLiteral(resourceName: "cannon-10"), #imageLiteral(resourceName: "cannon-11"), #imageLiteral(resourceName: "cannon-0")]
 
 let effects: [Type.Effect: Effect] = [
     .sunny: Effect(type: .sunny,
@@ -48,13 +56,6 @@ let creatures: [Type.Creature: Creature] = [
                        rarity: 0.2,
                        isShiny: true)
 ]
-
-let options = Set<Type>([
-    .energyType(.fire),
-    .energyType(.water),
-    .energyType(.grass),
-    .energyType(.electric)
-])
 
 let sampleBubbles = [
     Bubble(at: Position(row: 0, column: 4), energy: .electric),

@@ -52,9 +52,16 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var width = collectionView.bounds.width
-        width = width < 600 ? width - 40 : (width - 80) / 3
-        return CGSize(width: width, height: width)
+        let cellSize: CGFloat
+        let margin: CGFloat = 24
+        let tableWidth = collectionView.bounds.width
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            cellSize = floor((tableWidth - (4 * margin)) / 3)
+        default:
+            cellSize = floor(tableWidth - (2 * margin))
+        }
+        return CGSize(width: cellSize, height: cellSize)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

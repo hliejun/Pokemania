@@ -7,7 +7,7 @@ import PhysicsEngine
 class Launcher {
     let buffer: Int
     var isAssistEnabled = true
-    var strength: Double = fixedStrength
+    var strength: Double = LaunchSettings.strength.rawValue
     var direction: Double = 0
     private var launchCount: Int = 0
     private var queue: Queue<Type>
@@ -28,7 +28,9 @@ class Launcher {
     }
 
     func launch(from origin: CGPoint, diameter: CGFloat, using engine: PhysicsEngine) -> Projectile? {
-        guard direction > leftAngleLimit || direction < rightAngleLimit, let payloadType = queue.dequeue() else {
+        let leftLimit = QuadrantLimit.third.rawValue + LaunchSettings.angleLimit.rawValue
+        let rightLimit = QuadrantLimit.first.rawValue - LaunchSettings.angleLimit.rawValue
+        guard direction > leftLimit || direction < rightLimit, let payloadType = queue.dequeue() else {
             return nil
         }
         populateQueue()

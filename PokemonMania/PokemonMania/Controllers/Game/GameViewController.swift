@@ -14,8 +14,8 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
     @IBOutlet private var gameArea: UIView!
     @IBOutlet private var dock: UIView!
     weak var delegate: GameDelegate?
-    weak private var dashboardControl: DashboardViewController?
-    weak private var gridControl: GameGridController?
+    private var dashboardControl: DashboardViewController?
+    private var gridControl: GameGridController?
     private var gameEngine: GameEngine?
     private var loadedStage: Stage?
     private var isBackgroundSet: Bool = false
@@ -85,16 +85,16 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
         return grid
     }
 
-    func getDashboardView() -> UIView {
+    func getControlView() -> UIView {
         return dashboard
     }
 
     func pauseGame(_ isPaused: Bool) {
-        gameEngine?.setState(isPaused)
+        gameEngine?.pauseGame(isPaused)
     }
 
     func quitGame() {
-        gameEngine?.unlink()
+        gameEngine?.endGame()
         dismiss(animated: true)
     }
 

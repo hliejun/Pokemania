@@ -64,7 +64,7 @@ class Renderer {
     func redraw(_ launcher: Launcher) {
         if hasSetupLauncherSet {
             if let nextType = launcher.nextInBuffer {
-                bufferView.image = assets[nextType]
+                bufferView.image = bubbleImages[nextType]
             }
             launcherView.transform = CGAffineTransform(rotationAngle: CGFloat(launcher.direction * .pi / 180.0))
         } else if let dockArea = delegate?.getDockArea(), let size = delegate?.getLauncherSize() {
@@ -113,7 +113,7 @@ class Renderer {
     }
 
     func togglePauseScreen(_ isPaused: Bool) {
-        if let dashboard = delegate?.getDashboardView(), isPaused {
+        if let dashboard = delegate?.getControlView(), isPaused {
             blurView.frame = delegate?.getMainView().frame ?? CGRect.zero
             blurView.layer.zPosition = 200
             dashboard.layer.zPosition = 300
@@ -130,7 +130,7 @@ class Renderer {
         launcherView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size * launcherRatio, height: size))
         launcherView.center = CGPoint(x: dockArea.midX, y: dockArea.midY)
         launcherView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        launcherView.animationImages = launcherAnimationSet
+        launcherView.animationImages = launcherImages
         launcherView.animationDuration = 0.3
         launcherView.animationRepeatCount = 1
     }
@@ -153,14 +153,14 @@ class Renderer {
     }
 
     private func getAsset(for projectile: Projectile) -> UIImageView? {
-        guard let image = assets[projectile.type] else {
+        guard let image = bubbleImages[projectile.type] else {
             return nil
         }
         return UIImageView(image: image)
     }
 
     private func getAsset(for bubble: Bubble) -> UIImageView? {
-        guard let image = assets[bubble.getType()] else {
+        guard let image = bubbleImages[bubble.getType()] else {
             return nil
         }
         return UIImageView(image: image)

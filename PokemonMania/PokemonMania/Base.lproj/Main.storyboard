@@ -71,7 +71,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="obA-oI-15s">
                                 <rect key="frame" x="0.0" y="116" width="1024" height="1250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="SHy-c2-OZs">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="SHy-c2-OZs">
                                     <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -109,7 +109,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="levelList" destination="obA-oI-15s" id="eCZ-7B-vSz"/>
-                        <segue destination="HGx-DR-l0Q" kind="show" identifier="StartGameFromGallery" id="fRV-cP-ic0"/>
+                        <segue destination="HGx-DR-l0Q" kind="presentation" identifier="StartGameFromGallery" modalTransitionStyle="flipHorizontal" id="fRV-cP-ic0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKp-Ba-hXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -137,7 +137,7 @@
             <objects>
                 <viewController id="HGx-DR-l0Q" customClass="GameViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UzV-yB-JrL">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOo-29-tJB">
@@ -502,11 +502,12 @@
                     <navigationItem key="navigationItem" id="WWS-Sz-NIQ"/>
                     <connections>
                         <outlet property="gameArea" destination="tim-Z9-MVN" id="5XM-rl-CiN"/>
+                        <segue destination="HGx-DR-l0Q" kind="presentation" identifier="StartGameFromDesigner" modalTransitionStyle="flipHorizontal" id="yBr-pn-2eB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ok-15-FPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="392" y="-20"/>
+            <point key="canvasLocation" x="392" y="-21"/>
         </scene>
         <!--Actions View Controller-->
         <scene sceneID="xSP-RM-Cot">
@@ -626,9 +627,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PZG-Yf-7o6"/>
                     </view>
-                    <connections>
-                        <segue destination="HGx-DR-l0Q" kind="show" identifier="StartGameFromDesigner" id="HVC-MF-Fum"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rb8-Ba-ZNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -661,7 +659,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="o8j-WG-YTx">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="8Vj-yl-wOX">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="18" id="8Vj-yl-wOX">
                                     <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -711,6 +709,6 @@
         <image name="shuffle" width="168" height="168"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HVC-MF-Fum"/>
+        <segue reference="fRV-cP-ic0"/>
     </inferredMetricsTieBreakers>
 </document>

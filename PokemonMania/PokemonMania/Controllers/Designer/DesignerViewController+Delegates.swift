@@ -60,6 +60,10 @@ extension DesignerViewController: PaletteDelegate, DesignDelegate, ActionDelegat
         refreshSavedLevels(at: index)
     }
 
+    func didStartGame(_ sender: Any) {
+        performSegue(withIdentifier: "StartGameFromDesigner", sender: sender)
+    }
+
     func getGameStage() -> Stage {
         return designer?.getCopyOfStage() ?? Stage()
     }

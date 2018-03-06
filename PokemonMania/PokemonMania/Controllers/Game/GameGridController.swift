@@ -13,6 +13,7 @@ class GameGridController: UICollectionViewController, UICollectionViewDelegateFl
     weak var delegate: GameGridDelegate?
     var cellSize: CGFloat = 0
     var maxRows: Int = 0
+    var maxColumns = DisplaySettings.maxColumns.rawValue
 
     override func viewDidLoad() {
         super.viewDidLoad()

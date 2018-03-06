@@ -12,13 +12,12 @@ protocol ActionDelegate: class {
     func didLoad(with templateName: String)
     func didDelete(with templateName: String, index: IndexPath)
     func didSave(with templateName: String, isPreset: Bool)
+    func didStartGame(_ sender: Any)
 }
 
 class ActionsViewController: UIViewController {
     weak var delegate: ActionDelegate?
-
-    weak private var gameControl: GameViewController?
-    weak private var templateControl: TemplateViewController?
+    private var templateControl: TemplateViewController?
     private var startAlert: UIAlertController?
     private var saveAlert: UIAlertController?
     private var resetAlert: UIAlertController?
@@ -33,10 +32,6 @@ class ActionsViewController: UIViewController {
             templateControl?.delegate = self
             templateControl?.setTemplates(templates)
         }
-        if let controller = segue.destination as? GameViewController {
-            gameControl = controller
-            gameControl?.delegate = delegate as? GameDelegate
-        }
     }
 
     override func viewDidLoad() {
@@ -50,7 +45,7 @@ class ActionsViewController: UIViewController {
     @IBAction func startGame(_ sender: Any) {
         startAlert = createAlert(ofType: .start)
         startAlert?.addAction(UIAlertAction(title: "Start", style: .destructive) { _ in
-            self.performSegue(withIdentifier: "StartGameFromDesigner", sender: sender)
+            self.delegate?.didStartGame(sender)
         })
         if let alert = startAlert {
             present(alert, animated: true)
@@ -71,7 +66,8 @@ class ActionsViewController: UIViewController {
                 self.present(alert, animated: true)
             }
         })
-        self.present(optionsAlert, animated: true)
+        optionsAlert.popoverPresentationController?.sourceView = sender as? UIView
+        present(optionsAlert, animated: true)
     }
 
     @IBAction func resetDesign(_ sender: Any) {
@@ -143,9 +139,7 @@ class ActionsViewController: UIViewController {
             let regex = try NSRegularExpression(pattern: "[^a-zA-Z0-9_]+", options: .caseInsensitive)
             let range = NSRange(location: 0, length: text.count)
             let matches = regex.matches(in: text, options: [.withoutAnchoringBounds], range: range)
-            return !text.isEmpty
-                && !templates.contains(text)
-                && matches.isEmpty
+            return !text.isEmpty && !templates.contains(text) && matches.isEmpty
         } catch {
             return false
         }

@@ -180,6 +180,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BF6B59D2204E34B000BED7D2 /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				BF72118D20493B6B006015F0 /* Constants.swift */,
+			);
+			path = Specs;
+			sourceTree = "<group>";
+		};
 		BF72116A204933C4006015F0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,8 +378,8 @@
 			isa = PBXGroup;
 			children = (
 				BF939877204905CA001232F6 /* Main.storyboard */,
-				BF72118D20493B6B006015F0 /* Constants.swift */,
 				BF93987F204905CA001232F6 /* Info.plist */,
+				BF6B59D2204E34B000BED7D2 /* Specs */,
 				BF72116A204933C4006015F0 /* Models */,
 				BF72116B204933E1006015F0 /* Views */,
 				BF72116C204933E6006015F0 /* Controllers */,
