@@ -6,9 +6,9 @@ import UIKit
 class DesignerViewController: UIViewController {
     @IBOutlet private var gameArea: UIView!
 
-    internal var gridControl: BubbleGridViewController?
-    internal var paletteControl: PaletteViewController?
-    internal var actionsControl: ActionsViewController?
+    weak internal var gridControl: BubbleGridViewController?
+    weak internal var paletteControl: PaletteViewController?
+    weak internal var actionsControl: ActionsViewController?
 
     internal var designer: LevelDesigner?
     internal var selectedType: Type?

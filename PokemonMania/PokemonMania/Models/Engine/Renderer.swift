@@ -11,6 +11,7 @@ class Renderer {
     private var launcherView: LauncherView
     private var launcherStandView: UIImageView
     private var bufferView: UIImageView
+    private let blurView: UIVisualEffectView
     private var hasSetupLauncherSet = false
 
     init(delegate: GameEngineDelegate?) {
@@ -18,6 +19,7 @@ class Renderer {
         launcherView = LauncherView()
         bufferView = UIImageView()
         launcherStandView = UIImageView()
+        blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         projectileViews = [:]
         bubbleViews = [:]
         let diameter: CGFloat = delegate?.getProjectileSize() ?? 0
@@ -108,6 +110,18 @@ class Renderer {
     func animateView(of launcher: Launcher) {
         launcherView.stopAnimating()
         launcherView.startAnimating()
+    }
+
+    func togglePauseScreen(_ isPaused: Bool) {
+        if let dashboard = delegate?.getDashboardView(), isPaused {
+            blurView.frame = delegate?.getMainView().frame ?? CGRect.zero
+            blurView.layer.zPosition = 200
+            dashboard.layer.zPosition = 300
+            updateSubview(blurView)
+            dashboard.superview?.bringSubview(toFront: dashboard)
+        } else {
+            blurView.removeFromSuperview()
+        }
     }
 
     private func setupLauncher(ofSize size: CGFloat, at dockArea: CGRect) {

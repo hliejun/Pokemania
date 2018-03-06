@@ -11,6 +11,7 @@ protocol GameEngineDelegate: class {
     func getProjectileSize() -> CGFloat
     func getMainView() -> UIView
     func getGridView() -> UICollectionView
+    func getDashboardView() -> UIView
 }
 
 class GameEngine {
@@ -57,6 +58,15 @@ class GameEngine {
         setupLauncherGestures(on: viewDelegate.getMainView())
         displayLink.isPaused = false
         bubbles.forEach { position, bubble in renderer.addView(of: bubble, at: position) }
+    }
+
+    func unlink() {
+        displayLink.remove(from: .current, forMode: .defaultRunLoopMode)
+    }
+
+    func setState(_ isPaused: Bool) {
+        displayLink.isPaused = isPaused
+        renderer.togglePauseScreen(isPaused)
     }
 
     private func addBubble(type: Type, at nearestSlot: Position) {
@@ -223,7 +233,8 @@ class GameEngine {
 
     @objc
     func launchBubble() {
-        if let projectile = launcher.launch(from: origin, diameter: projectileSize, using: physics) {
+        if let projectile = launcher.launch(from: origin, diameter: projectileSize, using: physics),
+           !displayLink.isPaused {
             projectiles.insert(projectile)
             renderer.animateView(of: launcher)
         }

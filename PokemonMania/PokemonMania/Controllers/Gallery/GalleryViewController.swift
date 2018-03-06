@@ -7,7 +7,7 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate,
 UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet private var levelList: UICollectionView!
     private var levels: [String: Stage] = [:]
-    private var gameControl: GameViewController?
+    weak private var gameControl: GameViewController?
     private var stageToSegue: Stage = Stage()
 
     override var prefersStatusBarHidden: Bool {

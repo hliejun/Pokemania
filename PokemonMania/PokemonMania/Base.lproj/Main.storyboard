@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Quick Battle"/>
                                 <connections>
-                                    <segue destination="HGx-DR-l0Q" kind="custom" customClass="CustomSegue" customModule="PokemonMania" customModuleProvider="target" id="UtV-UF-Bf8"/>
+                                    <segue destination="HGx-DR-l0Q" kind="show" id="UtV-UF-Bf8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WR-ei-gs3">
@@ -109,7 +109,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="levelList" destination="obA-oI-15s" id="eCZ-7B-vSz"/>
-                        <segue destination="HGx-DR-l0Q" kind="custom" identifier="StartGameFromGallery" customClass="CustomSegue" customModule="PokemonMania" customModuleProvider="target" id="fRV-cP-ic0"/>
+                        <segue destination="HGx-DR-l0Q" kind="show" identifier="StartGameFromGallery" id="fRV-cP-ic0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKp-Ba-hXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -137,7 +137,7 @@
             <objects>
                 <viewController id="HGx-DR-l0Q" customClass="GameViewController" customModule="PokemonMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UzV-yB-JrL">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOo-29-tJB">
@@ -627,7 +627,7 @@
                         <viewLayoutGuide key="safeArea" id="PZG-Yf-7o6"/>
                     </view>
                     <connections>
-                        <segue destination="HGx-DR-l0Q" kind="custom" identifier="StartGameFromDesigner" customClass="CustomSegue" customModule="PokemonMania" customModuleProvider="target" id="HVC-MF-Fum"/>
+                        <segue destination="HGx-DR-l0Q" kind="show" identifier="StartGameFromDesigner" id="HVC-MF-Fum"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rb8-Ba-ZNS" userLabel="First Responder" sceneMemberID="firstResponder"/>

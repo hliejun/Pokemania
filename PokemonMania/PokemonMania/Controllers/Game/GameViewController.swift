@@ -8,13 +8,14 @@ protocol GameDelegate: class {
     func getGameStage() -> Stage
 }
 
-class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate {
+class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate, DashboardDelegate {
     @IBOutlet private var backgroundView: UIView!
     @IBOutlet private var dashboard: UIView!
     @IBOutlet private var gameArea: UIView!
     @IBOutlet private var dock: UIView!
     weak var delegate: GameDelegate?
-    private var gridControl: GameGridController?
+    weak private var dashboardControl: DashboardViewController?
+    weak private var gridControl: GameGridController?
     private var gameEngine: GameEngine?
     private var loadedStage: Stage?
     private var isBackgroundSet: Bool = false
@@ -28,6 +29,10 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
         if let controller = seguedController as? GameGridController {
             gridControl = controller
             gridControl?.delegate = self
+        }
+        if let controller = seguedController as? DashboardViewController {
+            dashboardControl = controller
+            dashboardControl?.delegate = self
         }
     }
 
@@ -78,6 +83,19 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
             fatalError("Fatal: No grid provided for game engine.")
         }
         return grid
+    }
+
+    func getDashboardView() -> UIView {
+        return dashboard
+    }
+
+    func pauseGame(_ isPaused: Bool) {
+        gameEngine?.setState(isPaused)
+    }
+
+    func quitGame() {
+        gameEngine?.unlink()
+        dismiss(animated: true)
     }
 
     private func setupDemoStage() {

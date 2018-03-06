@@ -56,7 +56,6 @@
 		BF939889204905CA001232F6 /* PokemonManiaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939888204905CA001232F6 /* PokemonManiaTests.swift */; };
 		BF939894204905CA001232F6 /* PokemonManiaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF939893204905CA001232F6 /* PokemonManiaUITests.swift */; };
 		BF9EADF82049876F0097836C /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EADF72049876F0097836C /* CustomSegue.swift */; };
-		BF9EADFB204A5E5C0097836C /* PhysicsEngine+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EADFA204A5E5C0097836C /* PhysicsEngine+Extra.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,7 +132,6 @@
 		BF939893204905CA001232F6 /* PokemonManiaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonManiaUITests.swift; sourceTree = "<group>"; };
 		BF939895204905CA001232F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF9EADF72049876F0097836C /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
-		BF9EADFA204A5E5C0097836C /* PhysicsEngine+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhysicsEngine+Extra.swift"; sourceTree = "<group>"; };
 		C397931A398C1458FEFBBEE3 /* Pods-PokemonManiaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemonManiaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokemonManiaUITests/Pods-PokemonManiaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D1C6D985B0D6E9D9F0CFED99 /* Pods-PokemonMania.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemonMania.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokemonMania/Pods-PokemonMania.release.xcconfig"; sourceTree = "<group>"; };
 		D2C09FEA1770DC25610F7751 /* Pods-PokemonManiaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemonManiaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokemonManiaTests/Pods-PokemonManiaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 				BF72119320493D97006015F0 /* Renderer.swift */,
 				BF72119120493D61006015F0 /* Launcher.swift */,
 				BF72119520493DEB006015F0 /* Projectile.swift */,
-				BF9EADFA204A5E5C0097836C /* PhysicsEngine+Extra.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -737,7 +734,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF9EADFB204A5E5C0097836C /* PhysicsEngine+Extra.swift in Sources */,
 				BF721182204938B2006015F0 /* CaptureBubble.swift in Sources */,
 				BF7211C120495931006015F0 /* GameGridController.swift in Sources */,
 				BF72119220493D61006015F0 /* Launcher.swift in Sources */,

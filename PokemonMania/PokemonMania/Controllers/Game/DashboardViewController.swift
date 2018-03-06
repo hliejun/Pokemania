@@ -3,8 +3,15 @@
 
 import UIKit
 
+protocol DashboardDelegate: class {
+    func pauseGame(_ isPaused: Bool)
+    func quitGame()
+}
+
 class DashboardViewController: UIViewController {
     @IBOutlet private var scoreLabel: UILabel!
+    weak var delegate: DashboardDelegate?
+    private var isPaused = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +26,17 @@ class DashboardViewController: UIViewController {
     }
 
     @IBAction func didQuit(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        delegate?.quitGame()
     }
 
     @IBAction func didPause(_ sender: UIButton) {
+        isPaused = !isPaused
+        delegate?.pauseGame(isPaused)
+        let title = isPaused ? "Resume" : "Pause"
+        let animator = UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.6) {
+            sender.setTitle(title, for: .normal)
+        }
+        animator.startAnimation()
     }
 
 }

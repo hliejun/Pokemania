@@ -17,8 +17,8 @@ protocol ActionDelegate: class {
 class ActionsViewController: UIViewController {
     weak var delegate: ActionDelegate?
 
-    private var gameControl: GameViewController?
-    private var templateControl: TemplateViewController?
+    weak private var gameControl: GameViewController?
+    weak private var templateControl: TemplateViewController?
     private var startAlert: UIAlertController?
     private var saveAlert: UIAlertController?
     private var resetAlert: UIAlertController?
