@@ -30,27 +30,4 @@ class GridBubbleView: BubbleView {
         }
     }
 
-    func animateBurst(handler: AnimationHandler?) {
-        let animator = UIViewPropertyAnimator(duration: Animations.duration.rawValue, dampingRatio: 1) {
-            self.alpha = 0
-        }
-        if let completionHandler = handler {
-            animator.addCompletion(completionHandler)
-        }
-        animator.startAnimation()
-        overlay?.startAnimating()
-    }
-
-    func animateDrop(handler: AnimationHandler?) {
-        let animator = UIViewPropertyAnimator(duration: Animations.duration.rawValue, dampingRatio: 1) {
-            let transform = CGAffineTransform(translationX: 0, y: CGFloat(Animations.displacement.rawValue))
-            self.alpha = 0
-            self.center = self.center.applying(transform)
-        }
-        if let completionHandler = handler {
-            animator.addCompletion(completionHandler)
-        }
-        animator.startAnimation()
-    }
-
 }

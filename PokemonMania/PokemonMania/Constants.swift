@@ -65,10 +65,23 @@ let launcherImages = [#imageLiteral(resourceName: "cannon-1"), #imageLiteral(res
 let bubbleBurstImages = [#imageLiteral(resourceName: "bubble-burst-1"), #imageLiteral(resourceName: "bubble-burst-2"), #imageLiteral(resourceName: "bubble-burst-3"), #imageLiteral(resourceName: "bubble-burst-4")]
 
 let bubbleImages: [Type: UIImage] = [
-    .energyType(.fire): #imageLiteral(resourceName: "bubble-red"),
-    .energyType(.water): #imageLiteral(resourceName: "bubble-blue"),
-    .energyType(.grass): #imageLiteral(resourceName: "bubble-green"),
-    .energyType(.electric): #imageLiteral(resourceName: "bubble-orange")
+    .energyType(.fire): #imageLiteral(resourceName: "bubble-fire"),
+    .energyType(.water): #imageLiteral(resourceName: "bubble-water"),
+    .energyType(.grass): #imageLiteral(resourceName: "bubble-grass"),
+    .energyType(.electric): #imageLiteral(resourceName: "bubble-electric"),
+    .energyType(.normal): #imageLiteral(resourceName: "bubble-normal"),
+    .energyType(.dark): #imageLiteral(resourceName: "bubble-dark"),
+    .energyType(.ghost): #imageLiteral(resourceName: "bubble-ghost"),
+    .energyType(.bug): #imageLiteral(resourceName: "bubble-bug"),
+    .energyType(.dragon): #imageLiteral(resourceName: "bubble-dragon"),
+    .energyType(.ice): #imageLiteral(resourceName: "bubble-ice"),
+    .energyType(.fighting): #imageLiteral(resourceName: "bubble-fighting"),
+    .energyType(.flying): #imageLiteral(resourceName: "bubble-flying"),
+    .energyType(.ground): #imageLiteral(resourceName: "bubble-ground"),
+    .energyType(.poison): #imageLiteral(resourceName: "bubble-poison"),
+    .energyType(.psychic): #imageLiteral(resourceName: "bubble-psychic"),
+    .energyType(.rock): #imageLiteral(resourceName: "bubble-rock"),
+    .energyType(.steel): #imageLiteral(resourceName: "bubble-steel")
 ]
 
 let globalEffects: [Type.Effect: Effect] = [
@@ -80,11 +93,16 @@ let globalEffects: [Type.Effect: Effect] = [
 ]
 
 let globalObstacles: [Type.Obstacle: Obstacle] = [
-    .steel: Obstacle(type: .steel, weaknesses: Set([.ice, .fire]), tolerance: 3)
+    .steelwall: Obstacle(type: .steelwall, weaknesses: Set(), tolerance: 0),
+    .magnet: Obstacle(type: .magnet, weaknesses: Set(), tolerance: 0),
+    .tree: Obstacle(type: .tree, weaknesses: Set([.fire]), tolerance: 3)
 ]
 
 let globalCreatures: [Type.Creature: Creature] = [
-    .pikachu: Creature(type: .pikachu, energy: .electric, rarity: 0.2, isShiny: true)
+    .pikachu: Creature(type: .pikachu, energy: .electric, rarity: 0.01, isShiny: false),
+    .bulbasaur: Creature(type: .bulbasaur, energy: .grass, rarity: 0.05, isShiny: false),
+    .charmander: Creature(type: .charmander, energy: .fire, rarity: 0.03, isShiny: false),
+    .squirtle: Creature(type: .squirtle, energy: .water, rarity: 0.04, isShiny: false)
 ]
 
 let globalTemplateBubbles = [

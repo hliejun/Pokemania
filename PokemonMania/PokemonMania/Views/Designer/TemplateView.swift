@@ -39,11 +39,7 @@ class TemplateView: UICollectionViewCell {
     private func decorate() {
         backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         layer.cornerRadius = 18
-        layer.masksToBounds = false
-        layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        layer.shadowOffset = CGSize(width: 8, height: 8)
-        layer.shadowOpacity = 0.6
-        layer.shadowRadius = 12
+        layer.masksToBounds = true
         decorateLabel()
     }
 

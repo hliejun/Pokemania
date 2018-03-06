@@ -7,7 +7,7 @@ class PaletteView: UICollectionViewCell {
 
     override var isSelected: Bool {
         didSet {
-            layer.borderColor = isSelected ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            layer.borderColor = isSelected ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         }
     }
 

@@ -92,8 +92,8 @@ class PaletteViewController: UIViewController, UICollectionViewDataSource, UICol
         bubbleOptions.alpha = isSelecting ? 1.0 : 0.5
         bubbleOptions.isScrollEnabled = isSelecting
         cycleButton.isUserInteractionEnabled = editMode != .remove
-        cycleButton.tintColor = editMode == .cycle ? #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1) : #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
-        editButton.tintColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
+        cycleButton.tintColor = editMode == .cycle ? #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1) : #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0.6)
+        editButton.tintColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0.6)
     }
 
     @IBAction func toggleEditing(_ sender: UIButton) {

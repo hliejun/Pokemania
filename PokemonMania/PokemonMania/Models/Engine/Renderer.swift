@@ -98,10 +98,17 @@ class Renderer {
         guard let view = bubbleViews[bubble] else {
             return
         }
-        if isCleaning {
-            view.animateDrop(handler: completion)
-        } else {
-            view.animateBurst(handler: completion)
+        let animator = UIViewPropertyAnimator(duration: Animations.duration.rawValue, dampingRatio: 1) {
+            let transform = CGAffineTransform(translationX: 0, y: CGFloat(Animations.displacement.rawValue))
+            view.alpha = 0
+            view.center = isCleaning ? view.center.applying(transform) : view.center
+        }
+        if let handler = completion {
+            animator.addCompletion(handler)
+        }
+        animator.startAnimation()
+        if !isCleaning {
+            view.overlay?.startAnimating()
         }
     }
 
