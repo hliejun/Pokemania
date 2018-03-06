@@ -3,19 +3,16 @@
 
 import UIKit
 
-class ProjectileView: BubbleView {
+class ProjectileView: GridBubbleView {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        decorate()
-    }
+    override init(context: CGRect) {
+        super.init(context: context)
+        overlay?.frame = CGRect(origin: CGPoint.zero, size: context.size)
 
-    convenience init() {
-        self.init(frame: CGRect.zero)
     }
 
     required init(coder aDecoder: NSCoder) {
-        fatalError("This class does not support NSCoding")
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

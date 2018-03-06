@@ -14,6 +14,7 @@
 		BF6B59D1204D63BF00BED7D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6B59D0204D63BF00BED7D2 /* Assets.xcassets */; };
 		BF6B59D4204E68B100BED7D2 /* StandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B59D3204E68B100BED7D2 /* StandView.swift */; };
 		BF6B59D6204E68BB00BED7D2 /* BufferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B59D5204E68BB00BED7D2 /* BufferView.swift */; };
+		BF6B59D8204E968F00BED7D2 /* GridBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B59D7204E968F00BED7D2 /* GridBubbleView.swift */; };
 		BF72116920491640006015F0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BF72116820491640006015F0 /* README.md */; };
 		BF7211732049371A006015F0 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211722049371A006015F0 /* Effect.swift */; };
 		BF7211752049374E006015F0 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7211742049374E006015F0 /* Obstacle.swift */; };
@@ -85,6 +86,7 @@
 		BF6B59D0204D63BF00BED7D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF6B59D3204E68B100BED7D2 /* StandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandView.swift; sourceTree = "<group>"; };
 		BF6B59D5204E68BB00BED7D2 /* BufferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferView.swift; sourceTree = "<group>"; };
+		BF6B59D7204E968F00BED7D2 /* GridBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBubbleView.swift; sourceTree = "<group>"; };
 		BF72116820491640006015F0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		BF7211722049371A006015F0 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		BF7211742049374E006015F0 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				BF72119B20493E72006015F0 /* ProjectileView.swift */,
+				BF6B59D7204E968F00BED7D2 /* GridBubbleView.swift */,
 				BF72119D20493EA4006015F0 /* LauncherView.swift */,
 				BF6B59D3204E68B100BED7D2 /* StandView.swift */,
 				BF6B59D5204E68BB00BED7D2 /* BufferView.swift */,
@@ -755,6 +758,7 @@
 				BF72119620493DEB006015F0 /* Projectile.swift in Sources */,
 				BF7211B32049425F006015F0 /* DesignerViewController+Delegates.swift in Sources */,
 				BF721189204939BE006015F0 /* Position.swift in Sources */,
+				BF6B59D8204E968F00BED7D2 /* GridBubbleView.swift in Sources */,
 				BF7211A420493F96006015F0 /* PaletteView.swift in Sources */,
 				BF7211AA20494062006015F0 /* Storage.swift in Sources */,
 				BF72119E20493EA4006015F0 /* LauncherView.swift in Sources */,

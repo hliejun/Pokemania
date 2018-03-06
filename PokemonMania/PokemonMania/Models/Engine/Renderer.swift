@@ -6,15 +6,13 @@ import UIKit
 class Renderer {
     private weak var delegate: GameEngineDelegate?
     private var projectileViews: [Projectile: ProjectileView]
-    private var bubbleViews: [Bubble: BubbleView]
+    private var bubbleViews: [Bubble: GridBubbleView]
     private let pauseView: UIVisualEffectView
     private let bubbleSize: CGSize
     private var launcherView = LauncherView()
     private var launcherStandView = StandView()
     private var bufferView = BufferView()
     private var didSetupLauncher = false
-
-    typealias AnimationHandler = (UIViewAnimatingPosition) -> Void
 
     init(delegate: GameEngineDelegate?) {
         self.delegate = delegate
@@ -34,15 +32,15 @@ class Renderer {
     }
 
     func addView(of bubble: Bubble, at position: Position) {
-        let view = BubbleView()
         let index = IndexPath(item: position.column, section: position.row)
         guard let gridPosition = delegate?.getGridView().cellForItem(at: index)?.center else {
             return
         }
+        let frame = CGRect(origin: CGPoint.zero, size: bubbleSize)
+        let view = GridBubbleView(context: frame)
         let center = delegate?.getGridView().convert(gridPosition, to: delegate?.getMainView())
-        view.setStyle(sprite: getAsset(for: bubble))
-        view.frame = CGRect(origin: CGPoint.zero, size: bubbleSize)
         view.center = center ?? CGPoint.zero
+        view.setStyle(sprite: getAsset(for: bubble))
         if bubbleViews[bubble] != nil {
             removeView(of: bubble)
         }
@@ -79,13 +77,14 @@ class Renderer {
     }
 
     func redraw(_ projectile: Projectile) {
-        let view = projectileViews[projectile] ?? ProjectileView()
         let size = projectileViews[projectile]?.frame.size ?? bubbleSize
+        let frame = CGRect(origin: projectile.location, size: size)
+        let view = projectileViews[projectile] ?? ProjectileView(context: frame)
+        view.frame = frame
         if projectileViews[projectile] == nil {
             view.setStyle(sprite: getAsset(for: projectile))
             projectileViews[projectile] = view
         }
-        view.frame = CGRect(origin: projectile.location, size: size)
         updateSubview(view)
         launcherView.superview?.bringSubview(toFront: launcherView)
     }
@@ -99,15 +98,11 @@ class Renderer {
         guard let view = bubbleViews[bubble] else {
             return
         }
-        let animator = UIViewPropertyAnimator(duration: Animations.duration.rawValue, dampingRatio: 0.6) {
-            let transform = CGAffineTransform(translationX: 0, y: CGFloat(Animations.displacement.rawValue))
-            view.alpha = 0.0
-            view.center = isCleaning ? view.center.applying(transform) : view.center
+        if isCleaning {
+            view.animateDrop(handler: completion)
+        } else {
+            view.animateBurst(handler: completion)
         }
-        if let handler = completion {
-            animator.addCompletion(handler)
-        }
-        animator.startAnimation()
     }
 
     func togglePauseScreen(_ isPaused: Bool) {
@@ -124,12 +119,8 @@ class Renderer {
 
     private func setupLauncher(ofSize size: CGFloat, at dockArea: CGRect) {
         let launcherRatio = launcherImage.size.width / launcherImage.size.height
-        launcherView.animationDuration = Animations.duration.rawValue / 2
-        launcherView.animationImages = launcherImages
-        launcherView.animationRepeatCount = 1
         launcherView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size * launcherRatio, height: size))
         launcherView.center = CGPoint(x: dockArea.midX, y: dockArea.midY)
-        launcherView.image = launcherImage
     }
 
     private func setupLauncherBase(at dockArea: CGRect) {
@@ -137,14 +128,11 @@ class Renderer {
         let width = launcherView.frame.width
         launcherStandView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: width, height: width * baseRatio))
         launcherStandView.center = CGPoint(x: dockArea.midX, y: dockArea.midY)
-        launcherStandView.layer.zPosition = Depth.back.rawValue
-        launcherStandView.image = launcherStandImage
     }
 
     private func setupBuffer(ofSize size: CGFloat) {
         bufferView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size, height: size))
         bufferView.center = launcherView.center
-        bufferView.layer.zPosition = Depth.back.rawValue
     }
 
     private func updateSubview(_ subview: UIView) {

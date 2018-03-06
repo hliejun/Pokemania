@@ -20,6 +20,8 @@ class StandView: UIImageView {
 
     func decorate() {
         backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        layer.zPosition = Depth.back.rawValue
+        image = launcherStandImage
     }
 
 }

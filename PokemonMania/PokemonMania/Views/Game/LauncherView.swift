@@ -20,6 +20,10 @@ class LauncherView: UIImageView {
 
     func decorate() {
         backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        animationDuration = Animations.duration.rawValue / 2
+        animationImages = launcherImages
+        animationRepeatCount = 1
+        image = launcherImage
     }
 
 }

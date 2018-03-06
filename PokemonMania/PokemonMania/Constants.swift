@@ -3,6 +3,8 @@
 
 import UIKit
 
+typealias AnimationHandler = (UIViewAnimatingPosition) -> Void
+
 enum Formats: String {
     case date = "dd/MM/YY HH:mm"
 }
@@ -60,6 +62,8 @@ let launcherImage = #imageLiteral(resourceName: "cannon-0")
 
 let launcherImages = [#imageLiteral(resourceName: "cannon-1"), #imageLiteral(resourceName: "cannon-2"), #imageLiteral(resourceName: "cannon-3"), #imageLiteral(resourceName: "cannon-4"), #imageLiteral(resourceName: "cannon-5"), #imageLiteral(resourceName: "cannon-6"), #imageLiteral(resourceName: "cannon-7"), #imageLiteral(resourceName: "cannon-8"), #imageLiteral(resourceName: "cannon-9"), #imageLiteral(resourceName: "cannon-10"), #imageLiteral(resourceName: "cannon-11"), #imageLiteral(resourceName: "cannon-0")]
 
+let bubbleBurstImages = [#imageLiteral(resourceName: "bubble-burst-1"), #imageLiteral(resourceName: "bubble-burst-2"), #imageLiteral(resourceName: "bubble-burst-3"), #imageLiteral(resourceName: "bubble-burst-4")]
+
 let bubbleImages: [Type: UIImage] = [
     .energyType(.fire): #imageLiteral(resourceName: "bubble-red"),
     .energyType(.water): #imageLiteral(resourceName: "bubble-blue"),
@@ -68,7 +72,11 @@ let bubbleImages: [Type: UIImage] = [
 ]
 
 let globalEffects: [Type.Effect: Effect] = [
-    .sunny: Effect(type: .sunny, targets: Set([.fire, .grass]), radius: 0, multiplier: 2.0, energy: .fire)
+    .copycat: Effect(type: .copycat, targets: Set([]), radius: 0, multiplier: 2.0, energy: .none),
+    .explosion: Effect(type: .explosion, targets: Set([]), radius: 1, multiplier: 2.0, energy: .none),
+    .payday: Effect(type: .payday, targets: Set([]), radius: 0, multiplier: 4.0, energy: .none),
+    .raindance: Effect(type: .raindance, targets: Set([.water]), radius: 0, multiplier: 2.0, energy: .water),
+    .sunnyday: Effect(type: .sunnyday, targets: Set([.fire, .grass]), radius: 0, multiplier: 2.0, energy: .fire)
 ]
 
 let globalObstacles: [Type.Obstacle: Obstacle] = [
