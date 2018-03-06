@@ -3,7 +3,7 @@
 
 import UIKit
 
-class BubbleCell: UICollectionViewCell {
+class BubbleView: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -16,8 +16,8 @@ class BubbleCell: UICollectionViewCell {
     }
 
     func decorate() {
-        layer.cornerRadius = self.frame.height / CGFloat(2)
         backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.4955318921)
+        layer.cornerRadius = self.frame.height / CGFloat(2)
     }
 
 }

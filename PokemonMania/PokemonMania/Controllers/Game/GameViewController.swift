@@ -103,7 +103,7 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
             return
         }
         loadedStage = Stage()
-        sampleBubbles.forEach { bubble in loadedStage?.insertBubble(bubble) }
+        globalTemplateBubbles.forEach { bubble in loadedStage?.insertBubble(bubble) }
     }
 
     private func setBackground(with backgroundImage: UIImage) {

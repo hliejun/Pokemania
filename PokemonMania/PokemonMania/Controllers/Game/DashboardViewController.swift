@@ -25,18 +25,18 @@ class DashboardViewController: UIViewController {
         super.viewDidLayoutSubviews()
     }
 
-    @IBAction func didQuit(_ sender: UIButton) {
-        delegate?.quitGame()
-    }
-
     @IBAction func didPause(_ sender: UIButton) {
         isPaused = !isPaused
         delegate?.pauseGame(isPaused)
         let title = isPaused ? "Resume" : "Pause"
-        let animator = UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.6) {
+        let animator = UIViewPropertyAnimator(duration: Animations.duration.rawValue, dampingRatio: 0.6) {
             sender.setTitle(title, for: .normal)
         }
         animator.startAnimation()
+    }
+
+    @IBAction func didQuit(_ sender: UIButton) {
+        delegate?.quitGame()
     }
 
 }

@@ -39,9 +39,9 @@ class GameGridController: UICollectionViewController, UICollectionViewDelegateFl
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BubbleCell", for: indexPath)
-        guard let bubbleCell = cell as? BubbleCell else {
-            fatalError("Fatal: BubbleCell cannot be used.")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BubbleView", for: indexPath)
+        guard let bubbleCell = cell as? BubbleView else {
+            fatalError("Fatal: BubbleView cannot be used.")
         }
         bubbleCell.setStyle(sprite: nil)
         return bubbleCell
@@ -55,7 +55,7 @@ class GameGridController: UICollectionViewController, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         let inset = collectionView.bounds.width / CGFloat(maxColumns * 2 + 1)
-        let padding = -inset / 5
+        let padding = -inset * Style.paddingToInsetRatio.rawValue
         return section % 2 == 0
             ? UIEdgeInsets(top: 0, left: 0, bottom: padding, right: 0)
             : UIEdgeInsets(top: 0, left: inset, bottom: padding, right: inset)

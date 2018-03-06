@@ -23,18 +23,11 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Load saved levels from file to levels collection...
-        // Need to sort by identifier index, and also store the last unlocked level...
-        // Selectively display levels by saved last unlocked level...
         levels = Storage.read(.levels, as: [String: Stage].self) ?? [:]
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    @IBAction func cancelLoad(_ sender: Any) {
-        dismiss(animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -43,10 +36,10 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LevelCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LevelView", for: indexPath)
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
-        guard let levelCell = cell as? TemplateCell else {
-            fatalError("Fatal: LevelCell cannot be used.")
+        guard let levelCell = cell as? TemplateView else {
+            fatalError("Fatal: LevelView cannot be used.")
         }
         if let level = levels[String(format: "%02d", indexPath.item + 1)] {
             let title = level.getTitle()
@@ -58,21 +51,33 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var width = collectionView.bounds.width
-        width = width < 600 ? width - 40 : (width - 80) / 3
-        return CGSize(width: width, height: width)
+        let cellSize: CGFloat
+        let margin: CGFloat = Style.largeMargin.rawValue
+        let tableWidth = collectionView.bounds.width
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            cellSize = floor((tableWidth - (4 * margin)) / 3)
+        default:
+            cellSize = floor(tableWidth - (2 * margin))
+        }
+        return CGSize(width: cellSize, height: cellSize)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        let inset = Style.largeInset.rawValue
+        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
+
+    @IBAction func cancelLoad(_ sender: Any) {
+        dismiss(animated: true)
     }
 
     @objc
     func didTap(_ recognizer: UITapGestureRecognizer) {
         let tapPosition = recognizer.location(in: levelList)
         if let index = levelList.indexPathForItem(at: tapPosition),
-           let level = levels[String(format: "%02d", index.item + 1)] {
+            let level = levels[String(format: "%02d", index.item + 1)] {
             stageToSegue = Stage(from: level)
             self.performSegue(withIdentifier: "StartGameFromGallery", sender: recognizer.view)
         }

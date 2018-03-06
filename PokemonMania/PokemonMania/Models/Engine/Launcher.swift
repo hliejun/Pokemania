@@ -28,8 +28,8 @@ class Launcher {
     }
 
     func launch(from origin: CGPoint, diameter: CGFloat, using engine: PhysicsEngine) -> Projectile? {
-        let leftLimit = QuadrantLimit.third.rawValue + LaunchSettings.angleLimit.rawValue
-        let rightLimit = QuadrantLimit.first.rawValue - LaunchSettings.angleLimit.rawValue
+        let leftLimit = Quadrant.third.rawValue + LaunchSettings.angleLimit.rawValue
+        let rightLimit = Quadrant.first.rawValue - LaunchSettings.angleLimit.rawValue
         guard direction > leftLimit || direction < rightLimit, let payloadType = queue.dequeue() else {
             return nil
         }

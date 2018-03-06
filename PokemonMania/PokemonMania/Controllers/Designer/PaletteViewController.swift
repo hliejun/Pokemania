@@ -17,9 +17,7 @@ class PaletteViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet private var bubbleOptions: UICollectionView!
     @IBOutlet private var cycleButton: UIButton!
     @IBOutlet private var editButton: UIButton!
-
     weak var delegate: PaletteDelegate?
-
     private var assets: [Type: UIImage] = [:]
     private var labels: [Type] = []
     private var editMode: EditMode = .select
@@ -35,34 +33,13 @@ class PaletteViewController: UIViewController, UICollectionViewDataSource, UICol
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func toggleEditing(_ sender: UIButton) {
-        var angle = -5 * Double.pi / 4
-        switch editMode {
-        case .select:
-            editMode = sender == cycleButton ? .cycle : .remove
-        case .remove:
-            editMode = .select
-            angle = -angle
-        case .cycle:
-            editMode = sender == cycleButton ? .select : .remove
-        }
-        if sender == editButton {
-            rotateButton(of: sender, by: angle)
-        }
-        if editMode == .cycle {
-            delegate?.didUpdateBubbleOption(nil)
-        }
-        setPaletteStyle(for: editMode)
-        delegate?.didUpdateEditToggle(editMode)
-    }
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return assets.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PaletteCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PaletteView", for: indexPath)
         let imageView = UIImageView(image: assets[labels[indexPath.row]])
         imageView.frame = CGRect(origin: CGPoint.zero, size: cell.bounds.size)
         cell.addSubview(imageView)
@@ -102,7 +79,8 @@ class PaletteViewController: UIViewController, UICollectionViewDataSource, UICol
         self.labels = [] + energies + effects + obstacles + creatures + balls
     }
 
-    private func rotateButton(of sender: UIButton, by angle: Double, for duration: Double = 0.3) {
+    private func rotateButton(of sender: UIButton, by angle: Double,
+                              for duration: Double = Animations.duration.rawValue * 0.5) {
         UIView.animate(withDuration: duration) {
             sender.transform = sender.transform.rotated(by: CGFloat(angle))
         }
@@ -116,6 +94,27 @@ class PaletteViewController: UIViewController, UICollectionViewDataSource, UICol
         cycleButton.isUserInteractionEnabled = editMode != .remove
         cycleButton.tintColor = editMode == .cycle ? #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1) : #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
         editButton.tintColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
+    }
+
+    @IBAction func toggleEditing(_ sender: UIButton) {
+        var angle = -5 * Double.pi / 4
+        switch editMode {
+        case .select:
+            editMode = sender == cycleButton ? .cycle : .remove
+        case .remove:
+            editMode = .select
+            angle = -angle
+        case .cycle:
+            editMode = sender == cycleButton ? .select : .remove
+        }
+        if sender == editButton {
+            rotateButton(of: sender, by: angle)
+        }
+        if editMode == .cycle {
+            delegate?.didUpdateBubbleOption(nil)
+        }
+        setPaletteStyle(for: editMode)
+        delegate?.didUpdateEditToggle(editMode)
     }
 
 }

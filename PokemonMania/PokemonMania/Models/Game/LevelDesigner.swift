@@ -93,14 +93,9 @@ class LevelDesigner {
         level.music = type
     }
 
-    func isValidDesign() -> Bool {
-        // Implement validation (check no disconnected graph)
-        return true
-    }
-
     func saveLevel(ofTitle title: String, isPreset: Bool = false) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/YY HH:mm"
+        formatter.dateFormat = Formats.date.rawValue
         let date = formatter.string(from: Date(timeIntervalSinceNow: 0))
         level.saveAs(title: title, date: date)
         if isPreset {
@@ -127,23 +122,7 @@ class LevelDesigner {
     }
 
     static func savePresets() {
-        let effects: [Type.Effect: Effect] = [
-            .sunny: Effect(type: .sunny, targets: Set([.fire, .grass]),
-                           radius: 0,
-                           multiplier: 2.0,
-                           energy: .fire)
-        ]
-
-        let obstacles: [Type.Obstacle: Obstacle] = [
-            .steel: Obstacle(type: .steel, weaknesses: Set([.ice, .fire]),
-                             tolerance: 3)
-        ]
-
-        let creatures: [Type.Creature: Creature] = [
-            .pikachu: Creature(type: .pikachu, energy: .electric, rarity: 0.2, isShiny: true)
-        ]
-
-        let preset = Preset(effects: effects, obstacles: obstacles, creatures: creatures)
+        let preset = Preset(effects: globalEffects, obstacles: globalObstacles, creatures: globalCreatures)
         Storage.write(preset, to: .presets)
     }
 

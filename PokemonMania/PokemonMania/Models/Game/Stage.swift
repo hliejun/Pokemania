@@ -34,17 +34,17 @@ class Stage: Codable {
         case .energyType(let energy):
             bubble = Bubble(at: position, type: type, energy: energy)
         case .effectType(let effect):
-            guard let effectData = effects[effect] else {
+            guard let effectData = globalEffects[effect] else {
                 return
             }
             bubble = EffectBubble(at: position, effect: effectData)
         case .obstacleType(let obstacle):
-            guard let obstacleData = obstacles[obstacle] else {
+            guard let obstacleData = globalObstacles[obstacle] else {
                 return
             }
             bubble = ObstacleBubble(at: position, obstacle: obstacleData)
         case .creatureType(let creature):
-            guard let creatureData = creatures[creature] else {
+            guard let creatureData = globalCreatures[creature] else {
                 return
             }
             bubble = CreatureBubble(at: position, creature: creatureData)

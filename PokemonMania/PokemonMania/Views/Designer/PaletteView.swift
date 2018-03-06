@@ -3,7 +3,7 @@
 
 import UIKit
 
-class PaletteCell: UICollectionViewCell {
+class PaletteView: UICollectionViewCell {
 
     override var isSelected: Bool {
         didSet {
@@ -22,8 +22,8 @@ class PaletteCell: UICollectionViewCell {
     }
 
     private func decorate() {
-        layer.cornerRadius = frame.height / CGFloat(2)
         layer.borderWidth = 4
+        layer.cornerRadius = frame.height / CGFloat(2)
     }
 
 }

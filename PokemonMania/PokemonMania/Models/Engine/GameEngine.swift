@@ -15,7 +15,7 @@ protocol GameEngineDelegate: class {
 }
 
 class GameEngine {
-    private weak var viewDelegate: GameEngineDelegate?
+    private weak var delegate: GameEngineDelegate?
     private var physics: PhysicsEngine
     private var renderer: Renderer
     private var stage: Stage
@@ -34,27 +34,27 @@ class GameEngine {
     }
 
     var origin: CGPoint {
-        let dockArea = viewDelegate?.getDockArea() ?? CGRect.zero
+        let dockArea = delegate?.getDockArea() ?? CGRect.zero
         return CGPoint(x: dockArea.midX, y: dockArea.midY)
     }
 
     var projectileSize: CGFloat {
-        return viewDelegate?.getProjectileSize() ?? 0
+        return delegate?.getProjectileSize() ?? 0
     }
 
     var parent: UIView? {
-        return viewDelegate?.getMainView()
+        return delegate?.getMainView()
     }
 
     var grid: UICollectionView? {
-        return viewDelegate?.getGridView()
+        return delegate?.getGridView()
     }
 
     init?(stage: Stage, delegate: GameEngineDelegate?) {
         guard let viewDelegate = delegate, let launcher = Launcher(using: launcherOptions) else {
             return nil
         }
-        self.viewDelegate = viewDelegate
+        self.delegate = viewDelegate
         self.stage = stage
         self.launcher = launcher
         physics = PhysicsEngine(bounds: viewDelegate.getGameArea())

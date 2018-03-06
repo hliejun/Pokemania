@@ -23,7 +23,6 @@ class ActionsViewController: UIViewController {
     private var resetAlert: UIAlertController?
     private var deleteAlert: UIAlertController?
     private var loadAlert: UIAlertController?
-
     private var templates = [String]()
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,51 +39,6 @@ class ActionsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    @IBAction func startGame(_ sender: Any) {
-        startAlert = createAlert(ofType: .start)
-        startAlert?.addAction(UIAlertAction(title: "Start", style: .destructive) { _ in
-            self.delegate?.didStartGame(sender)
-        })
-        if let alert = startAlert {
-            present(alert, animated: true)
-        }
-    }
-
-    @IBAction func saveDesign(_ sender: Any) {
-        let optionsAlert = UIAlertController(title: "Save Modes", message: "Pick Option", preferredStyle: .actionSheet)
-        optionsAlert.addAction(UIAlertAction(title: "Preset", style: .default) { _ in
-            self.saveAlert = self.getSaveAlert(isPreset: true)
-            if let alert = self.saveAlert {
-                self.present(alert, animated: true)
-            }
-        })
-        optionsAlert.addAction(UIAlertAction(title: "Custom", style: .default) { _ in
-            self.saveAlert = self.getSaveAlert(isPreset: false)
-            if let alert = self.saveAlert {
-                self.present(alert, animated: true)
-            }
-        })
-        optionsAlert.popoverPresentationController?.sourceView = sender as? UIView
-        present(optionsAlert, animated: true)
-    }
-
-    @IBAction func resetDesign(_ sender: Any) {
-        resetAlert = createAlert(ofType: .reset)
-        resetAlert?.addAction(UIAlertAction(title: "Reset", style: .destructive) { _ in self.delegate?.didReset() })
-        if let alert = resetAlert {
-            present(alert, animated: true)
-        }
-    }
-
-    @IBAction func cancelLoad(_ sender: Any) {
-        dismiss(animated: true)
-    }
-
-    @objc
-    func textDidChange(_ textField: UITextField) {
-        saveAlert?.actions[1].isEnabled = isValidLevelTitle(textField.text)
     }
 
     func setSavedLevels(with savedLevels: [String], deleted index: IndexPath? = nil) {
@@ -143,6 +97,51 @@ class ActionsViewController: UIViewController {
         } catch {
             return false
         }
+    }
+
+    @IBAction func startGame(_ sender: Any) {
+        startAlert = createAlert(ofType: .start)
+        startAlert?.addAction(UIAlertAction(title: "Start", style: .destructive) { _ in
+            self.delegate?.didStartGame(sender)
+        })
+        if let alert = startAlert {
+            present(alert, animated: true)
+        }
+    }
+
+    @IBAction func saveDesign(_ sender: Any) {
+        let optionsAlert = UIAlertController(title: "Save Modes", message: "Pick Option", preferredStyle: .actionSheet)
+        optionsAlert.addAction(UIAlertAction(title: "Preset", style: .default) { _ in
+            self.saveAlert = self.getSaveAlert(isPreset: true)
+            if let alert = self.saveAlert {
+                self.present(alert, animated: true)
+            }
+        })
+        optionsAlert.addAction(UIAlertAction(title: "Custom", style: .default) { _ in
+            self.saveAlert = self.getSaveAlert(isPreset: false)
+            if let alert = self.saveAlert {
+                self.present(alert, animated: true)
+            }
+        })
+        optionsAlert.popoverPresentationController?.sourceView = sender as? UIView
+        present(optionsAlert, animated: true)
+    }
+
+    @IBAction func resetDesign(_ sender: Any) {
+        resetAlert = createAlert(ofType: .reset)
+        resetAlert?.addAction(UIAlertAction(title: "Reset", style: .destructive) { _ in self.delegate?.didReset() })
+        if let alert = resetAlert {
+            present(alert, animated: true)
+        }
+    }
+
+    @IBAction func cancelLoad(_ sender: Any) {
+        dismiss(animated: true)
+    }
+
+    @objc
+    func textDidChange(_ textField: UITextField) {
+        saveAlert?.actions[1].isEnabled = isValidLevelTitle(textField.text)
     }
 
 }

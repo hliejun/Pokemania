@@ -5,23 +5,14 @@ import UIKit
 
 class DesignerViewController: UIViewController {
     @IBOutlet private var gameArea: UIView!
-
     internal var gridControl: BubbleGridViewController?
     internal var paletteControl: PaletteViewController?
     internal var actionsControl: ActionsViewController?
     internal var gameControl: GameViewController?
-
     internal var designer: LevelDesigner?
     internal var selectedType: Type?
     internal var editMode: EditMode = .select
     internal var isBackgroundSet = false
-
-    let assets: [Type: UIImage] = [
-        .energyType(.fire): #imageLiteral(resourceName: "bubble-red"),
-        .energyType(.water): #imageLiteral(resourceName: "bubble-blue"),
-        .energyType(.grass): #imageLiteral(resourceName: "bubble-green"),
-        .energyType(.electric): #imageLiteral(resourceName: "bubble-orange")
-    ]
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -33,13 +24,13 @@ class DesignerViewController: UIViewController {
         if let controller = seguedController as? BubbleGridViewController {
             gridControl = controller
             gridControl?.delegate = self
-            gridControl?.setAssets(assets)
+            gridControl?.setAssets(bubbleImages)
             gridControl?.setGrid(with: designer?.bubbles ?? [:])
         }
         if let controller = seguedController as? PaletteViewController {
             paletteControl = controller
             paletteControl?.delegate = self
-            paletteControl?.setPalette(assets)
+            paletteControl?.setPalette(bubbleImages)
         }
         if let controller = seguedController as? ActionsViewController {
             actionsControl = controller

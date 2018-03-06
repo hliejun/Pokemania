@@ -10,14 +10,12 @@ protocol DesignDelegate: class {
 
 class BubbleGridViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet private var isometricGrid: UICollectionView!
-
     weak var delegate: DesignDelegate?
-
     private var bubbles: [Position: Bubble] = [:]
     private var assets: [Type: UIImage] = [:]
     private var selectedIndices = Set<IndexPath>()
-    private let maxColumns = 12
-    private let maxRows = 12
+    private let maxColumns = DisplaySettings.maxColumns.rawValue
+    private let maxRows = DisplaySettings.maxRows.rawValue
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +37,11 @@ class BubbleGridViewController: UICollectionViewController, UICollectionViewDele
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BubbleCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BubbleView", for: indexPath)
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(updateBubbles)))
         cell.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(forceDelete)))
-        guard let bubbleCell = cell as? BubbleCell else {
-            fatalError("Fatal: BubbleCell cannot be used.")
+        guard let bubbleCell = cell as? BubbleView else {
+            fatalError("Fatal: BubbleView cannot be used.")
         }
         var sprite: UIImageView? = nil
         if let bubble = bubbles[Position(row: indexPath.section, column: indexPath.item)],
@@ -63,7 +61,7 @@ class BubbleGridViewController: UICollectionViewController, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         let inset = collectionView.bounds.width / CGFloat(maxColumns * 2 + 1)
-        let padding = -inset / 5
+        let padding = -inset * Style.paddingToInsetRatio.rawValue
         return section % 2 == 0 ? UIEdgeInsets(top: 0, left: 0, bottom: padding, right: 0)
             : UIEdgeInsets(top: 0, left: inset, bottom: padding, right: inset)
     }

@@ -4,5 +4,22 @@
 import UIKit
 
 class LauncherView: UIImageView {
-    // To be expanded in Problem Set 5
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        decorate()
+    }
+
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("This class does not support NSCoding")
+    }
+
+    func decorate() {
+        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+    }
+
 }
