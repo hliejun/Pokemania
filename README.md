@@ -417,8 +417,30 @@ Ensure that the game loop does not increase in load over time.
 **Expected Outcome:**
 The device should not overheat and the application should not become sluggish. If attached on XCode, the CPU and RAM consumption should not increase over time.
 
+
 ### White Box Testing
 
+#### Control Flow for Effects and Scoring
+
+**Rationale:**
+Test control flow for scoring between effect bubbles.
+
+**Steps:**
+Check the behaviour of the bubbles when they are removed, whether the energy chains gets removed first or the effect chain gets applied and removed first.
+
+**Expected Outcome:**
+For Payday effect, the effect should be applied first, before the colour chain gets removed. For other effects, the colour chain gets removed first, before the effects are applied and affected bubbles removed.
+
+#### Cell Size for Template View by device
+
+**Rationale:**
+The cell size for custom and preloaded designs in the game template and game gallery views depends on the device type. If a phone is used, it has less real estate to display multiple designs horizontally, so thumbnails are sized to the full screen width. For iPad, the screens are typically wider, so it can afford displaying up to 3 columns.
+
+**Steps:**
+Inspect the template cell size across different devices, based on the control flow of `UIDevice.current.userInterfaceIdiom`.
+
+**Expected Outcome:**
+For phones, there should be 1 column (full-width display). For iPads, there should be 3 columns on display.g
 
 
 Problem 9: Bells and Whistles
