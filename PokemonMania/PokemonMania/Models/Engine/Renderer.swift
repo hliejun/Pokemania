@@ -10,6 +10,7 @@ class Renderer {
     private let pauseView: UIVisualEffectView
     private let bubbleSize: CGSize
     private var scoreView = UILabel()
+    private var timerView = UILabel()
     private var launcherView = LauncherView()
     private var launcherStandView = StandView()
     private var bufferView = BufferView()
@@ -22,7 +23,7 @@ class Renderer {
         pauseView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         let diameter = delegate?.getProjectileSize() ?? 0
         bubbleSize = CGSize(width: diameter, height: diameter)
-        setupScoreView()
+        setupLabels()
     }
 
     func getView(of launcher: Launcher) -> LauncherView {
@@ -151,24 +152,62 @@ class Renderer {
 
     func updateScore(_ score: Int) {
         scoreView.text = String("Score: \(score)")
-        scoreView.center = delegate?.getControlView().center ?? CGPoint.zero
+        scoreView.removeFromSuperview()
         delegate?.getControlView().addSubview(scoreView)
     }
 
-    private func setupScoreView() {
+    func updateTimer(_ time: Int) {
+        let minutes = (time % 3_600) / 60
+        let seconds = (time % 3_600) % 60
+        timerView.text = "Time Left: \(minutes):\(String(format: "%02d", seconds))"
+        timerView.removeFromSuperview()
+        delegate?.getControlView().addSubview(timerView)
+    }
+
+    func endGame(won: Bool = false) {
+        let title = won ? "You Win!" : "Game Over"
+        let message = won ? "We ran out of energy, means you completed the game! Nice!" : "Thanks for playing!"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yay!", style: .default) { _ in
+            self.delegate?.quitGame()
+        })
+        delegate?.presentAlert(alert)
+    }
+
+    func getRowLimit() -> Int {
+        guard let grid = delegate?.getGridView() else {
+            return 0
+        }
+        var limit = grid.numberOfSections - 1
+        if let sectionNumber = grid.indexPathForItem(at: launcherView.center)?.section {
+            limit = sectionNumber - 1
+        }
+        return limit
+    }
+
+    private func setupLabels() {
         guard let controlView = delegate?.getControlView() else {
             return
         }
         let size = controlView.frame.height
         scoreView.text = String("Score: 0")
         scoreView.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        scoreView.font = UIFont.boldSystemFont(ofSize: 40.0)
+        scoreView.textAlignment = .center
+        scoreView.font = UIFont.boldSystemFont(ofSize: 30)
         scoreView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 1.5 * size, height: size / 2))
-        scoreView.center = controlView.center
+        scoreView.center = controlView.center.applying(CGAffineTransform(translationX: 0, y: -size / 6))
         scoreView.adjustsFontSizeToFitWidth = true
         scoreView.layer.zPosition = Depth.front.rawValue
-        scoreView.removeFromSuperview()
         controlView.addSubview(scoreView)
+        timerView.text = String("Time Left: 2:00")
+        timerView.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        timerView.textAlignment = .center
+        timerView.font = UIFont.boldSystemFont(ofSize: 15.0)
+        timerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 2 * size, height: size / 4))
+        timerView.center = scoreView.center.applying(CGAffineTransform(translationX: 0, y: size / 3))
+        timerView.adjustsFontSizeToFitWidth = true
+        timerView.layer.zPosition = Depth.front.rawValue
+        controlView.addSubview(timerView)
     }
 
     private func setupLauncher(ofSize size: CGFloat, at dockArea: CGRect) {

@@ -12,6 +12,8 @@ protocol GameEngineDelegate: class {
     func getMainView() -> UIView
     func getControlView() -> UIView
     func getGridView() -> UICollectionView
+    func quitGame()
+    func presentAlert(_ alert: UIAlertController)
 }
 
 class GameEngine {
@@ -22,6 +24,15 @@ class GameEngine {
     private var launcher: Launcher
     private var projectiles: Set<Projectile> = Set()
     private var launchTimer: Timer?
+    private var gameTimer: Timer?
+    private var time: Int = GameSettings.gameTime.rawValue {
+        didSet {
+            if time == 0 {
+                gameTimer?.invalidate()
+                renderer.endGame()
+            }
+        }
+    }
 
     private lazy var displayLink: CADisplayLink = {
         let displayLink = CADisplayLink(target: self, selector: #selector(stepGameState))
@@ -73,16 +84,34 @@ class GameEngine {
         renderer = Renderer(delegate: viewDelegate)
         setupLauncherGestures(on: parent)
         setupLoadedBubbles()
+        setupTimer()
         displayLink.isPaused = false
     }
 
     func pauseGame(_ isPaused: Bool) {
         displayLink.isPaused = isPaused
         renderer.togglePauseScreen(isPaused)
+        if isPaused {
+            gameTimer?.invalidate()
+        } else {
+            setupTimer()
+        }
     }
 
     func endGame() {
         displayLink.remove(from: .current, forMode: .defaultRunLoopMode)
+    }
+
+    private func isGameCompleted() -> Bool {
+        for bubble in bubbles.values {
+            switch bubble.getType() {
+            case .energyType:
+                return false
+            default:
+                continue
+            }
+        }
+        return true
     }
 
     private func addBubble(type: Type, at nearestSlot: Position) {
@@ -91,16 +120,56 @@ class GameEngine {
             renderer.addView(of: bubble, at: nearestSlot)
             scoreBubbles(of: bubble, chainCount: 3)
         }
+        if nearestSlot.row >= renderer.getRowLimit(), bubbles[nearestSlot] != nil {
+            renderer.endGame()
+        }
     }
 
     private func removeBubble(_ bubble: Bubble, matched: Bool = true) {
         stage.removeBubble(bubble)
         renderer.animateAndRemoveView(of: bubble, !matched)
+        if isGameCompleted() {
+            renderer.endGame(won: true)
+        }
     }
 
     private func setLauncher(pointAt location: CGPoint) {
         let angle = physics.getAngle(of: location, from: origin)
         launcher.direction = angle
+    }
+
+    private func updateState(of projectile: Projectile) {
+        let points = physics.getPoints(from: projectile.collider).map { point in getPointInGrid(at: point) }
+        if physics.willCollide(projectile, with: getObstacles(near: points)) {
+            if let slot = getNearestSlot(to: projectile, using: points) {
+                addBubble(type: projectile.type, at: slot)
+            }
+            renderer.removeView(of: projectile)
+            projectiles.remove(projectile)
+            return
+        } else if let wall = physics.willDeflectWithWall(projectile) {
+            physics.deflect(projectile, against: wall)
+        }
+        physics.move(projectile, magnetPoints: magneticPoints)
+        renderer.redraw(projectile)
+    }
+
+    func scoreBubbles(of bubble: Bubble, chainCount: Int) {
+        let effectBubbles = stage.getEffectableNeighbours(of: bubble)
+        if effectBubbles.isEmpty {
+            findAndScoreMatches(of: bubble, minimumCount: chainCount)
+            return
+        }
+        for effectBubble in effectBubbles {
+            switch effectBubble.effect.type {
+            case .payday:
+                removeBubble(effectBubble)
+                findAndScoreMatches(of: bubble, minimumCount: chainCount, multiplier: effectBubble.effect.multiplier)
+            default:
+                findAndScoreMatches(of: bubble, minimumCount: chainCount)
+                findAndScoreMatches(of: effectBubble, with: bubble)
+            }
+        }
     }
 
     private func updateScore(with bubbles: Set<Bubble>, _ overrideMultiplier: Double? = nil) {
@@ -120,41 +189,7 @@ class GameEngine {
         renderer.updateScore(stage.getScore())
     }
 
-    private func updateState(of projectile: Projectile) {
-        let points = physics.getPoints(from: projectile.collider).map { point in getPointInGrid(at: point) }
-        if physics.willCollide(projectile, with: getObstacles(near: points)) {
-            if let slot = getNearestSlot(to: projectile, using: points) {
-                addBubble(type: projectile.type, at: slot)
-            }
-            renderer.removeView(of: projectile)
-            projectiles.remove(projectile)
-            return
-        } else if let wall = physics.willDeflectWithWall(projectile) {
-            physics.deflect(projectile, against: wall)
-        }
-        physics.move(projectile, magnetPoints: magneticPoints)
-        renderer.redraw(projectile)
-    }
-
-    private func scoreBubbles(of bubble: Bubble, chainCount: Int) {
-        let effectBubbles = stage.getEffectableNeighbours(of: bubble)
-        if effectBubbles.isEmpty {
-            findAndScoreMatches(of: bubble, minimumCount: chainCount)
-            return
-        }
-        for effectBubble in effectBubbles {
-            switch effectBubble.effect.type {
-            case .payday:
-                removeBubble(effectBubble)
-                findAndScoreMatches(of: bubble, minimumCount: chainCount, multiplier: effectBubble.effect.multiplier)
-            default:
-                findAndScoreMatches(of: bubble, minimumCount: chainCount)
-                findAndScoreMatches(of: effectBubble, with: bubble)
-            }
-        }
-    }
-
-    private func findAndScoreMatches(of bubble: Bubble, minimumCount: Int, multiplier: Double? = nil) {
+    func findAndScoreMatches(of bubble: Bubble, minimumCount: Int, multiplier: Double? = nil) {
         let matchedBubbles = stage.getBubblesConnected(to: bubble)
         if matchedBubbles.count >= minimumCount {
             matchedBubbles.forEach { matched in removeBubble(matched) }
@@ -162,7 +197,7 @@ class GameEngine {
         }
     }
 
-    private func findAndScoreMatches(of effectBubble: EffectBubble, with bubble: Bubble? = nil) {
+    func findAndScoreMatches(of effectBubble: EffectBubble, with bubble: Bubble? = nil) {
         let effect = effectBubble.effect
         var affectedSet: Set<Bubble>
         switch effect.type {
@@ -197,7 +232,7 @@ class GameEngine {
         scoreAndChain(immediateAffectedSet, affectedSet)
     }
 
-    private func scoreAndChain(_ immediateAffectedSet: Set<Bubble>, _ affectedSet: Set<Bubble>) {
+    func scoreAndChain(_ immediateAffectedSet: Set<Bubble>, _ affectedSet: Set<Bubble>) {
         immediateAffectedSet.forEach { bubble in removeBubble(bubble) }
         updateScore(with: immediateAffectedSet)
         var affectedEffectSet = Set<EffectBubble>()
@@ -222,6 +257,14 @@ class GameEngine {
 
     private func setupLoadedBubbles() {
         bubbles.forEach { position, bubble in renderer.addView(of: bubble, at: position) }
+    }
+
+    private func setupTimer() {
+        gameTimer = Timer.scheduledTimer(timeInterval: 1,
+                                           target: self,
+                                           selector: #selector(self.updateTimer),
+                                           userInfo: nil,
+                                           repeats: true)
     }
 
     private func getObstacles(near points: [CGPoint]) -> [CGRect] {
@@ -265,6 +308,12 @@ class GameEngine {
             projectiles.insert(projectile)
             renderer.animateView(of: launcher)
         }
+    }
+
+    @objc
+    func updateTimer() {
+        time -= 1
+        renderer.updateTimer(time)
     }
 
     @objc

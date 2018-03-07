@@ -98,6 +98,10 @@ class GameViewController: UIViewController, GameEngineDelegate, GameGridDelegate
         dismiss(animated: true)
     }
 
+    func presentAlert(_ alert: UIAlertController) {
+        present(alert, animated: true)
+    }
+
     private func setupDemoStage() {
         guard loadedStage == nil else {
             return

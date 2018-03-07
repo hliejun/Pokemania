@@ -12,6 +12,7 @@ enum Formats: String {
 
 enum GameSettings: Int {
     case baseScore = 10
+    case gameTime = 120
 }
 
 enum DisplaySettings: Int {
@@ -46,6 +47,7 @@ enum LaunchSettings: Double {
     case angleLimit = 10
     case rate = 0.15
     case strength = 0.02
+    case maxStrength = 0.04
 }
 
 enum Quadrant: Double {
