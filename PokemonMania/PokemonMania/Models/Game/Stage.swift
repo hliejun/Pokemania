@@ -66,6 +66,10 @@ class Stage: Codable {
         bubbles = [:]
     }
 
+    func getScore() -> Int {
+        return score
+    }
+
     func updateScore(increment: Int) {
         score += increment
     }

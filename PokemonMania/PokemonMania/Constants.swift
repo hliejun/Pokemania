@@ -79,7 +79,8 @@ let bubbleImages: [Type: UIImage] = [
     .effectType(.copycat): #imageLiteral(resourceName: "bubble-star"),
     .effectType(.thunderbolt): #imageLiteral(resourceName: "bubble-lightning"),
     .effectType(.raindance): #imageLiteral(resourceName: "raindance"),
-    .effectType(.sunnyday): #imageLiteral(resourceName: "sunnyday")
+    .effectType(.sunnyday): #imageLiteral(resourceName: "sunnyday"),
+    .effectType(.payday): #imageLiteral(resourceName: "payday")
 ]
 
 let globalLauncherActions = Set<Type>([
@@ -92,12 +93,12 @@ let globalLauncherActions = Set<Type>([
 let globalIndestructibles = Set<Type.Obstacle>([.magnet, .steelwall])
 
 let globalEffects: [Type.Effect: Effect] = [
-    .copycat: Effect(type: .copycat, targets: Set([]), radius: 0, multiplier: 2.0, energy: .none),
-    .explosion: Effect(type: .explosion, targets: Set([]), radius: 1, multiplier: 2.0, energy: .none),
-    .payday: Effect(type: .payday, targets: Set([]), radius: 0, multiplier: 4.0, energy: .none),
-    .raindance: Effect(type: .raindance, targets: Set([.water]), radius: 0, multiplier: 2.0, energy: .water),
-    .sunnyday: Effect(type: .sunnyday, targets: Set([.fire, .grass]), radius: 0, multiplier: 2.0, energy: .fire),
-    .thunderbolt: Effect(type: .thunderbolt, targets: Set([]), radius: 0, multiplier: 2.0, energy: .electric)
+    .copycat: Effect(type: .copycat, targets: Set([]), radius: 0, multiplier: 1.5, energy: .none),
+    .explosion: Effect(type: .explosion, targets: Set([]), radius: 1, multiplier: 1.5, energy: .none),
+    .payday: Effect(type: .payday, targets: Set([]), radius: 0, multiplier: 5.0, energy: .none),
+    .raindance: Effect(type: .raindance, targets: Set([.water]), radius: 0, multiplier: 1.5, energy: .water),
+    .sunnyday: Effect(type: .sunnyday, targets: Set([.fire, .grass]), radius: 0, multiplier: 1.5, energy: .fire),
+    .thunderbolt: Effect(type: .thunderbolt, targets: Set([]), radius: 0, multiplier: 1.5, energy: .electric)
 ]
 
 let globalObstacles: [Type.Obstacle: Obstacle] = [

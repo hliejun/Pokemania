@@ -92,9 +92,22 @@ class GameEngine {
         launcher.direction = angle
     }
 
-    private func updateScore(with bubbles: Set<Bubble>) {
-        // Handle effect multipliers...
-        stage.updateScore(increment: GameSettings.baseScore.rawValue)
+    private func updateScore(with bubbles: Set<Bubble>, _ overrideMultiplier: Double? = nil) {
+        let baseScore = GameSettings.baseScore.rawValue
+        let originalScore = baseScore * bubbles.count
+        if let multiplier = overrideMultiplier {
+            stage.updateScore(increment: Int(ceil(Double(originalScore) * multiplier)))
+        } else {
+            var multiplier = 1.0
+            bubbles.forEach { bubble in
+                if let effectBubble = bubble as? EffectBubble, effectBubble.effect.multiplier > multiplier {
+                    multiplier = effectBubble.effect.multiplier
+                }
+            }
+            stage.updateScore(increment: Int(ceil(Double(originalScore) * multiplier)))
+        }
+        // Update score with animation here...
+        print(stage.getScore())
     }
 
     private func updateState(of projectile: Projectile) {
@@ -113,14 +126,6 @@ class GameEngine {
         renderer.redraw(projectile)
     }
 
-    private func findAndScoreMatches(of bubble: Bubble, minimumCount: Int) {
-        let matchedBubbles = getBubblesConnected(to: bubble)
-        if matchedBubbles.count >= minimumCount {
-            matchedBubbles.forEach { matched in removeBubble(matched) }
-            updateScore(with: matchedBubbles)
-        }
-    }
-
     private func scoreBubbles(of bubble: Bubble, chainCount: Int) {
         let effectBubbles = getEffectableNeighbours(of: bubble)
         if effectBubbles.isEmpty {
@@ -130,12 +135,20 @@ class GameEngine {
         for effectBubble in effectBubbles {
             switch effectBubble.effect.type {
             case .payday:
-                findAndScoreMatches(of: effectBubble, with: bubble)
-                findAndScoreMatches(of: bubble, minimumCount: chainCount)
+                removeBubble(effectBubble)
+                findAndScoreMatches(of: bubble, minimumCount: chainCount, multiplier: effectBubble.effect.multiplier)
             default:
                 findAndScoreMatches(of: bubble, minimumCount: chainCount)
                 findAndScoreMatches(of: effectBubble, with: bubble)
             }
+        }
+    }
+
+    private func findAndScoreMatches(of bubble: Bubble, minimumCount: Int, multiplier: Double? = nil) {
+        let matchedBubbles = getBubblesConnected(to: bubble)
+        if matchedBubbles.count >= minimumCount {
+            matchedBubbles.forEach { matched in removeBubble(matched) }
+            updateScore(with: matchedBubbles, multiplier)
         }
     }
 
