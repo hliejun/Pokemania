@@ -111,10 +111,9 @@ Problem 7: Class Diagram
 
 (Please save your diagram as `class-diagram.png` in the root directory of the repository.)
 
-![Class Diagram](/class-diagram.png)
-
 ![Class Diagram](/class-diagram-2.png)
 
+![Class Diagram](/class-diagram.png)
 
 
 Problem 8: Testing
@@ -480,7 +479,6 @@ Problem 10: Final Reflection
 >
 > Comment on the original design of your MVC architecture and also on the design of your game engine. Is it possible to further improve the design/architecture? If so, how? If not, why not?
 
-Definitely.
--   remove collectionview render and logic dependency
--   extract game logics to separate model instead of spamming in game engine
--   (...)
+Definitely. The improvements that can be made are:
+-   Change GameEngine view delegates to instead of acquiring views, acquire areas or frames. This will allow me to render freely in these areas instead of depend on external views.
+-   Remove dependency on collection view grid. To do so, I can set up my own calculations of the grid given a rectangle (CGRect) and the respective dimensions (bubble size).
