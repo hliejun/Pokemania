@@ -9,7 +9,6 @@ protocol DashboardDelegate: class {
 }
 
 class DashboardViewController: UIViewController {
-    @IBOutlet private var scoreLabel: UILabel!
     weak var delegate: DashboardDelegate?
     private var isPaused = false
 

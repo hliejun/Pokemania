@@ -56,7 +56,14 @@ class GameEngine {
     }
 
     init?(stage: Stage, delegate: GameEngineDelegate?) {
-        guard let viewDelegate = delegate, let launcher = Launcher(using: globalLauncherActions) else {
+        var options = stage.getBubbles().reduce(into: Set<Type>()) { types, entry in
+            let energy = entry.value.getEnergy()
+            if energy != .none {
+                types.insert(.energyType(energy))
+            }
+        }
+        options = options.isEmpty ? globalLauncherOptions : options
+        guard let viewDelegate = delegate, let launcher = Launcher(using: options) else {
             return nil
         }
         self.delegate = viewDelegate
@@ -110,7 +117,7 @@ class GameEngine {
             }
             stage.updateScore(increment: Int(ceil(Double(originalScore) * multiplier)))
         }
-        // Update score with animation here...
+        renderer.updateScore(stage.getScore())
     }
 
     private func updateState(of projectile: Projectile) {

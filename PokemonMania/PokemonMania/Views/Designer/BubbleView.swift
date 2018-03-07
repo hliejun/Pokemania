@@ -4,19 +4,23 @@
 import UIKit
 
 class BubbleView: UICollectionViewCell {
+    private var presetColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
 
     override func layoutSubviews() {
         super.layoutSubviews()
         decorate()
     }
 
-    func setStyle(sprite: UIImageView?) {
+    func setStyle(sprite: UIImageView?, backgroundColor: UIColor? = nil) {
         sprite?.frame = CGRect(origin: CGPoint.zero, size: bounds.size)
         backgroundView = sprite
+        if let color = backgroundColor {
+            self.presetColor = color
+        }
     }
 
     func decorate() {
-        backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.4955318921)
+        backgroundColor = presetColor
         layer.cornerRadius = self.frame.height / CGFloat(2)
     }
 

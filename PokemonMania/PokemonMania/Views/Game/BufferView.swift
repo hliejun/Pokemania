@@ -20,7 +20,7 @@ class BufferView: UIImageView {
 
     func decorate() {
         layer.cornerRadius = frame.width / 2
-        layer.zPosition = Depth.back.rawValue
+        layer.zPosition = Depth.front.rawValue
     }
 
 }

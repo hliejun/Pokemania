@@ -18,10 +18,14 @@ class Stage: Codable {
     }
 
     init(from stage: Stage) {
-        bubbles = stage.getBubbles()
+        bubbles = [:]
         background = stage.background
         music = stage.music
         effect = stage.effect
+        let oldBubbles = stage.getBubbles()
+        oldBubbles.forEach { position, bubble in
+            insertBubble(type: bubble.getType(), at: position)
+        }
     }
 
     func getBubbles() -> [Position: Bubble] {
@@ -90,7 +94,6 @@ class Stage: Codable {
         neighbours.enqueue(target)
         while let bubble = neighbours.dequeue() {
             if bubble.getEnergy() == energy, !group.contains(bubble) {
-                // Handle matching obstacles using a switch-case
                 group.insert(bubble)
                 getNeighbours(of: bubble).forEach { neighbour in neighbours.enqueue(neighbour) }
             }

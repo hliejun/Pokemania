@@ -45,11 +45,19 @@ class Storage {
     }
 
     static func getFileUrl(for fileName: FileName) -> URL {
+        if let url = Bundle.main.url(forResource: "\(fileName)", withExtension: ".enc", subdirectory: "data"),
+            fileName == .levels {
+            return url
+        }
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         return documentDirectory.appendingPathComponent("\(fileName).enc")
     }
 
     static func getImagePath(for fileName: String) -> String {
+        if let url = Bundle.main.url(forResource: "\(fileName)", withExtension: ".png", subdirectory: "data"),
+            Int(fileName) != nil {
+                return url.path
+        }
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         return documentDirectory.appendingPathComponent("\(fileName).png").path
     }

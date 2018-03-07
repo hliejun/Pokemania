@@ -93,7 +93,7 @@ class ActionsViewController: UIViewController {
             let regex = try NSRegularExpression(pattern: "[^a-zA-Z0-9_]+", options: .caseInsensitive)
             let range = NSRange(location: 0, length: text.count)
             let matches = regex.matches(in: text, options: [.withoutAnchoringBounds], range: range)
-            return !text.isEmpty && !templates.contains(text) && matches.isEmpty
+            return Int(text) == nil && !text.isEmpty && !templates.contains(text) && matches.isEmpty
         } catch {
             return false
         }
@@ -111,12 +111,6 @@ class ActionsViewController: UIViewController {
 
     @IBAction func saveDesign(_ sender: Any) {
         let optionsAlert = UIAlertController(title: "Save Modes", message: "Pick Option", preferredStyle: .actionSheet)
-        optionsAlert.addAction(UIAlertAction(title: "Preset", style: .default) { _ in
-            self.saveAlert = self.getSaveAlert(isPreset: true)
-            if let alert = self.saveAlert {
-                self.present(alert, animated: true)
-            }
-        })
         optionsAlert.addAction(UIAlertAction(title: "Custom", style: .default) { _ in
             self.saveAlert = self.getSaveAlert(isPreset: false)
             if let alert = self.saveAlert {

@@ -23,7 +23,7 @@ class GridBubbleView: BubbleView {
         fatalError("This class does not support NSCoding")
     }
 
-    override func setStyle(sprite: UIImageView?) {
+    override func setStyle(sprite: UIImageView?, backgroundColor: UIColor? = nil) {
         super.setStyle(sprite: sprite)
         if let animation = overlay {
             bringSubview(toFront: animation)

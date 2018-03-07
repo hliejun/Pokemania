@@ -48,7 +48,7 @@ class BubbleGridViewController: UICollectionViewController, UICollectionViewDele
             let image = assets[bubble.getType()] {
             sprite = UIImageView(image: image)
         }
-        bubbleCell.setStyle(sprite: sprite)
+        bubbleCell.setStyle(sprite: sprite, backgroundColor: #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0.6))
         return bubbleCell
     }
 

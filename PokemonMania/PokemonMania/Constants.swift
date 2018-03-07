@@ -91,11 +91,24 @@ let bubbleImages: [Type: UIImage] = [
     .obstacleType(.magnet): #imageLiteral(resourceName: "bubble-magnetic")
 ]
 
-let globalLauncherActions = Set<Type>([
+let globalLauncherOptions = Set<Type>([
     .energyType(.fire),
     .energyType(.water),
     .energyType(.grass),
-    .energyType(.electric)
+    .energyType(.electric),
+    .energyType(.normal),
+    .energyType(.dark),
+    .energyType(.ghost),
+    .energyType(.bug),
+    .energyType(.dragon),
+    .energyType(.ice),
+    .energyType(.fighting),
+    .energyType(.flying),
+    .energyType(.ground),
+    .energyType(.poison),
+    .energyType(.psychic),
+    .energyType(.rock),
+    .energyType(.steel)
 ])
 
 let globalIndestructibles = Set<Type.Obstacle>([.magnet, .steelwall])

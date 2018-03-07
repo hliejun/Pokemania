@@ -9,6 +9,7 @@ class Renderer {
     private var bubbleViews: [Bubble: GridBubbleView]
     private let pauseView: UIVisualEffectView
     private let bubbleSize: CGSize
+    private var scoreView = UILabel()
     private var launcherView = LauncherView()
     private var launcherStandView = StandView()
     private var bufferView = BufferView()
@@ -21,6 +22,7 @@ class Renderer {
         pauseView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         let diameter = delegate?.getProjectileSize() ?? 0
         bubbleSize = CGSize(width: diameter, height: diameter)
+        setupScoreView()
     }
 
     func getView(of launcher: Launcher) -> LauncherView {
@@ -145,6 +147,28 @@ class Renderer {
                 points.append(view.center)
             }
         }
+    }
+
+    func updateScore(_ score: Int) {
+        scoreView.text = String("Score: \(score)")
+        scoreView.center = delegate?.getControlView().center ?? CGPoint.zero
+        delegate?.getControlView().addSubview(scoreView)
+    }
+
+    private func setupScoreView() {
+        guard let controlView = delegate?.getControlView() else {
+            return
+        }
+        let size = controlView.frame.height
+        scoreView.text = String("Score: 0")
+        scoreView.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        scoreView.font = UIFont.boldSystemFont(ofSize: 40.0)
+        scoreView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 1.5 * size, height: size / 2))
+        scoreView.center = controlView.center
+        scoreView.adjustsFontSizeToFitWidth = true
+        scoreView.layer.zPosition = Depth.front.rawValue
+        scoreView.removeFromSuperview()
+        controlView.addSubview(scoreView)
     }
 
     private func setupLauncher(ofSize size: CGFloat, at dockArea: CGRect) {

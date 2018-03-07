@@ -226,12 +226,6 @@
                                     <action selector="didPause:" destination="HKI-r0-cRX" eventType="touchUpInside" id="2wb-wb-3oH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5E-SK-FeV">
-                                <rect key="frame" x="465.5" y="25.5" width="94" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -240,15 +234,10 @@
                             <constraint firstAttribute="trailing" secondItem="NdJ-mX-fdW" secondAttribute="trailing" constant="24" id="RfD-qq-Wvg"/>
                             <constraint firstItem="NdJ-mX-fdW" firstAttribute="centerY" secondItem="kGU-gH-rIA" secondAttribute="centerY" id="XIE-6a-HOn"/>
                             <constraint firstItem="yAD-PG-gu7" firstAttribute="centerY" secondItem="kGU-gH-rIA" secondAttribute="centerY" id="Zz8-W4-cqN"/>
-                            <constraint firstItem="Y5E-SK-FeV" firstAttribute="centerY" secondItem="kGU-gH-rIA" secondAttribute="centerY" id="eTZ-fD-peK"/>
-                            <constraint firstItem="Y5E-SK-FeV" firstAttribute="centerX" secondItem="kGU-gH-rIA" secondAttribute="centerX" id="iCw-Kc-3nh"/>
                             <constraint firstItem="yAD-PG-gu7" firstAttribute="leading" secondItem="kGU-gH-rIA" secondAttribute="leading" constant="24" id="kIk-Hh-VWf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MFp-6p-z8L"/>
                     </view>
-                    <connections>
-                        <outlet property="scoreLabel" destination="Y5E-SK-FeV" id="eNo-a8-HyW"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Vu-sP-T6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
