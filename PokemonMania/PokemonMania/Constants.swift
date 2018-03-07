@@ -1,6 +1,7 @@
 //  Created by Huang Lie Jun on 2/3/18.
 //  Copyright © 2018 nus.cs3217.a0123994. All rights reserved.
 
+import Foundation
 import UIKit
 
 typealias AnimationHandler = (UIViewAnimatingPosition) -> Void
@@ -34,6 +35,11 @@ enum Style: CGFloat {
 enum Animations: Double {
     case displacement = 100
     case duration = 0.6
+}
+
+enum Physics: CGFloat {
+    case attraction = 1
+    case verticalThreshold = 0.001
 }
 
 enum LaunchSettings: Double {
@@ -80,7 +86,9 @@ let bubbleImages: [Type: UIImage] = [
     .effectType(.thunderbolt): #imageLiteral(resourceName: "bubble-lightning"),
     .effectType(.raindance): #imageLiteral(resourceName: "raindance"),
     .effectType(.sunnyday): #imageLiteral(resourceName: "sunnyday"),
-    .effectType(.payday): #imageLiteral(resourceName: "payday")
+    .effectType(.payday): #imageLiteral(resourceName: "payday"),
+    .obstacleType(.steelwall): #imageLiteral(resourceName: "bubble-indestructible"),
+    .obstacleType(.magnet): #imageLiteral(resourceName: "bubble-magnetic")
 ]
 
 let globalLauncherActions = Set<Type>([
@@ -103,8 +111,7 @@ let globalEffects: [Type.Effect: Effect] = [
 
 let globalObstacles: [Type.Obstacle: Obstacle] = [
     .steelwall: Obstacle(type: .steelwall, weaknesses: Set(), tolerance: 0),
-    .magnet: Obstacle(type: .magnet, weaknesses: Set(), tolerance: 0),
-    .tree: Obstacle(type: .tree, weaknesses: Set([.fire]), tolerance: 3)
+    .magnet: Obstacle(type: .magnet, weaknesses: Set(), tolerance: 0)
 ]
 
 let globalCreatures: [Type.Creature: Creature] = [

@@ -139,6 +139,14 @@ class Renderer {
         }
     }
 
+    func getPoints(for bubbles: Set<Bubble>) -> [CGPoint] {
+        return bubbles.reduce(into: [CGPoint]()) { points, bubble in
+            if let view = bubbleViews[bubble] {
+                points.append(view.center)
+            }
+        }
+    }
+
     private func setupLauncher(ofSize size: CGFloat, at dockArea: CGRect) {
         let launcherRatio = launcherImage.size.width / launcherImage.size.height
         launcherView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size * launcherRatio, height: size))

@@ -14,7 +14,7 @@ enum Type: Hashable {
     }
 
     enum Obstacle: String, Codable {
-        case magnet, steelwall, tree
+        case magnet, steelwall
     }
 
     enum Creature: String, Codable {
