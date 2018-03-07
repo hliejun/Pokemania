@@ -129,8 +129,8 @@ class GameEngine {
         }
         for effectBubble in effectBubbles {
             switch effectBubble.effect.type {
-            case .copycat, .payday:
-                findAndScoreMatches(of: effectBubble)
+            case .payday:
+                findAndScoreMatches(of: effectBubble, with: bubble)
                 findAndScoreMatches(of: bubble, minimumCount: chainCount)
             default:
                 findAndScoreMatches(of: bubble, minimumCount: chainCount)
@@ -151,12 +151,13 @@ class GameEngine {
             let effectTargets: Set<Type.Energy>
             if let energy = bubble?.getEnergy(), energy != .none, effect.type == .copycat {
                 effectTargets = Set<Type.Energy>([energy])
+                affectedSet = affectedSet.filter { bubble in effectTargets.contains(bubble.getEnergy()) }
             } else {
                 effectTargets = effect.targets
+                affectedSet = effect.targets.isEmpty
+                    ? affectedSet
+                    : affectedSet.filter { bubble in effectTargets.contains(bubble.getEnergy()) }
             }
-            affectedSet = effect.targets.isEmpty
-                ? affectedSet
-                : affectedSet.filter { bubble in effectTargets.contains(bubble.getEnergy()) }
         }
         var immediateAffectedSet = affectedSet.filter { bubble in
             switch bubble.getType() {

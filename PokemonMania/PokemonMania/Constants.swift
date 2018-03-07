@@ -76,8 +76,10 @@ let bubbleImages: [Type: UIImage] = [
     .energyType(.rock): #imageLiteral(resourceName: "bubble-rock"),
     .energyType(.steel): #imageLiteral(resourceName: "bubble-steel"),
     .effectType(.explosion): #imageLiteral(resourceName: "bubble-bomb"),
-    .effectType(.raindance): #imageLiteral(resourceName: "bubble-star"),
-    .effectType(.thunderbolt): #imageLiteral(resourceName: "bubble-lightning")
+    .effectType(.copycat): #imageLiteral(resourceName: "bubble-star"),
+    .effectType(.thunderbolt): #imageLiteral(resourceName: "bubble-lightning"),
+    .effectType(.raindance): #imageLiteral(resourceName: "raindance"),
+    .effectType(.sunnyday): #imageLiteral(resourceName: "sunnyday")
 ]
 
 let globalLauncherActions = Set<Type>([
