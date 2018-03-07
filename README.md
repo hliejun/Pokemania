@@ -111,7 +111,10 @@ Problem 7: Class Diagram
 
 (Please save your diagram as `class-diagram.png` in the root directory of the repository.)
 
-(your answer here)
+![Class Diagram](/class-diagram.png)
+
+![Class Diagram](/class-diagram-2.png)
+
 
 
 Problem 8: Testing
@@ -424,7 +427,7 @@ The device should not overheat and the application should not become sluggish. I
 
 **Rationale:**
 Test control flow for scoring between effect bubbles.
-
+g
 **Steps:**
 Check the behaviour of the bubbles when they are removed, whether the energy chains gets removed first or the effect chain gets applied and removed first.
 
