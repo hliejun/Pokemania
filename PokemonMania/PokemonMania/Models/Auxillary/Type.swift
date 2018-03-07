@@ -10,7 +10,7 @@ enum Type: Hashable {
     }
 
     enum Effect: String, Codable {
-        case copycat, explosion, payday, raindance, sunnyday
+        case copycat, explosion, payday, raindance, sunnyday, thunderbolt
     }
 
     enum Obstacle: String, Codable {

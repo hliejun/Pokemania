@@ -49,13 +49,6 @@ enum Quadrant: Double {
     case fourth = 0
 }
 
-let launcherOptions = Set<Type>([
-    .energyType(.fire),
-    .energyType(.water),
-    .energyType(.grass),
-    .energyType(.electric)
-    ])
-
 let launcherStandImage = #imageLiteral(resourceName: "cannon-base")
 
 let launcherImage = #imageLiteral(resourceName: "cannon-0")
@@ -81,15 +74,28 @@ let bubbleImages: [Type: UIImage] = [
     .energyType(.poison): #imageLiteral(resourceName: "bubble-poison"),
     .energyType(.psychic): #imageLiteral(resourceName: "bubble-psychic"),
     .energyType(.rock): #imageLiteral(resourceName: "bubble-rock"),
-    .energyType(.steel): #imageLiteral(resourceName: "bubble-steel")
+    .energyType(.steel): #imageLiteral(resourceName: "bubble-steel"),
+    .effectType(.explosion): #imageLiteral(resourceName: "bubble-bomb"),
+    .effectType(.raindance): #imageLiteral(resourceName: "bubble-star"),
+    .effectType(.thunderbolt): #imageLiteral(resourceName: "bubble-lightning")
 ]
+
+let globalLauncherActions = Set<Type>([
+    .energyType(.fire),
+    .energyType(.water),
+    .energyType(.grass),
+    .energyType(.electric)
+])
+
+let globalIndestructibles = Set<Type.Obstacle>([.magnet, .steelwall])
 
 let globalEffects: [Type.Effect: Effect] = [
     .copycat: Effect(type: .copycat, targets: Set([]), radius: 0, multiplier: 2.0, energy: .none),
     .explosion: Effect(type: .explosion, targets: Set([]), radius: 1, multiplier: 2.0, energy: .none),
     .payday: Effect(type: .payday, targets: Set([]), radius: 0, multiplier: 4.0, energy: .none),
     .raindance: Effect(type: .raindance, targets: Set([.water]), radius: 0, multiplier: 2.0, energy: .water),
-    .sunnyday: Effect(type: .sunnyday, targets: Set([.fire, .grass]), radius: 0, multiplier: 2.0, energy: .fire)
+    .sunnyday: Effect(type: .sunnyday, targets: Set([.fire, .grass]), radius: 0, multiplier: 2.0, energy: .fire),
+    .thunderbolt: Effect(type: .thunderbolt, targets: Set([]), radius: 0, multiplier: 2.0, energy: .electric)
 ]
 
 let globalObstacles: [Type.Obstacle: Obstacle] = [

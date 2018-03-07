@@ -51,7 +51,7 @@ class GameEngine {
     }
 
     init?(stage: Stage, delegate: GameEngineDelegate?) {
-        guard let viewDelegate = delegate, let launcher = Launcher(using: launcherOptions) else {
+        guard let viewDelegate = delegate, let launcher = Launcher(using: globalLauncherActions) else {
             return nil
         }
         self.delegate = viewDelegate
@@ -73,21 +73,18 @@ class GameEngine {
         displayLink.remove(from: .current, forMode: .defaultRunLoopMode)
     }
 
+    // KIV: Handle pokeballs and pokemon
     private func addBubble(type: Type, at nearestSlot: Position) {
         stage.insertBubble(type: type, at: nearestSlot)
         if let bubble = bubbles[nearestSlot] {
             renderer.addView(of: bubble, at: nearestSlot)
-            findAndScoreMatches(of: bubble, minimumCount: 3)
+            scoreBubbles(of: bubble, chainCount: 3)
         }
     }
 
     private func removeBubble(_ bubble: Bubble, matched: Bool = true) {
         stage.removeBubble(bubble)
-        renderer.animateView(of: bubble, isCleaning: !matched) { _ in
-            if self.bubbles[bubble.getPosition()] == nil {
-                self.renderer.removeView(of: bubble)
-            }
-        }
+        renderer.animateAndRemoveView(of: bubble, !matched)
     }
 
     private func setLauncher(pointAt location: CGPoint) {
@@ -96,11 +93,12 @@ class GameEngine {
     }
 
     private func updateScore(with bubbles: Set<Bubble>) {
+        // Handle effect multipliers...
         stage.updateScore(increment: GameSettings.baseScore.rawValue)
     }
 
     private func updateState(of projectile: Projectile) {
-        let points = physics.getPoints(from: projectile.collider).map { point in return getPointInGrid(at: point) }
+        let points = physics.getPoints(from: projectile.collider).map { point in getPointInGrid(at: point) }
         if physics.willCollide(projectile, with: getObstacles(near: points)) {
             if let slot = getNearestSlot(to: projectile, using: points) {
                 addBubble(type: projectile.type, at: slot)
@@ -116,26 +114,91 @@ class GameEngine {
     }
 
     private func findAndScoreMatches(of bubble: Bubble, minimumCount: Int) {
-        let matchedBubbles = getBubblesConnected(to: Set([bubble]), with: bubble.getEnergy())
+        let matchedBubbles = getBubblesConnected(to: bubble)
         if matchedBubbles.count >= minimumCount {
             matchedBubbles.forEach { matched in removeBubble(matched) }
             updateScore(with: matchedBubbles)
         }
     }
 
+    private func scoreBubbles(of bubble: Bubble, chainCount: Int) {
+        let effectBubbles = getEffectableNeighbours(of: bubble)
+        if effectBubbles.isEmpty {
+            findAndScoreMatches(of: bubble, minimumCount: chainCount)
+            return
+        }
+        for effectBubble in effectBubbles {
+            switch effectBubble.effect.type {
+            case .copycat, .payday:
+                findAndScoreMatches(of: effectBubble)
+                findAndScoreMatches(of: bubble, minimumCount: chainCount)
+            default:
+                findAndScoreMatches(of: bubble, minimumCount: chainCount)
+                findAndScoreMatches(of: effectBubble, with: bubble)
+            }
+        }
+    }
+
+    private func findAndScoreMatches(of effectBubble: EffectBubble, with bubble: Bubble? = nil) {
+        let effect = effectBubble.effect
+        var affectedSet: Set<Bubble>
+        switch effect.type {
+        case .thunderbolt:
+            let affectedBubbles = bubbles.filter { position, _ in position.row == effectBubble.getPosition().row }
+            affectedSet = Set(affectedBubbles.values)
+        default:
+            affectedSet = getNeighbours(of: effectBubble, in: effect.radius)
+            let effectTargets: Set<Type.Energy>
+            if let energy = bubble?.getEnergy(), energy != .none, effect.type == .copycat {
+                effectTargets = Set<Type.Energy>([energy])
+            } else {
+                effectTargets = effect.targets
+            }
+            affectedSet = effect.targets.isEmpty
+                ? affectedSet
+                : affectedSet.filter { bubble in effectTargets.contains(bubble.getEnergy()) }
+        }
+        var immediateAffectedSet = affectedSet.filter { bubble in
+            switch bubble.getType() {
+            case .energyType:
+                return true
+            default:
+                return false
+            }
+        }
+        if let originalBubble = bubble {
+            immediateAffectedSet.insert(originalBubble)
+        }
+        immediateAffectedSet.insert(effectBubble)
+        scoreAndChain(immediateAffectedSet, affectedSet)
+    }
+
+    private func scoreAndChain(_ immediateAffectedSet: Set<Bubble>, _ affectedSet: Set<Bubble>) {
+        immediateAffectedSet.forEach { bubble in removeBubble(bubble) }
+        updateScore(with: immediateAffectedSet)
+        var affectedEffectSet = Set<EffectBubble>()
+        affectedSet.forEach { bubble in
+            if let effectBubble = bubble as? EffectBubble {
+                affectedEffectSet.insert(effectBubble)
+            }
+        }
+        affectedEffectSet.forEach { bubble in findAndScoreMatches(of: bubble) }
+    }
+
     private func findAndRemoveDisconnectedBubbles() {
-        var rootBubbles = bubbles.filter { position, _ in return position.row == 0 }
+        var rootBubbles = bubbles.filter { position, _ in position.row == 0 }
         Set(bubbles.values).subtracting(getBubblesConnected(to: Set(rootBubbles.values)))
             .forEach { bubble in removeBubble(bubble, matched: false) }
     }
 
-    private func getBubblesConnected(to rootBubbles: Set<Bubble>, with energy: Type.Energy? = nil) -> Set<Bubble> {
+    private func getBubblesConnected(to target: Bubble) -> Set<Bubble> {
+        let energy = target.getEnergy()
         var neighbours = Queue<Bubble>()
         var group = Set<Bubble>()
-        rootBubbles.forEach { rootBubble in neighbours.enqueue(rootBubble) }
+        neighbours.enqueue(target)
         while let bubble = neighbours.dequeue() {
-            let isMatch = energy == nil || (energy != nil && bubble.getEnergy() == energy)
-            if isMatch, !group.contains(bubble) {
+            if bubble.getEnergy() == energy, !group.contains(bubble) {
+                // Handle matching obstacles using a switch-case
                 group.insert(bubble)
                 getNeighbours(of: bubble).forEach { neighbour in neighbours.enqueue(neighbour) }
             }
@@ -143,7 +206,33 @@ class GameEngine {
         return group
     }
 
-    private func getNeighbours(of target: Bubble) -> Set<Bubble> {
+    private func getBubblesConnected(to rootBubbles: Set<Bubble>) -> Set<Bubble> {
+        var neighbours = Queue<Bubble>()
+        var group = Set<Bubble>()
+        rootBubbles.forEach { rootBubble in neighbours.enqueue(rootBubble) }
+        while let bubble = neighbours.dequeue() {
+            if !group.contains(bubble) {
+                group.insert(bubble)
+                getNeighbours(of: bubble).forEach { neighbour in neighbours.enqueue(neighbour) }
+            }
+        }
+        return group
+    }
+
+    private func getEffectableNeighbours(of target: Bubble) -> Set<EffectBubble> {
+        var effectableBubbles = Set<EffectBubble>()
+        getNeighbours(of: target).forEach { bubble in
+            if let effectBubble = bubble as? EffectBubble {
+                effectableBubbles.insert(effectBubble)
+            }
+        }
+        return effectableBubbles
+    }
+
+    private func getNeighbours(of target: Bubble, in radius: Int = 1) -> Set<Bubble> {
+        if radius == 0 {
+            return Set(bubbles.values)
+        }
         let location = target.getPosition()
         let isEvenRow = location.row % 2 == 0
         let neighbours = bubbles.filter { position, _ in
@@ -156,7 +245,12 @@ class GameEngine {
             }
             return false
         }
-        return Set(neighbours.values)
+        if radius == 1 {
+            return Set(neighbours.values)
+        }
+        return neighbours.reduce(into: Set<Bubble>()) { set, entry in
+            set = set.union(getNeighbours(of: entry.value, in: radius - 1))
+        }
     }
 
     private func setupLauncherGestures(on delegatedView: UIView?) {

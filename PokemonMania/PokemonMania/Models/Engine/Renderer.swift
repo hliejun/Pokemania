@@ -48,12 +48,23 @@ class Renderer {
         updateSubview(view)
     }
 
+    func animateAndRemoveView(of bubble: Bubble, _ isCleaning: Bool) {
+        let viewToRemove = bubbleViews[bubble]
+        animateView(of: bubble, isCleaning: isCleaning) { _ in
+            viewToRemove?.removeFromSuperview()
+            if self.bubbleViews[bubble] == viewToRemove {
+                self.bubbleViews[bubble] = nil
+            }
+        }
+    }
+
     func removeView(of projectile: Projectile) {
         projectileViews[projectile]?.removeFromSuperview()
         projectileViews[projectile] = nil
     }
 
     func removeView(of bubble: Bubble) {
+        bubbleViews[bubble]?.overlay?.removeFromSuperview()
         bubbleViews[bubble]?.removeFromSuperview()
         bubbleViews[bubble] = nil
     }
@@ -98,9 +109,13 @@ class Renderer {
         guard let view = bubbleViews[bubble] else {
             return
         }
-        let animator = UIViewPropertyAnimator(duration: Animations.duration.rawValue, dampingRatio: 1) {
+        let animator = UIViewPropertyAnimator(duration: Animations.duration.rawValue / 2, dampingRatio: 1) {
             let transform = CGAffineTransform(translationX: 0, y: CGFloat(Animations.displacement.rawValue))
-            view.alpha = 0
+            if isCleaning {
+                view.alpha = 0
+            } else {
+                view.backgroundView?.alpha = 0
+            }
             view.center = isCleaning ? view.center.applying(transform) : view.center
         }
         if let handler = completion {
