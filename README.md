@@ -482,3 +482,31 @@ Problem 10: Final Reflection
 Definitely. The improvements that can be made are:
 -   Change GameEngine view delegates to instead of acquiring views, acquire areas or frames. This will allow me to render freely in these areas instead of depend on external views.
 -   Remove dependency on collection view grid. To do so, I can set up my own calculations of the grid given a rectangle (CGRect) and the respective dimensions (bubble size).
+
+
+Credits
+------------------
+Image Assets:
+-   Energy Icons from Vecteezy by orangereebok
+<https://www.vecteezy.com/vector-art/119820-free-type-pokemon-vector>
+
+-   Pokemon Icons from Vecteezy by visionheldup
+<https://www.vecteezy.com/vector-art/118593-pokemon-icon-vector-free>
+
+-   Pokeballs Icons from Vecteezy by seabranddesign
+<https://www.vecteezy.com/vector-art/117926-free-pokemon-icons-vector>
+
+-   Shuffle Icon from FlatIcon by SmashIcons
+<https://www.flaticon.com/free-icon/shuffle_149131#term=shuffle&page=1&position=2>
+
+-   App Icon from FlatIcon by Roundicons Freebies
+<https://www.flaticon.com/free-icon/squirtle_188988>
+
+-   Launch Icon from FlatIcon by Roundicons Freebies
+<https://www.flaticon.com/free-icon/crown_188970>
+
+-   Pokemon GO Icons from FlatIcon by Roundicons Freebies
+<https://www.flaticon.com/packs/pokemon-go>
+
+-   Weather Icons from learnsketch.com
+<https://www.learnsketch.com/freebies/flat-weather-icons>
