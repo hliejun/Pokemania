@@ -120,7 +120,305 @@ Problem 8: Testing
 >
 > Please describe your testing strategy in README.md. The testing strategy should also include the testing strategies for Problem Sets 3 and 4, since these are components of the final application. If you did your testing perfectly in the previous problem sets, you only need to replicate what you did earlier; if you didn't do so well, this is where you show that you've learnt something and update the tests.
 
-(your answer here)
+### Black-box Testing
+
+#### Single-Tap Launch
+
+**Rationale:**
+Ensure tap gesture functionality.
+
+**Steps:**
+1.  Tap once on a random spot on the screen.
+2.  Check what happened on screen.
+3.  Repeat on multiple spots on the screen.
+
+**Expected Outcome:**
+The launcher should rotate to face the direction tapped. A bubble will be seen appearing on screen if the tapped location is not near the bottom of the screen at steep angles.
+
+#### Hold and Launch
+
+**Rationale:**
+Ensure hold gesture non-functionality.
+
+**Steps:**
+1.  Press and hold on the screen.
+2.  Release.
+3.  Repeat on multiple spots on the screen.
+
+**Expected Outcome:**
+The launcher should not move and no bubble should be seen appearing at the launcher area (assuming you managed to be still when holding onto the screen).
+
+#### Pan and Launch
+
+**Rationale:**
+Ensure pan gesture functionality.
+
+**Steps:**
+1.  Press and drag your finger across the screen.
+2.  Release.
+3.  Repeat from multiple spots across the screen.
+
+**Expected Outcome:**
+The launcher should follow your movement (pan) across the screen and rotate. On release, a bubble should be launched from the launcher.
+
+#### Movement
+
+**Rationale:**
+Ensure projectiles will move.
+
+**Steps:**
+1.  Tap on the screen to launch a bubble.
+2.  Repeat on multiple spots across the screen.
+
+**Expected Outcome:**
+Bubbles should appear and move towards and past the tapped location until it deflects or collides. No bubble should be seen stuck without being inside a grid.
+
+#### Launch Preview Consistency
+
+**Rationale:**
+Ensure the launch preview is functional.
+
+**Steps:**
+1.  Look at the launcher (Horsea). Look into it's right eye.
+2.  Press and launch on the screen.
+3.  Observe the launched bubble and its colour.
+4.  Repeat for several times.
+
+**Expected Outcome:**
+Bubbles appearing on screen at launch should be consistent with the previously viewed preview colour (in Horsea's right eye).
+
+#### Collision with Bubble (Different Type)
+
+**Rationale:**
+Ensure different-type collision functionality.
+
+**Steps:**
+1.  Tap and launch several times to generate some bubbles on the grid.
+2.  Look at the launch preview and note the colour of the preview bubble.
+3.  Aim at a bubble on the grid that has a different colour than the observed colour.
+4.  Tap and launch the bubble.
+5.  Ensure the bubble ends next to the targeted bubble.
+6.  Observe the bubble to see if it animates or disappears.
+7.  Repeat for bubbles of differing colour (pairs).
+
+**Expected Outcome:**
+The targeted bubbles should remain since they are of a different colour with the launched bubble.
+
+#### Collision with Bubble (Same Type)
+
+**Rationale:**
+Ensure same-type collision functionality.
+
+**Steps:**
+1.  Tap and launch several times to generate some bubbles on the grid.
+2.  Look at the launch preview and note the colour of the preview bubble.
+3.  Aim at a bubble on the grid that has the same colour with the observed colour.
+4.  Tap and launch the bubble.
+5.  Ensure the bubble ends next to the targeted bubble.
+6.  Observe the bubble to see if it animates or disappears.
+7.  Repeat for bubbles of same colour (pairs).
+
+**Expected Outcome:**
+The targeted bubbles should animate or disappear if more than 3 continuously chained bubbles (including the launched bubble) share the same colour. Otherwise, the targeted bubbles should not animate or disappear (if you end up with less than 3 continous chained bubbles of the same type).
+
+#### Collision with Top Wall
+
+**Rationale:**
+Ensure top-wall collision sets the bubble to grid.
+
+**Steps:**
+1.  Find an empty spot that is immediately in contact with the top wall.
+2.  Aim and launch at that spot by tapping on that spot.
+3.  Observe.
+4.  Repeat on different spots along the top wall.
+
+**Expected Outcome:**
+The launched bubble should hit the top wall and stop, and enters the nearest slot on the grid.
+
+#### Deflecting on Left Wall
+
+**Rationale:**
+Ensure bubble gets deflected off the left wall.
+
+**Steps:**
+1.  Find a clear, unobstructed path from the launcher to the left wall.
+2.  Aim and launch along that path by tapping on the screen.
+3.  Observe.
+4.  Repeat at different angles, along the left wall.
+
+**Expected Outcome:**
+The launched bubble should hit the left wall, stop and deflect in the same incident angle of approach.
+
+#### Deflecting on Right Wall
+
+**Rationale:**
+Ensure bubble gets deflected off the right wall.
+
+**Steps:**
+1.  Find a clear, unobstructed path from the launcher to the right wall.
+2.  Aim and launch along that path by tapping on the screen.
+3.  Observe.
+4.  Repeat at different angles, along the right wall.
+
+**Expected Outcome:**
+The launched bubble should hit the right wall, stop and deflect in the same incident angle of approach.
+
+#### Scoring Same Type Bubbles with Disconnection
+
+**Rationale:**
+Ensure bubble combinations of same colour disappears, along with the disconnected bubbles that result.
+
+**Steps:**
+1.  Tap and launch several times to generate some bubbles on the grid.
+2.  Look at the launch preview and note the colour of the preview bubble.
+3.  Aim at a bubble on the grid that has the same colour with the observed colour, forms a continuous chain of at least 2 other bubbles with the same type, and without these said bubbles, at least 1 bubble will be disconnected (no continuous path to reach the top wall).
+4.  Tap and launch the bubble.
+6.  Observe the bubbles to see if they animate or disappear.
+7.  Repeat for bubbles of different colours.
+
+**Expected Outcome:**
+The said combination of bubbles should disappear (fade away), whereas the bubbles that are left disconnected should also be removed (flash twice). After, no bubbles should be left disconnected on the grid.
+
+#### Close and Reopen
+
+**Rationale:**
+Ensure application does not hang or break after opening and closing.
+
+**Steps:**
+1.  Open the application.
+2.  Swipe up from the bottom edge of the iPad to enter the multi-tasking mode, and quit the application by swiping it off the multi-tasking view.
+3.  Re-launch the application.
+
+**Expected Outcome:**
+The application should still be accessible and should still load and be functional after closing and re-opening.
+
+#### Hide and Switch Back
+
+**Rationale:**
+Ensure application is still usable after switching to another application and switching back.
+
+**Steps:**
+1.  Open the application.
+2.  Press the home button.
+3.  Launch another application.
+4.  Swipe up from the bottom edge of the iPad to enter the multi-tasking mode.
+5.  Return to the application by selecting it from the multi-tasking panel.
+
+**Expected Outcome:**
+The application should still be accessible and should still load and be functional after switching context. It should also retain all the bubbles and states from where you left it just before switching to another application.
+
+#### Extreme Launch Angles
+
+**Rationale:**
+Ensure launch angles are handled succinctly.
+
+**Steps:**
+1.  Tap on the bottom left corner of the screen.
+2.  Observe.
+3.  Repeat by tapping along the left wall, from the bottom left corner and working your way upwards.
+4.  Repeat this along the right wall, from the bottom right corner.
+
+**Expected Outcome:**
+At very steep angles (when tapping near or at the bottom left/right corners), the launcher should not launch any bubbles. However, as you work your way up, when the angle is less steep, you will see bubbles appearing at the launcher and moving upwards.
+
+#### Rotation of Device
+
+**Rationale:**
+Ensure launch position is correct after orientating.
+
+**Steps:**
+1.  Tap on the screen to launch a bubble.
+2.  A bubble will appear at the launcher. Note the position that it appears at.
+3.  Rotate the iPad 180 degrees.
+4.  Tap again on the screen to launch a bubble.
+5.  Observe the location that the bubble appears.
+
+**Expected Outcome:**
+After orientating, the launch position should not change. The bubble launched should still start from the same location (on the launcher), regardless of whether you're in the portrait or inverse portrait orientation.
+
+#### Different Device
+
+**Rationale:**
+Ensure size class support across devices.
+
+**Steps:**
+1.  Install and run the application on an iPhone.
+2.  Try performing the series of black-box tests.
+2.  Repeat on an iPad.
+
+**Expected Outcome:**
+The behaviour across devices of different screen size should be similar if not the same. The displays should scale nicely across different screen dimensions.
+
+#### Deflect with Collide
+
+**Rationale:**
+Ensure collide is prioritized before deflection.
+
+**Steps:**
+1.  Tap and launch several times to generate some bubbles on the grid, especially near the left wall.
+2.  Find a position in direct contact with the left wall and with another bubble.
+4.  Tap and launch a bubble towards that position.
+6.  Observe.
+7.  Repeat for the right wall.
+
+**Expected Outcome:**
+When the bubble collides with both the wall and another bubble at the same time, it should prioritize settling / landing into a grid instead of deflecting (and moving).
+
+#### Launch Rate
+
+**Rationale:**
+Ensure responsiveness in graphics.
+
+**Steps:**
+1.  Aim at a relatively free section in the grid.
+2.  Tap and launch at a slow rate (1 tap every 3 seconds).
+3.  Repeat for medium (1 tap every 1 seconds) and fast rate (1 tap every 0.5 seconds).
+
+**Expected Outcome:**
+When launching bubbles rapidly, the performance should not be reduced drastically. Noticeable lags should not be frequent, if not should not occur at all.
+
+#### Hitting Corners
+
+**Rationale:**
+Ensure that corner cases are covered literally. To make sure the bubbles do not get stuck.
+
+**Steps:**
+1.  Aim at an empty top-left corner edge.
+2.  Tap and launch.
+3.  Repeat for an empty top-right corner edge.
+
+**Expected Outcome:**
+The bubble should land in a grid slot and not get stuck or confused.
+
+#### Hitting Disappearing Bubbles
+
+**Rationale:**
+Ensure that bubble state is not mixed up when animating bubbles.
+
+**Steps:**
+1.  Setup the black-box test case where disconnected bubbles will be resulted from a chain of continuous (at least 3) bubbles of same type as the launched bubble.
+2.  Tap and launch to clear the combination.
+3.  Immediately after, aim, tap and launch a bubble towards 1 of the bubble that is disappearing.
+4.  Repeat to hit both the disappearing and disconnected bubble, as well as the disappearing bubble with the same type as the scored combination.
+
+**Expected Outcome:**
+The disappearing bubble should continue to disappear. The launched bubble should land and take over the spot where the old bubbles disappear.
+
+#### Leaving It Running
+
+**Rationale:**
+Ensure that the game loop does not increase in load over time.
+
+**Steps:**
+1.  Launch as many bubbles as you can rapidly.
+2.  Leave the device on and application in the foreground (5 minutes).
+3.  Repeat for launching bubbles slowly but over a period of time (5 minutes).
+
+**Expected Outcome:**
+The device should not overheat and the application should not become sluggish. If attached on XCode, the CPU and RAM consumption should not increase over time.
+
+### White Box Testing
+
 
 
 Problem 9: Bells and Whistles
@@ -131,7 +429,24 @@ Problem 9: Bells and Whistles
 >
 > You are allowed to use external resources (images and sound) to implement these, but please adhere to any licensing requirement and credit the original creators in the README.md file.
 
-(your answer here)
+The following are the extra features added to this game.
+
+1.  Design
+The game is built with a minimalistic design. It's intuitive and appealing and handles user flows between different screens well with prompts and feedback.
+
+2.  Animations
+Animations have been added to the launcher and the bubbles. When firing the launcher, you will see the cannon bulge. When the bubbles are destroyed (or dropped on disconnection), you will also see specific animations of bursting and dropping.
+
+3.  Score multipliers mechanics
+Score system has been added to the game, along with multipliers for different types of bubbles. Normal bubbles have 1x multiplier, while effect bubbles have 1.5x multiplier. Payday effect yields a 5x multiplier.
+
+4.  Additional effect bubbles have been added. They are:
+    -   Payday: Adds a 5x multiplier to the energy (colour) streak.
+    -   Rain Dance: An elemental effect that favours the water type. It will remove all water types in the field.
+    -   Sunny Day: A multi-elemental effect that favours both the grass and fire type. It removes all grass and fire type energy bubbles in the field.
+    -   Time Limit: To make things more exciting, I've added a time limit of 2 minutes per game session. If the player manages to clear all energy bubbles before the time runs out, the player will win the game.
+    -   Pause and Resume option: With a time limit, the player might sometimes find a need to pause the game. This allows the player to enjoy the game without worrying about being unable to concentrate on the things around them. Would be useful when you are playing on commute.
+    -   End Game screen: To notify the gamer of that the game has ended, the player is notified with a simple alert.
 
 
 Problem 10: Final Reflection
@@ -140,4 +455,7 @@ Problem 10: Final Reflection
 >
 > Comment on the original design of your MVC architecture and also on the design of your game engine. Is it possible to further improve the design/architecture? If so, how? If not, why not?
 
-(your answer here)
+Definitely.
+-   remove collectionview render and logic dependency
+-   extract game logics to separate model instead of spamming in game engine
+-   (...)
