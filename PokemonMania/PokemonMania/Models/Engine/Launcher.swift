@@ -5,6 +5,8 @@ import UIKit
 import PhysicsEngine
 
 class Launcher {
+    // TUTOR: [-1] Variables should be private.
+    // Also, buffer is not a very good name for buffer size, right?
     let buffer: Int
     var isAssistEnabled = true
     var strength: Double = LaunchSettings.strength.rawValue

@@ -199,6 +199,8 @@ class Renderer {
         scoreView.adjustsFontSizeToFitWidth = true
         scoreView.layer.zPosition = Depth.front.rawValue
         controlView.addSubview(scoreView)
+        // TUTOR: [-1] Hardcoded time left constant here.
+        // What if you want to change the timer start value?
         timerView.text = String("Time Left: 2:00")
         timerView.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         timerView.textAlignment = .center

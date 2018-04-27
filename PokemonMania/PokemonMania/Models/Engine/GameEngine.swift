@@ -200,6 +200,10 @@ class GameEngine {
     func findAndScoreMatches(of effectBubble: EffectBubble, with bubble: Bubble? = nil) {
         let effect = effectBubble.effect
         var affectedSet: Set<Bubble>
+
+        // TUTOR: [-2] Bad design.
+        // Do you think Effect-specific behaviour should belong to GameEngine?
+        // What if you have more Effects in the future? Is this a scalable solution?
         switch effect.type {
         case .thunderbolt:
             let affectedBubbles = bubbles.filter { position, _ in position.row == effectBubble.getPosition().row }
