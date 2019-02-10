@@ -26,14 +26,8 @@ Effect bubbles generally have some form of score multiplier that will increase t
 Obstacle bubbles are bubbles that are indestructible! Some obstacles also have traits such as magnetic attraction that will affect the movement of your launched bubble.
 
 
-Pod Setup
----------
-(write something here)
-
-
 Problem 1: Cannon Direction
 ---------------------------
-(write something here)
 
 > **Question 1** &nbsp; `5 points`
 >
@@ -44,7 +38,6 @@ The player can select the cannon direction either by tapping on the screen or by
 
 Problem 2: Upcoming Bubbles
 ---------------------------
-(write something here)
 
 > **Question 2** &nbsp; `5 points`
 >
@@ -70,7 +63,6 @@ The advantages of this design would be that it is easy to comprehend the contrac
 
 Problem 4: Special Bubbles
 --------------------------
-(write something here)
 
 ### Problem 4.4
 > **Question 4.4** &nbsp; `5 points`
@@ -84,16 +76,6 @@ Then for all effects that are found (connected to the bubble), I will obtain the
 I prefer this strategy as it gives me freedom to determine the order and behaviour between effects and type chaining. This means that it is possible to create effects such as wild card bubbles in the future, since I can apply effects first (to inherit the type of the projectile) before chaining the bubble combos.
 
 This design also allows me to track the scores well, since the effect multiplier is applied only to the bubbles that are affected directly by that effect.
-
-
-Problem 5: Additional Game Features
------------------------------------
-(write something here)
-
-
-Problem 6: Game Flow
---------------------
-(write something here)
 
 
 Problem 7: Class Diagram
@@ -419,7 +401,7 @@ The device should not overheat and the application should not become sluggish. I
 
 **Rationale:**
 Test control flow for scoring between effect bubbles.
-g
+
 **Steps:**
 Check the behaviour of the bubbles when they are removed, whether the energy chains gets removed first or the effect chain gets applied and removed first.
 
