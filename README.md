@@ -1,4 +1,4 @@
-CS3217 Problem Set 5
+Problem Set 5
 ====================
 
 **Name:** Huang Lie Jun
@@ -6,13 +6,6 @@ CS3217 Problem Set 5
 **Matric No:** A0123994W
 
 **Tutor:** Irvin Lim
-
-Tips
-----
-1.  CS3217's Gitbook is at <https://www.gitbook.com/book/cs3217/problem-sets/details>. Do visit the Gitbook often, as it contains all things relevant to CS3217. You can also ask questions related to CS3217 there.
-2.  Take a look at `.gitignore`. It contains rules that ignores the changes in certain files when committing an Xcode project to revision control. (This is taken from <https://github.com/github/gitignore/blob/master/Swift.gitignore>).
-3.  A Swiftlint configuration file is provided for you. It is recommended for you to use Swiftlint and follow this configuration. Keep in mind that, ultimately, this tool is only a guideline; some exceptions may be made as long as code quality is not compromised.
-4.  Do not burn out. Have fun!
 
 
 Rules of Your Game
